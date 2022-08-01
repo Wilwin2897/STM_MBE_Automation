@@ -1,0 +1,13 @@
+QE calculations
+BURAI OUTPUT
+21/07/22
+Tried to calculate Slab 2,4,6,8 layer for FeSn
+CHANGES
+    ecutrho                   =  4.23668e+02
+    ecutwfc                   =  4.70743e+01
+TO
+    ecutrho                   =  176.39712 (8 times Ecut)
+    ecutwfc                   =  22.04964 (300 eV)
+Why use QE => FPLO NO RELAXATION MODULE, CANNOT CHECK THE STABILITY AND WHETHER THERE ARE SURFACE RECONSTRUCTIONS
+Do the ideal lattice using FPLO to check for Slab 2,4,6,8 layer for FeSn
+

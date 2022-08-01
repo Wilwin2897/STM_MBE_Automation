@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import time
 import urllib3
+
 http = urllib3.PoolManager()
 zero_angle = 90
 IP = '192.168.1.143'
