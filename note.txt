@@ -1,0 +1,24 @@
+Dear COCHE,
+
+I’m writing to express my interest in bringing my skills and experience to the Hong Kong Centre for Cerebro-Cardiovascular Health Engineering Limited.  As a postgraduate research student in HKUST, I have learned on how to tackle many difficult problems without any clear answer using any tools or skill set that is available to me. This experience has made me into a person with a problem-solver mindset. Moreover, since I come from a multidisciplinary background, in which I need to work with many people of different expertise (bioinformatics, machine learning, material science, etc). I can flexibly communicates and collaborating with other people. 
+
+On my technical skills, over the course of my studies I have developed proven coding skill with many different languages including: Python, Fortran, and C++. In addition with my experience as a research assistant in the physics laboratory (Molecular Beam Epitaxy and Scanning Tunneling Microscope lab), I have developed knowledge about thin film growth and characterization. Moreover, I also have a workable knowledge on PCB design, electronics, CAD, and IoT communications protocol by working on automation and developing a nanopositioning stage. 
+
+Over many years working on basic sciences, now I have an urge to bring my skill and knowledge for the public. I think a good research is the one that can affect the lives of people and not only satisfy your curiosity. My future goal is become a researcher that can do an impactful research whereever I am placed.
+
+Hopefully, I can bring these skills to your company. Thank you for taking the time to consider my application, and I look forward to hearing from you.
+
+Best regards,
+
+Wilwin
+ brief description of what your academic interests are and how they relate to your previous studies and future goals 
+
+
+Update regarding the Piezos:
+PI: The person said that the dimension in the quotation should be the same as in the quotation (3×3x2.2 mm and 5x5x9.5 mm). They doesn't provide AlN end plates. The standard Al2O3 end plates roughness is <1 um and the polished one is <0.5 um, but they said that the roughness is not a specification hence it will not be measured.
+Coremorrow: The roughness is Ra 0.4-0.6, still asking do they have the polished one, only Aluminium oxide is available.
+Noliac: No reply
+Thorlab: No reply
+Looking at this, maybe it is better to glue the end plates ourselves using our own AlN plates?
+
+Send them the parts top bottom etc except prism

@@ -1,0 +1,2895 @@
+09/09/2022 16:02:00
+STM status 
+T1 = 201.308 K,T2 = 93.047 K,T3 = 339.074 K,T4 = 148.599 K,JT = 338.402 K,GGS = 276.776 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:01
+STM status 
+T1 = 172.615 K,T2 = 318.377 K,T3 = 325.693 K,T4 = 221.682 K,JT = 75.748 K,GGS = 302.681 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:02
+STM status 
+T1 = 182.030 K,T2 = 279.503 K,T3 = 131.601 K,T4 = 115.980 K,JT = 339.429 K,GGS = 175.668 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:03
+STM status 
+T1 = 41.909 K,T2 = 41.505 K,T3 = 311.194 K,T4 = 105.902 K,JT = 330.739 K,GGS = 29.142 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:04
+STM status 
+T1 = 260.270 K,T2 = 268.712 K,T3 = 352.268 K,T4 = 337.519 K,JT = 28.939 K,GGS = 117.574 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:05
+STM status 
+T1 = 79.831 K,T2 = 368.959 K,T3 = 367.985 K,T4 = 158.300 K,JT = 80.720 K,GGS = 92.131 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:06
+STM status 
+T1 = 341.238 K,T2 = 201.988 K,T3 = 146.535 K,T4 = 148.740 K,JT = 187.633 K,GGS = 341.151 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:07
+STM status 
+T1 = 106.081 K,T2 = 114.585 K,T3 = 205.268 K,T4 = 28.408 K,JT = 253.851 K,GGS = 67.408 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:08
+STM status 
+T1 = 361.656 K,T2 = 178.841 K,T3 = 346.802 K,T4 = 166.062 K,JT = 326.725 K,GGS = 147.514 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:09
+STM status 
+T1 = 362.114 K,T2 = 105.847 K,T3 = 96.393 K,T4 = 58.031 K,JT = 183.880 K,GGS = 346.138 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:10
+STM status 
+T1 = 52.259 K,T2 = 269.615 K,T3 = 332.049 K,T4 = 132.869 K,JT = 341.241 K,GGS = 43.023 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:11
+STM status 
+T1 = 319.352 K,T2 = 290.560 K,T3 = 107.518 K,T4 = 133.454 K,JT = 372.334 K,GGS = 289.659 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:12
+STM status 
+T1 = 184.080 K,T2 = 272.789 K,T3 = 96.537 K,T4 = 340.311 K,JT = 105.690 K,GGS = 285.994 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:13
+STM status 
+T1 = 14.834 K,T2 = 42.968 K,T3 = 224.811 K,T4 = 134.127 K,JT = 277.721 K,GGS = 73.322 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:14
+STM status 
+T1 = 374.529 K,T2 = 13.738 K,T3 = 73.014 K,T4 = 114.292 K,JT = 261.458 K,GGS = 289.081 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:15
+STM status 
+T1 = 273.570 K,T2 = 215.938 K,T3 = 314.668 K,T4 = 70.694 K,JT = 371.210 K,GGS = 257.058 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:16
+STM status 
+T1 = 214.867 K,T2 = 331.305 K,T3 = 186.979 K,T4 = 114.157 K,JT = 234.470 K,GGS = 302.416 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:17
+STM status 
+T1 = 23.673 K,T2 = 187.006 K,T3 = 57.654 K,T4 = 26.760 K,JT = 322.308 K,GGS = 131.417 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:18
+STM status 
+T1 = 79.409 K,T2 = 370.327 K,T3 = 289.732 K,T4 = 274.009 K,JT = 70.170 K,GGS = 53.698 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:19
+STM status 
+T1 = 282.110 K,T2 = 292.543 K,T3 = 139.685 K,T4 = 329.723 K,JT = 300.514 K,GGS = 119.520 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:20
+STM status 
+T1 = 190.231 K,T2 = 172.766 K,T3 = 10.737 K,T4 = 43.482 K,JT = 305.935 K,GGS = 363.262 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:21
+STM status 
+T1 = 66.225 K,T2 = 373.449 K,T3 = 288.006 K,T4 = 206.262 K,JT = 251.617 K,GGS = 327.598 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:22
+STM status 
+T1 = 18.958 K,T2 = 128.505 K,T3 = 184.922 K,T4 = 109.081 K,JT = 352.498 K,GGS = 185.713 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:23
+STM status 
+T1 = 314.661 K,T2 = 226.242 K,T3 = 62.811 K,T4 = 299.124 K,JT = 368.359 K,GGS = 164.149 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:24
+STM status 
+T1 = 139.602 K,T2 = 170.954 K,T3 = 77.308 K,T4 = 320.016 K,JT = 283.449 K,GGS = 249.738 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:25
+STM status 
+T1 = 306.594 K,T2 = 277.683 K,T3 = 162.098 K,T4 = 189.312 K,JT = 266.860 K,GGS = 217.441 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:26
+STM status 
+T1 = 178.422 K,T2 = 276.807 K,T3 = 64.716 K,T4 = 218.250 K,JT = 30.293 K,GGS = 277.094 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:27
+STM status 
+T1 = 213.546 K,T2 = 328.503 K,T3 = 138.119 K,T4 = 321.647 K,JT = 212.830 K,GGS = 292.281 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:28
+STM status 
+T1 = 243.406 K,T2 = 231.264 K,T3 = 356.690 K,T4 = 276.906 K,JT = 166.989 K,GGS = 148.931 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:29
+STM status 
+T1 = 331.074 K,T2 = 366.055 K,T3 = 175.979 K,T4 = 331.185 K,JT = 334.205 K,GGS = 212.792 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:30
+STM status 
+T1 = 170.162 K,T2 = 124.167 K,T3 = 72.746 K,T4 = 306.202 K,JT = 96.243 K,GGS = 101.848 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:31
+STM status 
+T1 = 351.510 K,T2 = 40.435 K,T3 = 277.176 K,T4 = 73.367 K,JT = 222.453 K,GGS = 194.999 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:32
+STM status 
+T1 = 330.679 K,T2 = 310.287 K,T3 = 326.058 K,T4 = 244.208 K,JT = 183.608 K,GGS = 316.062 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:33
+STM status 
+T1 = 71.732 K,T2 = 365.824 K,T3 = 362.471 K,T4 = 11.777 K,JT = 31.760 K,GGS = 204.921 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:34
+STM status 
+T1 = 333.175 K,T2 = 259.854 K,T3 = 216.402 K,T4 = 111.886 K,JT = 68.725 K,GGS = 40.526 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:35
+STM status 
+T1 = 307.740 K,T2 = 341.128 K,T3 = 118.393 K,T4 = 296.258 K,JT = 15.044 K,GGS = 52.883 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:36
+STM status 
+T1 = 181.497 K,T2 = 319.053 K,T3 = 242.310 K,T4 = 358.294 K,JT = 129.884 K,GGS = 346.401 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:37
+STM status 
+T1 = 321.999 K,T2 = 309.192 K,T3 = 243.012 K,T4 = 16.235 K,JT = 330.570 K,GGS = 69.139 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:38
+STM status 
+T1 = 348.436 K,T2 = 312.745 K,T3 = 286.668 K,T4 = 137.199 K,JT = 11.433 K,GGS = 76.431 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:39
+STM status 
+T1 = 125.439 K,T2 = 133.647 K,T3 = 342.146 K,T4 = 192.817 K,JT = 90.476 K,GGS = 360.007 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:40
+STM status 
+T1 = 17.434 K,T2 = 330.352 K,T3 = 143.257 K,T4 = 232.177 K,JT = 156.268 K,GGS = 159.813 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:41
+STM status 
+T1 = 273.647 K,T2 = 246.640 K,T3 = 192.577 K,T4 = 334.015 K,JT = 83.571 K,GGS = 151.319 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:42
+STM status 
+T1 = 68.093 K,T2 = 332.650 K,T3 = 288.174 K,T4 = 137.488 K,JT = 271.343 K,GGS = 80.732 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:43
+STM status 
+T1 = 196.442 K,T2 = 231.831 K,T3 = 365.482 K,T4 = 84.561 K,JT = 255.602 K,GGS = 313.789 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:44
+STM status 
+T1 = 21.216 K,T2 = 285.632 K,T3 = 18.541 K,T4 = 131.338 K,JT = 197.582 K,GGS = 140.957 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:45
+STM status 
+T1 = 343.628 K,T2 = 62.451 K,T3 = 321.169 K,T4 = 66.596 K,JT = 25.260 K,GGS = 146.380 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:46
+STM status 
+T1 = 324.990 K,T2 = 234.389 K,T3 = 78.654 K,T4 = 49.229 K,JT = 325.475 K,GGS = 214.464 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:47
+STM status 
+T1 = 56.131 K,T2 = 283.372 K,T3 = 259.510 K,T4 = 297.529 K,JT = 184.191 K,GGS = 103.899 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:48
+STM status 
+T1 = 166.482 K,T2 = 284.823 K,T3 = 109.344 K,T4 = 284.250 K,JT = 306.185 K,GGS = 48.326 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:49
+STM status 
+T1 = 33.070 K,T2 = 273.185 K,T3 = 278.750 K,T4 = 273.408 K,JT = 344.243 K,GGS = 272.096 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:50
+STM status 
+T1 = 51.858 K,T2 = 53.193 K,T3 = 98.976 K,T4 = 226.317 K,JT = 75.898 K,GGS = 269.050 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:51
+STM status 
+T1 = 177.300 K,T2 = 134.558 K,T3 = 130.480 K,T4 = 139.862 K,JT = 50.323 K,GGS = 171.446 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:52
+STM status 
+T1 = 175.672 K,T2 = 243.702 K,T3 = 154.257 K,T4 = 25.405 K,JT = 133.277 K,GGS = 29.260 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:53
+STM status 
+T1 = 39.830 K,T2 = 88.650 K,T3 = 125.905 K,T4 = 230.487 K,JT = 146.830 K,GGS = 361.342 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:54
+STM status 
+T1 = 226.488 K,T2 = 121.361 K,T3 = 117.506 K,T4 = 373.547 K,JT = 131.249 K,GGS = 168.902 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:55
+STM status 
+T1 = 139.245 K,T2 = 138.343 K,T3 = 133.689 K,T4 = 180.385 K,JT = 94.417 K,GGS = 372.249 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:56
+STM status 
+T1 = 172.913 K,T2 = 89.322 K,T3 = 334.658 K,T4 = 143.130 K,JT = 263.199 K,GGS = 354.068 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:57
+STM status 
+T1 = 249.905 K,T2 = 59.047 K,T3 = 61.399 K,T4 = 173.185 K,JT = 242.503 K,GGS = 294.341 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:58
+STM status 
+T1 = 144.568 K,T2 = 177.519 K,T3 = 207.143 K,T4 = 246.948 K,JT = 24.608 K,GGS = 255.411 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:02:59
+STM status 
+T1 = 15.953 K,T2 = 175.978 K,T3 = 335.471 K,T4 = 330.295 K,JT = 64.487 K,GGS = 353.875 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:00
+STM status 
+T1 = 198.923 K,T2 = 142.995 K,T3 = 122.447 K,T4 = 372.859 K,JT = 29.217 K,GGS = 253.406 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:01
+STM status 
+T1 = 310.393 K,T2 = 343.070 K,T3 = 174.638 K,T4 = 48.251 K,JT = 282.374 K,GGS = 350.295 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:02
+STM status 
+T1 = 147.680 K,T2 = 223.071 K,T3 = 117.311 K,T4 = 352.773 K,JT = 313.590 K,GGS = 343.154 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:03
+STM status 
+T1 = 95.193 K,T2 = 230.421 K,T3 = 371.876 K,T4 = 234.798 K,JT = 45.899 K,GGS = 315.278 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:04
+STM status 
+T1 = 357.424 K,T2 = 372.771 K,T3 = 52.338 K,T4 = 18.891 K,JT = 230.511 K,GGS = 291.094 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:05
+STM status 
+T1 = 123.574 K,T2 = 244.295 K,T3 = 213.024 K,T4 = 164.281 K,JT = 93.695 K,GGS = 331.896 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:06
+STM status 
+T1 = 245.556 K,T2 = 190.677 K,T3 = 339.505 K,T4 = 27.257 K,JT = 218.856 K,GGS = 322.301 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:07
+STM status 
+T1 = 340.642 K,T2 = 301.446 K,T3 = 351.850 K,T4 = 364.543 K,JT = 251.607 K,GGS = 156.068 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:08
+STM status 
+T1 = 148.561 K,T2 = 279.938 K,T3 = 51.040 K,T4 = 316.592 K,JT = 175.867 K,GGS = 78.981 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:09
+STM status 
+T1 = 293.142 K,T2 = 200.876 K,T3 = 55.971 K,T4 = 224.229 K,JT = 185.942 K,GGS = 55.823 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:10
+STM status 
+T1 = 78.598 K,T2 = 338.149 K,T3 = 365.955 K,T4 = 90.188 K,JT = 111.580 K,GGS = 303.106 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:11
+STM status 
+T1 = 238.233 K,T2 = 22.821 K,T3 = 372.647 K,T4 = 22.345 K,JT = 309.684 K,GGS = 232.735 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:12
+STM status 
+T1 = 209.058 K,T2 = 61.616 K,T3 = 222.385 K,T4 = 208.282 K,JT = 317.975 K,GGS = 163.419 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:13
+STM status 
+T1 = 266.443 K,T2 = 83.140 K,T3 = 63.525 K,T4 = 214.735 K,JT = 25.760 K,GGS = 199.015 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:14
+STM status 
+T1 = 207.615 K,T2 = 291.678 K,T3 = 218.575 K,T4 = 177.963 K,JT = 218.224 K,GGS = 370.198 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:15
+STM status 
+T1 = 105.366 K,T2 = 53.617 K,T3 = 357.141 K,T4 = 273.824 K,JT = 43.841 K,GGS = 229.696 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:16
+STM status 
+T1 = 343.649 K,T2 = 104.854 K,T3 = 28.727 K,T4 = 219.637 K,JT = 314.230 K,GGS = 224.273 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:17
+STM status 
+T1 = 143.646 K,T2 = 268.981 K,T3 = 279.059 K,T4 = 261.473 K,JT = 310.618 K,GGS = 263.962 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:18
+STM status 
+T1 = 19.165 K,T2 = 259.131 K,T3 = 110.316 K,T4 = 167.724 K,JT = 319.713 K,GGS = 207.395 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:19
+STM status 
+T1 = 253.325 K,T2 = 77.356 K,T3 = 34.902 K,T4 = 135.586 K,JT = 290.666 K,GGS = 217.572 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:20
+STM status 
+T1 = 210.528 K,T2 = 180.932 K,T3 = 95.343 K,T4 = 84.494 K,JT = 73.470 K,GGS = 257.911 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:21
+STM status 
+T1 = 111.088 K,T2 = 92.985 K,T3 = 235.777 K,T4 = 122.938 K,JT = 19.981 K,GGS = 54.581 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:22
+STM status 
+T1 = 48.605 K,T2 = 152.281 K,T3 = 69.248 K,T4 = 235.109 K,JT = 304.698 K,GGS = 35.862 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:23
+STM status 
+T1 = 25.104 K,T2 = 232.931 K,T3 = 214.985 K,T4 = 109.917 K,JT = 199.990 K,GGS = 333.784 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:24
+STM status 
+T1 = 150.683 K,T2 = 123.900 K,T3 = 15.941 K,T4 = 76.457 K,JT = 336.160 K,GGS = 253.970 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:25
+STM status 
+T1 = 278.554 K,T2 = 273.768 K,T3 = 87.118 K,T4 = 87.172 K,JT = 191.130 K,GGS = 34.413 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:26
+STM status 
+T1 = 40.633 K,T2 = 50.968 K,T3 = 281.858 K,T4 = 292.961 K,JT = 41.247 K,GGS = 104.016 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:27
+STM status 
+T1 = 336.035 K,T2 = 97.134 K,T3 = 335.256 K,T4 = 342.382 K,JT = 133.704 K,GGS = 28.921 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:28
+STM status 
+T1 = 64.926 K,T2 = 207.002 K,T3 = 254.509 K,T4 = 279.468 K,JT = 211.815 K,GGS = 183.866 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:29
+STM status 
+T1 = 226.172 K,T2 = 165.496 K,T3 = 187.776 K,T4 = 198.107 K,JT = 115.337 K,GGS = 225.540 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:30
+STM status 
+T1 = 260.906 K,T2 = 94.234 K,T3 = 89.959 K,T4 = 65.895 K,JT = 296.634 K,GGS = 348.004 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:31
+STM status 
+T1 = 365.372 K,T2 = 48.559 K,T3 = 198.131 K,T4 = 114.641 K,JT = 88.921 K,GGS = 233.246 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:32
+STM status 
+T1 = 64.338 K,T2 = 341.905 K,T3 = 358.771 K,T4 = 257.701 K,JT = 265.912 K,GGS = 105.931 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:33
+STM status 
+T1 = 74.302 K,T2 = 241.295 K,T3 = 22.083 K,T4 = 233.974 K,JT = 334.696 K,GGS = 28.589 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:34
+STM status 
+T1 = 278.023 K,T2 = 123.374 K,T3 = 43.721 K,T4 = 307.711 K,JT = 262.251 K,GGS = 216.317 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:35
+STM status 
+T1 = 93.310 K,T2 = 333.804 K,T3 = 257.407 K,T4 = 158.068 K,JT = 220.460 K,GGS = 134.645 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:36
+STM status 
+T1 = 342.847 K,T2 = 29.126 K,T3 = 68.232 K,T4 = 303.539 K,JT = 273.477 K,GGS = 327.266 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:37
+STM status 
+T1 = 18.733 K,T2 = 96.938 K,T3 = 87.711 K,T4 = 317.443 K,JT = 84.005 K,GGS = 127.676 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:38
+STM status 
+T1 = 265.159 K,T2 = 74.100 K,T3 = 273.745 K,T4 = 250.479 K,JT = 354.952 K,GGS = 297.587 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:39
+STM status 
+T1 = 33.815 K,T2 = 66.517 K,T3 = 233.578 K,T4 = 101.487 K,JT = 21.477 K,GGS = 310.584 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:40
+STM status 
+T1 = 263.837 K,T2 = 147.505 K,T3 = 206.958 K,T4 = 206.137 K,JT = 138.353 K,GGS = 164.791 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:41
+STM status 
+T1 = 86.675 K,T2 = 317.537 K,T3 = 329.621 K,T4 = 104.412 K,JT = 312.499 K,GGS = 296.567 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:42
+STM status 
+T1 = 276.772 K,T2 = 112.153 K,T3 = 315.251 K,T4 = 29.652 K,JT = 46.308 K,GGS = 334.336 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:43
+STM status 
+T1 = 23.526 K,T2 = 301.952 K,T3 = 163.816 K,T4 = 18.348 K,JT = 334.919 K,GGS = 220.965 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:44
+STM status 
+T1 = 59.014 K,T2 = 124.121 K,T3 = 185.972 K,T4 = 355.029 K,JT = 95.268 K,GGS = 269.706 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:45
+STM status 
+T1 = 338.146 K,T2 = 157.254 K,T3 = 177.243 K,T4 = 368.234 K,JT = 147.752 K,GGS = 264.598 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:46
+STM status 
+T1 = 50.135 K,T2 = 201.106 K,T3 = 373.662 K,T4 = 323.431 K,JT = 104.832 K,GGS = 89.582 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:47
+STM status 
+T1 = 260.353 K,T2 = 190.589 K,T3 = 342.153 K,T4 = 349.861 K,JT = 24.226 K,GGS = 123.602 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:48
+STM status 
+T1 = 169.672 K,T2 = 251.179 K,T3 = 368.048 K,T4 = 304.739 K,JT = 148.860 K,GGS = 265.329 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:49
+STM status 
+T1 = 129.144 K,T2 = 87.933 K,T3 = 160.148 K,T4 = 216.538 K,JT = 125.888 K,GGS = 246.713 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:50
+STM status 
+T1 = 271.510 K,T2 = 41.509 K,T3 = 368.904 K,T4 = 185.676 K,JT = 309.000 K,GGS = 178.257 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:51
+STM status 
+T1 = 66.150 K,T2 = 71.333 K,T3 = 27.424 K,T4 = 331.401 K,JT = 279.632 K,GGS = 198.178 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:52
+STM status 
+T1 = 355.292 K,T2 = 290.348 K,T3 = 74.172 K,T4 = 158.691 K,JT = 105.382 K,GGS = 179.983 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:53
+STM status 
+T1 = 45.761 K,T2 = 186.421 K,T3 = 111.337 K,T4 = 56.705 K,JT = 243.460 K,GGS = 155.278 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:54
+STM status 
+T1 = 157.038 K,T2 = 133.441 K,T3 = 295.349 K,T4 = 270.609 K,JT = 162.286 K,GGS = 329.030 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:55
+STM status 
+T1 = 90.805 K,T2 = 144.200 K,T3 = 242.128 K,T4 = 355.931 K,JT = 357.083 K,GGS = 22.337 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:56
+STM status 
+T1 = 315.214 K,T2 = 128.336 K,T3 = 338.162 K,T4 = 116.176 K,JT = 326.430 K,GGS = 258.351 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:57
+STM status 
+T1 = 50.278 K,T2 = 225.065 K,T3 = 326.164 K,T4 = 103.203 K,JT = 228.478 K,GGS = 248.329 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:58
+STM status 
+T1 = 94.515 K,T2 = 209.978 K,T3 = 223.658 K,T4 = 255.567 K,JT = 365.943 K,GGS = 155.642 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:03:59
+STM status 
+T1 = 169.201 K,T2 = 194.805 K,T3 = 232.294 K,T4 = 229.268 K,JT = 320.448 K,GGS = 205.229 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:00
+STM status 
+T1 = 97.796 K,T2 = 14.278 K,T3 = 57.680 K,T4 = 156.646 K,JT = 74.431 K,GGS = 107.533 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:01
+STM status 
+T1 = 134.086 K,T2 = 112.782 K,T3 = 97.482 K,T4 = 96.609 K,JT = 169.574 K,GGS = 27.675 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:02
+STM status 
+T1 = 98.286 K,T2 = 239.168 K,T3 = 95.579 K,T4 = 68.345 K,JT = 355.492 K,GGS = 255.994 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:03
+STM status 
+T1 = 317.632 K,T2 = 239.832 K,T3 = 21.268 K,T4 = 244.362 K,JT = 164.084 K,GGS = 163.279 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:04
+STM status 
+T1 = 375.198 K,T2 = 187.486 K,T3 = 111.112 K,T4 = 330.670 K,JT = 66.825 K,GGS = 129.825 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:05
+STM status 
+T1 = 182.743 K,T2 = 187.123 K,T3 = 48.604 K,T4 = 309.440 K,JT = 105.273 K,GGS = 288.963 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:06
+STM status 
+T1 = 180.642 K,T2 = 91.729 K,T3 = 169.078 K,T4 = 12.063 K,JT = 17.195 K,GGS = 123.857 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:07
+STM status 
+T1 = 320.612 K,T2 = 195.677 K,T3 = 280.038 K,T4 = 55.162 K,JT = 141.570 K,GGS = 301.476 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:08
+STM status 
+T1 = 184.947 K,T2 = 182.289 K,T3 = 182.276 K,T4 = 313.842 K,JT = 68.394 K,GGS = 233.313 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:09
+STM status 
+T1 = 43.537 K,T2 = 123.177 K,T3 = 200.641 K,T4 = 365.012 K,JT = 163.451 K,GGS = 232.343 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:10
+STM status 
+T1 = 324.619 K,T2 = 96.197 K,T3 = 308.153 K,T4 = 38.586 K,JT = 369.238 K,GGS = 216.194 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:11
+STM status 
+T1 = 269.782 K,T2 = 253.325 K,T3 = 19.251 K,T4 = 145.577 K,JT = 31.176 K,GGS = 152.634 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:12
+STM status 
+T1 = 173.261 K,T2 = 88.414 K,T3 = 301.231 K,T4 = 140.275 K,JT = 93.444 K,GGS = 273.180 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:13
+STM status 
+T1 = 147.765 K,T2 = 160.309 K,T3 = 110.352 K,T4 = 328.030 K,JT = 334.968 K,GGS = 259.739 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:14
+STM status 
+T1 = 128.526 K,T2 = 22.008 K,T3 = 162.999 K,T4 = 39.125 K,JT = 146.312 K,GGS = 172.472 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:15
+STM status 
+T1 = 228.389 K,T2 = 215.832 K,T3 = 343.171 K,T4 = 108.404 K,JT = 112.386 K,GGS = 31.300 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:16
+STM status 
+T1 = 247.878 K,T2 = 89.056 K,T3 = 217.053 K,T4 = 267.749 K,JT = 221.252 K,GGS = 81.568 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:17
+STM status 
+T1 = 45.602 K,T2 = 204.770 K,T3 = 10.576 K,T4 = 360.046 K,JT = 235.534 K,GGS = 188.680 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:18
+STM status 
+T1 = 299.852 K,T2 = 164.960 K,T3 = 230.242 K,T4 = 227.963 K,JT = 56.342 K,GGS = 104.645 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:19
+STM status 
+T1 = 13.161 K,T2 = 232.201 K,T3 = 72.219 K,T4 = 150.835 K,JT = 224.275 K,GGS = 160.049 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:20
+STM status 
+T1 = 325.859 K,T2 = 169.108 K,T3 = 224.051 K,T4 = 68.365 K,JT = 133.526 K,GGS = 108.180 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:21
+STM status 
+T1 = 14.223 K,T2 = 280.272 K,T3 = 201.642 K,T4 = 290.593 K,JT = 353.171 K,GGS = 226.927 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:22
+STM status 
+T1 = 117.179 K,T2 = 108.259 K,T3 = 94.646 K,T4 = 366.727 K,JT = 294.804 K,GGS = 38.608 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:23
+STM status 
+T1 = 25.142 K,T2 = 156.432 K,T3 = 115.218 K,T4 = 75.403 K,JT = 119.976 K,GGS = 313.187 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:24
+STM status 
+T1 = 281.907 K,T2 = 14.241 K,T3 = 308.063 K,T4 = 28.281 K,JT = 232.330 K,GGS = 12.095 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:25
+STM status 
+T1 = 18.875 K,T2 = 29.668 K,T3 = 71.347 K,T4 = 126.064 K,JT = 84.552 K,GGS = 57.835 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:26
+STM status 
+T1 = 121.144 K,T2 = 239.870 K,T3 = 375.499 K,T4 = 55.517 K,JT = 363.265 K,GGS = 147.944 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:27
+STM status 
+T1 = 56.972 K,T2 = 73.268 K,T3 = 258.123 K,T4 = 297.548 K,JT = 233.498 K,GGS = 202.069 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:28
+STM status 
+T1 = 227.608 K,T2 = 191.912 K,T3 = 305.503 K,T4 = 225.445 K,JT = 350.113 K,GGS = 189.080 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:29
+STM status 
+T1 = 23.729 K,T2 = 55.596 K,T3 = 298.039 K,T4 = 149.455 K,JT = 327.857 K,GGS = 27.698 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:30
+STM status 
+T1 = 81.448 K,T2 = 56.793 K,T3 = 243.707 K,T4 = 327.180 K,JT = 353.209 K,GGS = 203.725 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:31
+STM status 
+T1 = 143.321 K,T2 = 109.694 K,T3 = 42.623 K,T4 = 54.715 K,JT = 74.983 K,GGS = 342.512 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:32
+STM status 
+T1 = 25.539 K,T2 = 365.320 K,T3 = 251.975 K,T4 = 139.797 K,JT = 315.833 K,GGS = 358.390 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:33
+STM status 
+T1 = 122.535 K,T2 = 349.966 K,T3 = 318.261 K,T4 = 211.384 K,JT = 65.532 K,GGS = 287.009 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:34
+STM status 
+T1 = 271.138 K,T2 = 360.016 K,T3 = 37.303 K,T4 = 198.625 K,JT = 40.922 K,GGS = 326.557 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:35
+STM status 
+T1 = 69.869 K,T2 = 62.245 K,T3 = 295.203 K,T4 = 107.472 K,JT = 224.697 K,GGS = 188.019 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:36
+STM status 
+T1 = 64.984 K,T2 = 330.037 K,T3 = 330.329 K,T4 = 299.584 K,JT = 330.364 K,GGS = 23.647 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:37
+STM status 
+T1 = 200.290 K,T2 = 298.516 K,T3 = 102.532 K,T4 = 19.687 K,JT = 261.737 K,GGS = 231.848 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:38
+STM status 
+T1 = 244.872 K,T2 = 156.351 K,T3 = 17.335 K,T4 = 136.649 K,JT = 210.245 K,GGS = 162.851 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:39
+STM status 
+T1 = 271.346 K,T2 = 125.551 K,T3 = 336.807 K,T4 = 108.201 K,JT = 104.155 K,GGS = 171.135 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:40
+STM status 
+T1 = 39.643 K,T2 = 373.209 K,T3 = 161.676 K,T4 = 162.098 K,JT = 39.893 K,GGS = 186.124 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:41
+STM status 
+T1 = 51.588 K,T2 = 303.448 K,T3 = 166.002 K,T4 = 62.024 K,JT = 369.020 K,GGS = 350.095 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:42
+STM status 
+T1 = 118.234 K,T2 = 95.534 K,T3 = 230.236 K,T4 = 181.624 K,JT = 371.974 K,GGS = 54.173 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:43
+STM status 
+T1 = 354.667 K,T2 = 219.300 K,T3 = 244.441 K,T4 = 253.978 K,JT = 81.884 K,GGS = 293.709 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:44
+STM status 
+T1 = 127.788 K,T2 = 86.656 K,T3 = 235.651 K,T4 = 57.534 K,JT = 229.827 K,GGS = 81.812 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:45
+STM status 
+T1 = 65.613 K,T2 = 132.805 K,T3 = 254.147 K,T4 = 188.984 K,JT = 139.068 K,GGS = 181.559 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:46
+STM status 
+T1 = 80.343 K,T2 = 116.028 K,T3 = 273.074 K,T4 = 207.421 K,JT = 95.903 K,GGS = 177.425 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:47
+STM status 
+T1 = 105.178 K,T2 = 16.461 K,T3 = 283.604 K,T4 = 243.549 K,JT = 340.303 K,GGS = 67.808 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:48
+STM status 
+T1 = 362.762 K,T2 = 362.716 K,T3 = 61.566 K,T4 = 28.676 K,JT = 101.700 K,GGS = 250.708 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:49
+STM status 
+T1 = 56.750 K,T2 = 309.112 K,T3 = 149.750 K,T4 = 123.906 K,JT = 366.675 K,GGS = 31.298 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:50
+STM status 
+T1 = 325.660 K,T2 = 324.495 K,T3 = 229.149 K,T4 = 35.401 K,JT = 302.643 K,GGS = 149.633 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:51
+STM status 
+T1 = 279.545 K,T2 = 348.582 K,T3 = 208.711 K,T4 = 367.088 K,JT = 300.340 K,GGS = 111.826 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:52
+STM status 
+T1 = 134.807 K,T2 = 299.316 K,T3 = 78.214 K,T4 = 11.395 K,JT = 258.710 K,GGS = 238.149 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:53
+STM status 
+T1 = 225.855 K,T2 = 278.455 K,T3 = 278.824 K,T4 = 114.325 K,JT = 133.262 K,GGS = 170.477 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:54
+STM status 
+T1 = 170.871 K,T2 = 194.521 K,T3 = 116.986 K,T4 = 208.973 K,JT = 165.018 K,GGS = 210.667 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:55
+STM status 
+T1 = 74.297 K,T2 = 305.869 K,T3 = 205.569 K,T4 = 314.054 K,JT = 337.146 K,GGS = 252.528 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:56
+STM status 
+T1 = 106.626 K,T2 = 237.159 K,T3 = 87.365 K,T4 = 266.610 K,JT = 350.171 K,GGS = 136.479 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:57
+STM status 
+T1 = 244.504 K,T2 = 305.778 K,T3 = 267.041 K,T4 = 27.943 K,JT = 139.135 K,GGS = 11.273 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:58
+STM status 
+T1 = 305.037 K,T2 = 336.158 K,T3 = 74.403 K,T4 = 339.038 K,JT = 311.046 K,GGS = 241.534 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:04:59
+STM status 
+T1 = 86.733 K,T2 = 113.046 K,T3 = 331.380 K,T4 = 107.271 K,JT = 114.592 K,GGS = 250.767 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:00
+STM status 
+T1 = 204.365 K,T2 = 39.317 K,T3 = 192.587 K,T4 = 274.645 K,JT = 42.320 K,GGS = 76.712 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:01
+STM status 
+T1 = 240.533 K,T2 = 169.271 K,T3 = 307.661 K,T4 = 25.571 K,JT = 126.129 K,GGS = 197.214 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:02
+STM status 
+T1 = 50.179 K,T2 = 279.300 K,T3 = 177.831 K,T4 = 54.640 K,JT = 277.984 K,GGS = 106.109 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:03
+STM status 
+T1 = 40.922 K,T2 = 152.846 K,T3 = 209.611 K,T4 = 281.206 K,JT = 165.987 K,GGS = 212.516 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:04
+STM status 
+T1 = 198.521 K,T2 = 129.886 K,T3 = 207.514 K,T4 = 73.395 K,JT = 332.229 K,GGS = 62.340 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:05
+STM status 
+T1 = 360.752 K,T2 = 199.055 K,T3 = 40.678 K,T4 = 282.030 K,JT = 13.061 K,GGS = 195.437 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:06
+STM status 
+T1 = 73.042 K,T2 = 49.807 K,T3 = 50.670 K,T4 = 256.116 K,JT = 223.629 K,GGS = 148.121 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:07
+STM status 
+T1 = 58.842 K,T2 = 345.167 K,T3 = 85.243 K,T4 = 94.034 K,JT = 249.143 K,GGS = 307.476 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:08
+STM status 
+T1 = 257.433 K,T2 = 24.702 K,T3 = 164.040 K,T4 = 158.811 K,JT = 17.984 K,GGS = 184.038 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:09
+STM status 
+T1 = 271.320 K,T2 = 339.875 K,T3 = 294.092 K,T4 = 118.699 K,JT = 338.435 K,GGS = 311.289 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:10
+STM status 
+T1 = 152.472 K,T2 = 335.324 K,T3 = 178.084 K,T4 = 292.510 K,JT = 118.762 K,GGS = 282.097 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:11
+STM status 
+T1 = 124.150 K,T2 = 145.503 K,T3 = 350.914 K,T4 = 96.906 K,JT = 341.437 K,GGS = 31.527 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:12
+STM status 
+T1 = 221.746 K,T2 = 298.478 K,T3 = 323.469 K,T4 = 298.750 K,JT = 30.872 K,GGS = 293.988 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:13
+STM status 
+T1 = 77.973 K,T2 = 346.516 K,T3 = 90.663 K,T4 = 241.279 K,JT = 291.720 K,GGS = 179.823 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:14
+STM status 
+T1 = 183.418 K,T2 = 184.327 K,T3 = 115.187 K,T4 = 342.559 K,JT = 94.850 K,GGS = 171.400 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:15
+STM status 
+T1 = 288.803 K,T2 = 157.539 K,T3 = 330.004 K,T4 = 180.890 K,JT = 109.606 K,GGS = 362.748 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:16
+STM status 
+T1 = 335.047 K,T2 = 208.476 K,T3 = 263.980 K,T4 = 254.621 K,JT = 312.615 K,GGS = 240.260 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:17
+STM status 
+T1 = 331.724 K,T2 = 374.316 K,T3 = 21.622 K,T4 = 188.605 K,JT = 283.544 K,GGS = 252.074 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:18
+STM status 
+T1 = 205.913 K,T2 = 302.155 K,T3 = 49.419 K,T4 = 131.881 K,JT = 114.385 K,GGS = 305.084 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:19
+STM status 
+T1 = 354.308 K,T2 = 289.720 K,T3 = 80.173 K,T4 = 257.063 K,JT = 228.585 K,GGS = 348.880 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:20
+STM status 
+T1 = 370.025 K,T2 = 279.725 K,T3 = 338.137 K,T4 = 227.392 K,JT = 48.417 K,GGS = 315.128 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:21
+STM status 
+T1 = 337.305 K,T2 = 101.277 K,T3 = 260.608 K,T4 = 218.157 K,JT = 346.982 K,GGS = 188.829 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:22
+STM status 
+T1 = 62.082 K,T2 = 337.441 K,T3 = 373.358 K,T4 = 190.802 K,JT = 47.499 K,GGS = 93.183 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:23
+STM status 
+T1 = 296.969 K,T2 = 103.628 K,T3 = 37.311 K,T4 = 306.714 K,JT = 155.440 K,GGS = 265.154 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:24
+STM status 
+T1 = 344.466 K,T2 = 359.592 K,T3 = 219.766 K,T4 = 104.834 K,JT = 74.302 K,GGS = 162.493 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:25
+STM status 
+T1 = 129.697 K,T2 = 66.920 K,T3 = 59.650 K,T4 = 112.671 K,JT = 247.207 K,GGS = 339.283 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:26
+STM status 
+T1 = 40.917 K,T2 = 187.750 K,T3 = 368.332 K,T4 = 65.036 K,JT = 354.167 K,GGS = 50.010 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:27
+STM status 
+T1 = 238.768 K,T2 = 102.299 K,T3 = 276.120 K,T4 = 145.470 K,JT = 277.187 K,GGS = 61.274 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:28
+STM status 
+T1 = 75.605 K,T2 = 266.366 K,T3 = 210.130 K,T4 = 230.504 K,JT = 11.128 K,GGS = 328.838 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:29
+STM status 
+T1 = 324.226 K,T2 = 81.864 K,T3 = 57.923 K,T4 = 329.158 K,JT = 149.921 K,GGS = 258.657 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:30
+STM status 
+T1 = 222.280 K,T2 = 151.087 K,T3 = 215.830 K,T4 = 203.043 K,JT = 81.774 K,GGS = 143.489 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:31
+STM status 
+T1 = 128.213 K,T2 = 42.081 K,T3 = 151.418 K,T4 = 233.686 K,JT = 245.053 K,GGS = 365.471 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:32
+STM status 
+T1 = 117.171 K,T2 = 314.650 K,T3 = 190.653 K,T4 = 94.088 K,JT = 183.570 K,GGS = 255.858 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:33
+STM status 
+T1 = 144.759 K,T2 = 175.767 K,T3 = 279.209 K,T4 = 233.752 K,JT = 359.821 K,GGS = 99.200 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:34
+STM status 
+T1 = 38.592 K,T2 = 121.771 K,T3 = 222.692 K,T4 = 66.096 K,JT = 332.435 K,GGS = 181.127 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:35
+STM status 
+T1 = 164.430 K,T2 = 130.000 K,T3 = 65.884 K,T4 = 233.842 K,JT = 24.396 K,GGS = 122.686 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:36
+STM status 
+T1 = 251.598 K,T2 = 322.722 K,T3 = 61.307 K,T4 = 121.736 K,JT = 169.596 K,GGS = 280.979 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:37
+STM status 
+T1 = 213.717 K,T2 = 39.566 K,T3 = 218.662 K,T4 = 51.490 K,JT = 76.335 K,GGS = 323.523 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:38
+STM status 
+T1 = 231.727 K,T2 = 38.539 K,T3 = 17.210 K,T4 = 117.316 K,JT = 339.842 K,GGS = 311.868 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:39
+STM status 
+T1 = 33.925 K,T2 = 97.003 K,T3 = 157.481 K,T4 = 174.959 K,JT = 164.131 K,GGS = 95.523 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:40
+STM status 
+T1 = 372.451 K,T2 = 349.973 K,T3 = 316.594 K,T4 = 243.219 K,JT = 27.266 K,GGS = 34.462 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:41
+STM status 
+T1 = 254.641 K,T2 = 252.571 K,T3 = 319.168 K,T4 = 69.212 K,JT = 204.530 K,GGS = 119.798 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:42
+STM status 
+T1 = 98.273 K,T2 = 23.131 K,T3 = 288.839 K,T4 = 74.451 K,JT = 304.133 K,GGS = 17.187 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:43
+STM status 
+T1 = 13.774 K,T2 = 65.758 K,T3 = 70.996 K,T4 = 294.293 K,JT = 243.330 K,GGS = 176.140 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:44
+STM status 
+T1 = 355.102 K,T2 = 166.909 K,T3 = 231.257 K,T4 = 75.038 K,JT = 371.793 K,GGS = 207.222 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:45
+STM status 
+T1 = 241.577 K,T2 = 259.304 K,T3 = 168.735 K,T4 = 257.097 K,JT = 52.232 K,GGS = 247.248 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:46
+STM status 
+T1 = 107.836 K,T2 = 173.174 K,T3 = 358.312 K,T4 = 345.653 K,JT = 59.430 K,GGS = 285.413 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:47
+STM status 
+T1 = 49.214 K,T2 = 128.127 K,T3 = 86.907 K,T4 = 165.019 K,JT = 308.697 K,GGS = 148.338 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:48
+STM status 
+T1 = 201.410 K,T2 = 104.403 K,T3 = 140.966 K,T4 = 64.831 K,JT = 21.111 K,GGS = 170.601 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:49
+STM status 
+T1 = 110.221 K,T2 = 112.948 K,T3 = 141.443 K,T4 = 149.321 K,JT = 328.865 K,GGS = 83.159 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:50
+STM status 
+T1 = 34.848 K,T2 = 350.896 K,T3 = 143.030 K,T4 = 37.412 K,JT = 15.635 K,GGS = 100.259 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:51
+STM status 
+T1 = 149.998 K,T2 = 150.225 K,T3 = 62.160 K,T4 = 289.373 K,JT = 73.591 K,GGS = 372.952 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:52
+STM status 
+T1 = 316.755 K,T2 = 323.318 K,T3 = 276.945 K,T4 = 294.673 K,JT = 325.679 K,GGS = 290.983 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:53
+STM status 
+T1 = 126.368 K,T2 = 259.523 K,T3 = 46.200 K,T4 = 231.994 K,JT = 204.295 K,GGS = 324.642 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:54
+STM status 
+T1 = 274.065 K,T2 = 303.486 K,T3 = 160.420 K,T4 = 213.014 K,JT = 331.962 K,GGS = 351.274 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:55
+STM status 
+T1 = 174.053 K,T2 = 23.632 K,T3 = 23.105 K,T4 = 192.167 K,JT = 107.342 K,GGS = 116.151 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:56
+STM status 
+T1 = 339.728 K,T2 = 191.610 K,T3 = 78.106 K,T4 = 113.294 K,JT = 69.240 K,GGS = 374.004 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:57
+STM status 
+T1 = 199.319 K,T2 = 150.520 K,T3 = 148.701 K,T4 = 179.609 K,JT = 354.953 K,GGS = 111.787 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:58
+STM status 
+T1 = 217.950 K,T2 = 186.770 K,T3 = 357.225 K,T4 = 201.375 K,JT = 313.883 K,GGS = 174.376 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:05:59
+STM status 
+T1 = 112.262 K,T2 = 192.312 K,T3 = 271.975 K,T4 = 18.955 K,JT = 326.948 K,GGS = 295.662 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:00
+STM status 
+T1 = 304.220 K,T2 = 81.027 K,T3 = 17.348 K,T4 = 88.106 K,JT = 42.965 K,GGS = 151.369 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:01
+STM status 
+T1 = 41.332 K,T2 = 255.625 K,T3 = 46.781 K,T4 = 273.975 K,JT = 283.793 K,GGS = 17.639 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:02
+STM status 
+T1 = 187.530 K,T2 = 43.338 K,T3 = 204.257 K,T4 = 162.867 K,JT = 292.056 K,GGS = 136.460 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:03
+STM status 
+T1 = 297.580 K,T2 = 312.535 K,T3 = 53.961 K,T4 = 170.426 K,JT = 204.547 K,GGS = 148.473 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:04
+STM status 
+T1 = 49.732 K,T2 = 84.313 K,T3 = 16.568 K,T4 = 127.531 K,JT = 120.781 K,GGS = 371.463 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:05
+STM status 
+T1 = 285.046 K,T2 = 174.651 K,T3 = 283.187 K,T4 = 236.370 K,JT = 217.654 K,GGS = 111.995 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:06
+STM status 
+T1 = 374.552 K,T2 = 90.430 K,T3 = 98.035 K,T4 = 182.552 K,JT = 144.762 K,GGS = 180.476 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:07
+STM status 
+T1 = 176.805 K,T2 = 312.140 K,T3 = 41.871 K,T4 = 271.411 K,JT = 114.230 K,GGS = 196.923 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:08
+STM status 
+T1 = 213.225 K,T2 = 147.846 K,T3 = 280.601 K,T4 = 151.211 K,JT = 99.937 K,GGS = 163.067 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:09
+STM status 
+T1 = 179.552 K,T2 = 68.903 K,T3 = 23.757 K,T4 = 309.570 K,JT = 338.899 K,GGS = 254.926 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:10
+STM status 
+T1 = 58.951 K,T2 = 95.336 K,T3 = 118.348 K,T4 = 191.256 K,JT = 324.143 K,GGS = 102.179 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:11
+STM status 
+T1 = 336.396 K,T2 = 328.904 K,T3 = 310.734 K,T4 = 243.735 K,JT = 181.895 K,GGS = 349.700 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:12
+STM status 
+T1 = 30.032 K,T2 = 91.588 K,T3 = 299.858 K,T4 = 277.819 K,JT = 100.679 K,GGS = 355.777 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:13
+STM status 
+T1 = 96.071 K,T2 = 52.835 K,T3 = 119.953 K,T4 = 285.046 K,JT = 353.132 K,GGS = 48.676 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:14
+STM status 
+T1 = 268.304 K,T2 = 12.428 K,T3 = 39.095 K,T4 = 24.546 K,JT = 220.773 K,GGS = 175.729 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:15
+STM status 
+T1 = 96.774 K,T2 = 164.017 K,T3 = 29.565 K,T4 = 262.845 K,JT = 301.728 K,GGS = 158.494 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:16
+STM status 
+T1 = 283.525 K,T2 = 169.096 K,T3 = 300.835 K,T4 = 110.311 K,JT = 323.511 K,GGS = 365.189 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:17
+STM status 
+T1 = 259.617 K,T2 = 213.146 K,T3 = 34.545 K,T4 = 56.466 K,JT = 368.192 K,GGS = 222.203 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:18
+STM status 
+T1 = 351.222 K,T2 = 162.731 K,T3 = 344.743 K,T4 = 253.065 K,JT = 127.556 K,GGS = 357.187 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:19
+STM status 
+T1 = 141.553 K,T2 = 342.734 K,T3 = 34.090 K,T4 = 42.223 K,JT = 184.103 K,GGS = 270.510 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:20
+STM status 
+T1 = 216.423 K,T2 = 244.190 K,T3 = 116.776 K,T4 = 79.642 K,JT = 235.763 K,GGS = 349.726 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:21
+STM status 
+T1 = 341.650 K,T2 = 250.423 K,T3 = 180.591 K,T4 = 317.238 K,JT = 331.941 K,GGS = 85.626 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:22
+STM status 
+T1 = 73.543 K,T2 = 212.891 K,T3 = 324.089 K,T4 = 136.368 K,JT = 222.243 K,GGS = 250.564 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:23
+STM status 
+T1 = 202.295 K,T2 = 298.177 K,T3 = 47.785 K,T4 = 200.977 K,JT = 351.726 K,GGS = 144.826 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:24
+STM status 
+T1 = 56.045 K,T2 = 182.969 K,T3 = 144.996 K,T4 = 32.620 K,JT = 335.342 K,GGS = 320.157 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:25
+STM status 
+T1 = 175.028 K,T2 = 297.713 K,T3 = 208.538 K,T4 = 347.139 K,JT = 364.938 K,GGS = 230.421 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:26
+STM status 
+T1 = 321.053 K,T2 = 215.834 K,T3 = 150.606 K,T4 = 300.073 K,JT = 158.846 K,GGS = 26.565 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:27
+STM status 
+T1 = 321.907 K,T2 = 74.546 K,T3 = 326.399 K,T4 = 162.460 K,JT = 216.484 K,GGS = 92.116 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:28
+STM status 
+T1 = 281.362 K,T2 = 330.275 K,T3 = 234.101 K,T4 = 22.752 K,JT = 69.590 K,GGS = 98.455 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:29
+STM status 
+T1 = 250.937 K,T2 = 280.348 K,T3 = 275.198 K,T4 = 82.447 K,JT = 371.892 K,GGS = 180.529 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:30
+STM status 
+T1 = 13.572 K,T2 = 119.404 K,T3 = 126.976 K,T4 = 29.405 K,JT = 168.070 K,GGS = 281.350 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:31
+STM status 
+T1 = 50.440 K,T2 = 270.296 K,T3 = 147.048 K,T4 = 147.699 K,JT = 281.797 K,GGS = 213.205 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:32
+STM status 
+T1 = 264.076 K,T2 = 142.112 K,T3 = 143.103 K,T4 = 370.098 K,JT = 277.909 K,GGS = 206.942 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:33
+STM status 
+T1 = 323.740 K,T2 = 217.667 K,T3 = 329.248 K,T4 = 303.221 K,JT = 356.086 K,GGS = 94.084 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:34
+STM status 
+T1 = 274.513 K,T2 = 264.883 K,T3 = 16.928 K,T4 = 113.385 K,JT = 15.553 K,GGS = 301.955 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:35
+STM status 
+T1 = 47.578 K,T2 = 281.727 K,T3 = 54.287 K,T4 = 81.682 K,JT = 200.889 K,GGS = 166.676 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:36
+STM status 
+T1 = 90.050 K,T2 = 211.557 K,T3 = 257.110 K,T4 = 139.060 K,JT = 360.859 K,GGS = 62.948 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:37
+STM status 
+T1 = 268.439 K,T2 = 212.592 K,T3 = 205.102 K,T4 = 333.394 K,JT = 82.122 K,GGS = 201.413 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:38
+STM status 
+T1 = 60.070 K,T2 = 119.424 K,T3 = 221.902 K,T4 = 352.877 K,JT = 339.815 K,GGS = 59.273 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:39
+STM status 
+T1 = 182.657 K,T2 = 23.683 K,T3 = 266.473 K,T4 = 181.289 K,JT = 235.741 K,GGS = 101.462 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:40
+STM status 
+T1 = 98.545 K,T2 = 313.839 K,T3 = 31.578 K,T4 = 346.663 K,JT = 81.841 K,GGS = 72.002 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:41
+STM status 
+T1 = 162.815 K,T2 = 371.696 K,T3 = 188.146 K,T4 = 291.218 K,JT = 295.654 K,GGS = 76.981 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:42
+STM status 
+T1 = 352.439 K,T2 = 290.435 K,T3 = 224.998 K,T4 = 73.683 K,JT = 26.213 K,GGS = 313.360 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:43
+STM status 
+T1 = 39.671 K,T2 = 18.676 K,T3 = 37.401 K,T4 = 97.967 K,JT = 310.312 K,GGS = 349.845 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:44
+STM status 
+T1 = 295.206 K,T2 = 361.857 K,T3 = 170.942 K,T4 = 16.469 K,JT = 224.912 K,GGS = 175.540 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:45
+STM status 
+T1 = 210.704 K,T2 = 320.388 K,T3 = 179.335 K,T4 = 203.141 K,JT = 159.726 K,GGS = 169.471 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:46
+STM status 
+T1 = 209.789 K,T2 = 155.095 K,T3 = 48.377 K,T4 = 250.477 K,JT = 104.388 K,GGS = 232.996 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:47
+STM status 
+T1 = 244.932 K,T2 = 309.420 K,T3 = 302.474 K,T4 = 233.373 K,JT = 311.056 K,GGS = 165.074 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:48
+STM status 
+T1 = 38.747 K,T2 = 307.482 K,T3 = 195.849 K,T4 = 43.813 K,JT = 230.856 K,GGS = 348.102 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:49
+STM status 
+T1 = 131.923 K,T2 = 292.137 K,T3 = 131.528 K,T4 = 156.119 K,JT = 189.581 K,GGS = 343.099 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:50
+STM status 
+T1 = 121.805 K,T2 = 284.070 K,T3 = 360.986 K,T4 = 186.611 K,JT = 311.233 K,GGS = 346.260 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:51
+STM status 
+T1 = 58.994 K,T2 = 142.901 K,T3 = 63.101 K,T4 = 178.851 K,JT = 201.536 K,GGS = 281.223 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:52
+STM status 
+T1 = 288.474 K,T2 = 263.905 K,T3 = 274.972 K,T4 = 325.877 K,JT = 252.178 K,GGS = 77.494 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:53
+STM status 
+T1 = 99.476 K,T2 = 27.880 K,T3 = 180.404 K,T4 = 199.874 K,JT = 205.130 K,GGS = 353.655 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:54
+STM status 
+T1 = 329.505 K,T2 = 41.540 K,T3 = 337.638 K,T4 = 253.928 K,JT = 165.282 K,GGS = 95.214 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:55
+STM status 
+T1 = 144.192 K,T2 = 350.859 K,T3 = 311.777 K,T4 = 287.195 K,JT = 29.049 K,GGS = 144.555 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:56
+STM status 
+T1 = 198.655 K,T2 = 83.999 K,T3 = 15.229 K,T4 = 313.755 K,JT = 225.732 K,GGS = 191.084 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:57
+STM status 
+T1 = 94.955 K,T2 = 265.271 K,T3 = 351.001 K,T4 = 238.965 K,JT = 282.542 K,GGS = 262.614 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:58
+STM status 
+T1 = 338.930 K,T2 = 245.511 K,T3 = 234.352 K,T4 = 359.487 K,JT = 239.522 K,GGS = 233.112 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:06:59
+STM status 
+T1 = 235.885 K,T2 = 152.114 K,T3 = 101.020 K,T4 = 108.920 K,JT = 219.884 K,GGS = 121.968 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:00
+STM status 
+T1 = 115.878 K,T2 = 355.670 K,T3 = 35.755 K,T4 = 157.609 K,JT = 218.209 K,GGS = 345.379 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:01
+STM status 
+T1 = 137.361 K,T2 = 218.237 K,T3 = 180.370 K,T4 = 57.753 K,JT = 21.139 K,GGS = 224.040 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:02
+STM status 
+T1 = 346.725 K,T2 = 229.958 K,T3 = 14.895 K,T4 = 62.630 K,JT = 180.457 K,GGS = 184.273 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:03
+STM status 
+T1 = 89.843 K,T2 = 98.705 K,T3 = 196.666 K,T4 = 12.379 K,JT = 187.192 K,GGS = 125.363 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:04
+STM status 
+T1 = 60.370 K,T2 = 116.346 K,T3 = 333.322 K,T4 = 55.887 K,JT = 205.480 K,GGS = 212.407 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:05
+STM status 
+T1 = 66.294 K,T2 = 45.735 K,T3 = 219.999 K,T4 = 269.669 K,JT = 43.921 K,GGS = 132.444 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:06
+STM status 
+T1 = 267.939 K,T2 = 10.985 K,T3 = 247.446 K,T4 = 246.333 K,JT = 304.362 K,GGS = 127.373 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:07
+STM status 
+T1 = 124.438 K,T2 = 362.274 K,T3 = 263.944 K,T4 = 70.402 K,JT = 256.244 K,GGS = 13.427 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:08
+STM status 
+T1 = 170.364 K,T2 = 192.223 K,T3 = 136.311 K,T4 = 126.958 K,JT = 307.491 K,GGS = 173.765 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:09
+STM status 
+T1 = 172.018 K,T2 = 60.709 K,T3 = 122.733 K,T4 = 147.723 K,JT = 41.954 K,GGS = 198.142 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:10
+STM status 
+T1 = 15.815 K,T2 = 186.649 K,T3 = 106.955 K,T4 = 166.816 K,JT = 52.713 K,GGS = 259.306 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:11
+STM status 
+T1 = 54.256 K,T2 = 150.638 K,T3 = 42.065 K,T4 = 305.942 K,JT = 292.233 K,GGS = 274.392 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:12
+STM status 
+T1 = 132.175 K,T2 = 176.284 K,T3 = 229.676 K,T4 = 228.375 K,JT = 291.164 K,GGS = 322.701 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:13
+STM status 
+T1 = 125.627 K,T2 = 106.999 K,T3 = 282.060 K,T4 = 371.727 K,JT = 233.800 K,GGS = 42.260 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:14
+STM status 
+T1 = 119.927 K,T2 = 214.325 K,T3 = 182.529 K,T4 = 264.101 K,JT = 364.246 K,GGS = 107.826 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:15
+STM status 
+T1 = 339.544 K,T2 = 196.906 K,T3 = 166.817 K,T4 = 356.510 K,JT = 163.849 K,GGS = 357.252 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:16
+STM status 
+T1 = 171.296 K,T2 = 152.442 K,T3 = 286.659 K,T4 = 59.878 K,JT = 19.195 K,GGS = 227.075 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:17
+STM status 
+T1 = 137.276 K,T2 = 25.713 K,T3 = 220.244 K,T4 = 336.205 K,JT = 123.368 K,GGS = 207.665 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:18
+STM status 
+T1 = 29.399 K,T2 = 64.288 K,T3 = 136.604 K,T4 = 111.229 K,JT = 33.948 K,GGS = 362.389 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:19
+STM status 
+T1 = 143.449 K,T2 = 121.370 K,T3 = 32.073 K,T4 = 126.192 K,JT = 105.597 K,GGS = 161.368 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:20
+STM status 
+T1 = 240.472 K,T2 = 98.159 K,T3 = 56.552 K,T4 = 335.828 K,JT = 203.649 K,GGS = 276.536 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:21
+STM status 
+T1 = 283.713 K,T2 = 311.961 K,T3 = 15.607 K,T4 = 270.751 K,JT = 314.233 K,GGS = 121.393 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:22
+STM status 
+T1 = 263.303 K,T2 = 193.692 K,T3 = 244.684 K,T4 = 131.718 K,JT = 45.639 K,GGS = 302.231 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:23
+STM status 
+T1 = 74.724 K,T2 = 221.053 K,T3 = 303.888 K,T4 = 374.349 K,JT = 180.956 K,GGS = 99.139 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:24
+STM status 
+T1 = 265.415 K,T2 = 50.005 K,T3 = 79.056 K,T4 = 259.748 K,JT = 116.345 K,GGS = 224.977 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:25
+STM status 
+T1 = 356.557 K,T2 = 155.946 K,T3 = 341.117 K,T4 = 14.542 K,JT = 304.664 K,GGS = 155.295 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:26
+STM status 
+T1 = 93.370 K,T2 = 367.258 K,T3 = 47.776 K,T4 = 263.644 K,JT = 341.745 K,GGS = 141.437 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:27
+STM status 
+T1 = 23.765 K,T2 = 68.732 K,T3 = 233.662 K,T4 = 64.166 K,JT = 55.496 K,GGS = 208.782 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:28
+STM status 
+T1 = 84.618 K,T2 = 34.173 K,T3 = 115.673 K,T4 = 47.098 K,JT = 292.325 K,GGS = 92.549 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:29
+STM status 
+T1 = 344.898 K,T2 = 48.264 K,T3 = 159.305 K,T4 = 28.370 K,JT = 284.551 K,GGS = 159.537 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:30
+STM status 
+T1 = 237.537 K,T2 = 32.017 K,T3 = 91.633 K,T4 = 164.657 K,JT = 288.829 K,GGS = 100.225 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:31
+STM status 
+T1 = 370.130 K,T2 = 183.417 K,T3 = 246.732 K,T4 = 303.914 K,JT = 79.093 K,GGS = 27.282 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:32
+STM status 
+T1 = 143.926 K,T2 = 106.396 K,T3 = 75.237 K,T4 = 142.992 K,JT = 25.674 K,GGS = 27.751 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:33
+STM status 
+T1 = 358.014 K,T2 = 134.189 K,T3 = 125.559 K,T4 = 219.409 K,JT = 12.605 K,GGS = 13.037 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:34
+STM status 
+T1 = 87.132 K,T2 = 115.008 K,T3 = 35.897 K,T4 = 335.311 K,JT = 240.675 K,GGS = 206.020 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:35
+STM status 
+T1 = 172.721 K,T2 = 35.418 K,T3 = 296.595 K,T4 = 327.036 K,JT = 190.033 K,GGS = 271.879 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:36
+STM status 
+T1 = 360.012 K,T2 = 297.726 K,T3 = 62.305 K,T4 = 201.340 K,JT = 206.519 K,GGS = 300.015 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:37
+STM status 
+T1 = 248.530 K,T2 = 26.364 K,T3 = 224.727 K,T4 = 329.614 K,JT = 302.308 K,GGS = 264.496 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:38
+STM status 
+T1 = 283.138 K,T2 = 199.157 K,T3 = 239.688 K,T4 = 197.028 K,JT = 208.673 K,GGS = 162.884 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:39
+STM status 
+T1 = 120.736 K,T2 = 212.701 K,T3 = 98.710 K,T4 = 355.325 K,JT = 366.438 K,GGS = 363.547 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:40
+STM status 
+T1 = 372.267 K,T2 = 327.068 K,T3 = 143.557 K,T4 = 191.533 K,JT = 295.310 K,GGS = 325.426 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:41
+STM status 
+T1 = 267.999 K,T2 = 303.017 K,T3 = 61.943 K,T4 = 105.555 K,JT = 331.928 K,GGS = 344.632 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:42
+STM status 
+T1 = 37.390 K,T2 = 242.733 K,T3 = 127.544 K,T4 = 166.074 K,JT = 90.201 K,GGS = 150.638 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:07:43
+STM status 
+T1 = 259.809 K,T2 = 89.133 K,T3 = 62.703 K,T4 = 101.686 K,JT = 245.002 K,GGS = 358.466 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:09
+STM status 
+T1 = 12.089 K,T2 = 70.054 K,T3 = 233.142 K,T4 = 290.791 K,JT = 231.506 K,GGS = 215.588 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:10
+STM status 
+T1 = 214.03 K,T2 = 115.29 K,T3 = 177.58 K,T4 = 356.49 K,JT = 341.07 K,GGS = 143.61 K
+Tobeinputted 
+09/09/2022 16:09:10
+STM status 
+T1 = 133.123 K,T2 = 207.964 K,T3 = 328.998 K,T4 = 332.457 K,JT = 39.117 K,GGS = 28.445 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:11
+STM status 
+T1 = 149.90 K,T2 = 108.13 K,T3 = 110.07 K,T4 = 308.54 K,JT = 113.23 K,GGS = 244.27 K
+Tobeinputted 
+09/09/2022 16:09:11
+STM status 
+T1 = 223.745 K,T2 = 266.329 K,T3 = 354.612 K,T4 = 314.715 K,JT = 100.458 K,GGS = 342.886 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:12
+STM status 
+T1 = 91.42 K,T2 = 241.90 K,T3 = 210.29 K,T4 = 363.21 K,JT = 101.53 K,GGS = 241.74 K
+Tobeinputted 
+09/09/2022 16:09:12
+STM status 
+T1 = 339.409 K,T2 = 60.599 K,T3 = 330.059 K,T4 = 234.323 K,JT = 330.909 K,GGS = 346.606 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:13
+STM status 
+T1 = 246.94 K,T2 = 86.83 K,T3 = 331.76 K,T4 = 126.63 K,JT = 265.03 K,GGS = 116.83 K
+Tobeinputted 
+09/09/2022 16:09:13
+STM status 
+T1 = 237.022 K,T2 = 24.228 K,T3 = 119.074 K,T4 = 117.149 K,JT = 295.292 K,GGS = 300.093 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:14
+STM status 
+T1 = 350.98 K,T2 = 287.90 K,T3 = 359.54 K,T4 = 72.07 K,JT = 14.77 K,GGS = 331.97 K
+Tobeinputted 
+09/09/2022 16:09:14
+STM status 
+T1 = 328.673 K,T2 = 307.510 K,T3 = 64.741 K,T4 = 46.265 K,JT = 287.164 K,GGS = 351.830 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:15
+STM status 
+T1 = 181.80 K,T2 = 109.36 K,T3 = 120.34 K,T4 = 15.80 K,JT = 88.49 K,GGS = 14.04 K
+Tobeinputted 
+09/09/2022 16:09:15
+STM status 
+T1 = 149.853 K,T2 = 174.076 K,T3 = 368.168 K,T4 = 243.434 K,JT = 350.516 K,GGS = 24.048 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:16
+STM status 
+T1 = 348.95 K,T2 = 371.77 K,T3 = 177.01 K,T4 = 216.55 K,JT = 324.42 K,GGS = 95.88 K
+Tobeinputted 
+09/09/2022 16:09:16
+STM status 
+T1 = 334.909 K,T2 = 243.580 K,T3 = 198.401 K,T4 = 308.586 K,JT = 193.501 K,GGS = 308.988 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:17
+STM status 
+T1 = 182.23 K,T2 = 327.27 K,T3 = 311.52 K,T4 = 282.33 K,JT = 89.98 K,GGS = 300.21 K
+Tobeinputted 
+09/09/2022 16:09:17
+STM status 
+T1 = 283.179 K,T2 = 14.053 K,T3 = 60.584 K,T4 = 246.764 K,JT = 123.025 K,GGS = 107.104 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:18
+STM status 
+T1 = 19.56 K,T2 = 33.20 K,T3 = 370.04 K,T4 = 82.36 K,JT = 75.18 K,GGS = 307.42 K
+Tobeinputted 
+09/09/2022 16:09:18
+STM status 
+T1 = 340.308 K,T2 = 48.722 K,T3 = 279.484 K,T4 = 278.278 K,JT = 126.506 K,GGS = 304.159 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:19
+STM status 
+T1 = 82.70 K,T2 = 246.80 K,T3 = 241.11 K,T4 = 334.32 K,JT = 88.48 K,GGS = 147.57 K
+Tobeinputted 
+09/09/2022 16:09:19
+STM status 
+T1 = 263.209 K,T2 = 136.446 K,T3 = 100.672 K,T4 = 204.944 K,JT = 255.177 K,GGS = 108.912 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:20
+STM status 
+T1 = 293.90 K,T2 = 70.17 K,T3 = 33.15 K,T4 = 65.84 K,JT = 125.53 K,GGS = 235.35 K
+Tobeinputted 
+09/09/2022 16:09:20
+STM status 
+T1 = 356.044 K,T2 = 102.301 K,T3 = 252.391 K,T4 = 52.857 K,JT = 191.304 K,GGS = 174.062 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:21
+STM status 
+T1 = 125.86 K,T2 = 106.07 K,T3 = 131.34 K,T4 = 17.06 K,JT = 211.11 K,GGS = 196.59 K
+Tobeinputted 
+09/09/2022 16:09:21
+STM status 
+T1 = 310.924 K,T2 = 202.246 K,T3 = 207.145 K,T4 = 179.835 K,JT = 107.171 K,GGS = 59.956 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:22
+STM status 
+T1 = 230.37 K,T2 = 46.59 K,T3 = 129.84 K,T4 = 327.07 K,JT = 369.94 K,GGS = 372.35 K
+Tobeinputted 
+09/09/2022 16:09:22
+STM status 
+T1 = 285.852 K,T2 = 290.660 K,T3 = 126.696 K,T4 = 290.397 K,JT = 30.365 K,GGS = 90.825 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:23
+STM status 
+T1 = 215.18 K,T2 = 272.77 K,T3 = 375.23 K,T4 = 233.69 K,JT = 51.17 K,GGS = 224.34 K
+Tobeinputted 
+09/09/2022 16:09:23
+STM status 
+T1 = 140.094 K,T2 = 140.613 K,T3 = 242.606 K,T4 = 183.974 K,JT = 111.576 K,GGS = 38.108 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:24
+STM status 
+T1 = 28.52 K,T2 = 244.16 K,T3 = 241.64 K,T4 = 36.73 K,JT = 119.99 K,GGS = 88.19 K
+Tobeinputted 
+09/09/2022 16:09:24
+STM status 
+T1 = 261.104 K,T2 = 146.622 K,T3 = 117.847 K,T4 = 237.206 K,JT = 181.345 K,GGS = 116.150 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:25
+STM status 
+T1 = 124.10 K,T2 = 149.19 K,T3 = 105.71 K,T4 = 345.21 K,JT = 218.89 K,GGS = 155.60 K
+Tobeinputted 
+09/09/2022 16:09:25
+STM status 
+T1 = 306.565 K,T2 = 59.115 K,T3 = 364.346 K,T4 = 98.581 K,JT = 75.206 K,GGS = 296.440 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:26
+STM status 
+T1 = 229.51 K,T2 = 240.20 K,T3 = 253.26 K,T4 = 17.22 K,JT = 284.32 K,GGS = 124.23 K
+Tobeinputted 
+09/09/2022 16:09:26
+STM status 
+T1 = 44.825 K,T2 = 227.188 K,T3 = 364.429 K,T4 = 307.631 K,JT = 369.407 K,GGS = 256.831 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:27
+STM status 
+T1 = 332.96 K,T2 = 76.43 K,T3 = 58.30 K,T4 = 352.39 K,JT = 304.71 K,GGS = 84.51 K
+Tobeinputted 
+09/09/2022 16:09:27
+STM status 
+T1 = 203.146 K,T2 = 291.143 K,T3 = 209.359 K,T4 = 349.968 K,JT = 159.731 K,GGS = 196.857 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:28
+STM status 
+T1 = 89.38 K,T2 = 342.50 K,T3 = 46.59 K,T4 = 72.41 K,JT = 129.00 K,GGS = 223.47 K
+Tobeinputted 
+09/09/2022 16:09:28
+STM status 
+T1 = 169.357 K,T2 = 121.526 K,T3 = 14.797 K,T4 = 304.059 K,JT = 364.138 K,GGS = 33.619 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:29
+STM status 
+T1 = 299.11 K,T2 = 371.08 K,T3 = 70.60 K,T4 = 27.49 K,JT = 367.41 K,GGS = 200.48 K
+Tobeinputted 
+09/09/2022 16:09:29
+STM status 
+T1 = 350.710 K,T2 = 262.531 K,T3 = 217.039 K,T4 = 213.128 K,JT = 285.539 K,GGS = 166.436 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:30
+STM status 
+T1 = 222.25 K,T2 = 343.26 K,T3 = 72.15 K,T4 = 161.87 K,JT = 145.28 K,GGS = 40.12 K
+Tobeinputted 
+09/09/2022 16:09:30
+STM status 
+T1 = 124.956 K,T2 = 94.536 K,T3 = 351.721 K,T4 = 278.254 K,JT = 67.191 K,GGS = 25.241 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:31
+STM status 
+T1 = 207.32 K,T2 = 57.65 K,T3 = 289.44 K,T4 = 306.01 K,JT = 373.06 K,GGS = 191.65 K
+Tobeinputted 
+09/09/2022 16:09:31
+STM status 
+T1 = 246.144 K,T2 = 27.752 K,T3 = 253.603 K,T4 = 358.266 K,JT = 306.736 K,GGS = 312.598 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:32
+STM status 
+T1 = 26.96 K,T2 = 85.31 K,T3 = 13.58 K,T4 = 277.88 K,JT = 239.32 K,GGS = 294.11 K
+Tobeinputted 
+09/09/2022 16:09:32
+STM status 
+T1 = 331.818 K,T2 = 339.863 K,T3 = 359.744 K,T4 = 68.298 K,JT = 141.643 K,GGS = 368.764 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:33
+STM status 
+T1 = 347.25 K,T2 = 263.17 K,T3 = 100.97 K,T4 = 99.47 K,JT = 251.07 K,GGS = 120.05 K
+Tobeinputted 
+09/09/2022 16:09:33
+STM status 
+T1 = 150.617 K,T2 = 323.530 K,T3 = 306.587 K,T4 = 161.294 K,JT = 323.536 K,GGS = 344.284 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:34
+STM status 
+T1 = 126.60 K,T2 = 280.13 K,T3 = 319.72 K,T4 = 82.74 K,JT = 52.92 K,GGS = 308.76 K
+Tobeinputted 
+09/09/2022 16:09:34
+STM status 
+T1 = 232.406 K,T2 = 135.852 K,T3 = 336.835 K,T4 = 88.138 K,JT = 63.054 K,GGS = 187.099 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:35
+STM status 
+T1 = 343.87 K,T2 = 90.98 K,T3 = 326.98 K,T4 = 180.96 K,JT = 31.34 K,GGS = 251.18 K
+Tobeinputted 
+09/09/2022 16:09:35
+STM status 
+T1 = 327.682 K,T2 = 182.693 K,T3 = 160.930 K,T4 = 11.223 K,JT = 362.071 K,GGS = 109.924 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:36
+STM status 
+T1 = 110.77 K,T2 = 103.50 K,T3 = 284.53 K,T4 = 368.60 K,JT = 95.40 K,GGS = 293.71 K
+Tobeinputted 
+09/09/2022 16:09:36
+STM status 
+T1 = 223.484 K,T2 = 230.782 K,T3 = 200.506 K,T4 = 347.820 K,JT = 11.276 K,GGS = 366.380 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:37
+STM status 
+T1 = 289.02 K,T2 = 128.90 K,T3 = 108.18 K,T4 = 351.66 K,JT = 277.30 K,GGS = 234.22 K
+Tobeinputted 
+09/09/2022 16:09:37
+STM status 
+T1 = 203.254 K,T2 = 228.930 K,T3 = 118.011 K,T4 = 335.447 K,JT = 236.615 K,GGS = 337.644 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:38
+STM status 
+T1 = 336.99 K,T2 = 237.33 K,T3 = 19.63 K,T4 = 128.03 K,JT = 374.40 K,GGS = 258.92 K
+Tobeinputted 
+09/09/2022 16:09:38
+STM status 
+T1 = 269.159 K,T2 = 371.851 K,T3 = 275.003 K,T4 = 305.480 K,JT = 189.963 K,GGS = 331.633 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:39
+STM status 
+T1 = 32.44 K,T2 = 28.99 K,T3 = 245.84 K,T4 = 110.59 K,JT = 149.95 K,GGS = 284.63 K
+Tobeinputted 
+09/09/2022 16:09:39
+STM status 
+T1 = 304.265 K,T2 = 362.146 K,T3 = 198.159 K,T4 = 130.249 K,JT = 23.629 K,GGS = 203.986 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:40
+STM status 
+T1 = 313.32 K,T2 = 53.28 K,T3 = 36.72 K,T4 = 108.55 K,JT = 18.70 K,GGS = 356.19 K
+Tobeinputted 
+09/09/2022 16:09:40
+STM status 
+T1 = 189.466 K,T2 = 195.630 K,T3 = 201.706 K,T4 = 40.952 K,JT = 36.418 K,GGS = 119.437 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:41
+STM status 
+T1 = 123.27 K,T2 = 247.12 K,T3 = 178.82 K,T4 = 100.82 K,JT = 120.78 K,GGS = 138.73 K
+Tobeinputted 
+09/09/2022 16:09:41
+STM status 
+T1 = 336.012 K,T2 = 233.342 K,T3 = 13.421 K,T4 = 108.187 K,JT = 70.546 K,GGS = 154.074 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:42
+STM status 
+T1 = 228.87 K,T2 = 210.95 K,T3 = 362.44 K,T4 = 310.12 K,JT = 74.65 K,GGS = 374.40 K
+Tobeinputted 
+09/09/2022 16:09:42
+STM status 
+T1 = 110.846 K,T2 = 212.587 K,T3 = 87.815 K,T4 = 129.451 K,JT = 311.221 K,GGS = 254.331 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:43
+STM status 
+T1 = 170.47 K,T2 = 180.64 K,T3 = 99.75 K,T4 = 182.26 K,JT = 54.50 K,GGS = 167.61 K
+Tobeinputted 
+09/09/2022 16:09:43
+STM status 
+T1 = 55.919 K,T2 = 198.250 K,T3 = 39.481 K,T4 = 116.093 K,JT = 275.775 K,GGS = 126.625 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:44
+STM status 
+T1 = 321.29 K,T2 = 46.76 K,T3 = 282.64 K,T4 = 204.10 K,JT = 112.17 K,GGS = 147.90 K
+Tobeinputted 
+09/09/2022 16:09:44
+STM status 
+T1 = 304.326 K,T2 = 143.294 K,T3 = 217.380 K,T4 = 57.760 K,JT = 199.930 K,GGS = 338.356 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:45
+STM status 
+T1 = 140.59 K,T2 = 222.44 K,T3 = 46.34 K,T4 = 196.25 K,JT = 151.34 K,GGS = 103.92 K
+Tobeinputted 
+09/09/2022 16:09:45
+STM status 
+T1 = 215.478 K,T2 = 165.487 K,T3 = 26.372 K,T4 = 83.972 K,JT = 350.497 K,GGS = 329.232 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:46
+STM status 
+T1 = 68.25 K,T2 = 361.26 K,T3 = 269.38 K,T4 = 135.28 K,JT = 341.01 K,GGS = 208.83 K
+Tobeinputted 
+09/09/2022 16:09:46
+STM status 
+T1 = 180.586 K,T2 = 240.753 K,T3 = 363.136 K,T4 = 164.702 K,JT = 174.188 K,GGS = 271.216 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:47
+STM status 
+T1 = 79.33 K,T2 = 287.08 K,T3 = 18.01 K,T4 = 362.55 K,JT = 77.58 K,GGS = 49.79 K
+Tobeinputted 
+09/09/2022 16:09:47
+STM status 
+T1 = 222.607 K,T2 = 112.832 K,T3 = 126.471 K,T4 = 302.738 K,JT = 314.291 K,GGS = 131.418 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:48
+STM status 
+T1 = 364.92 K,T2 = 183.76 K,T3 = 247.65 K,T4 = 46.51 K,JT = 31.34 K,GGS = 359.90 K
+Tobeinputted 
+09/09/2022 16:09:48
+STM status 
+T1 = 341.910 K,T2 = 326.783 K,T3 = 95.891 K,T4 = 303.270 K,JT = 278.063 K,GGS = 93.291 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:49
+STM status 
+T1 = 330.56 K,T2 = 168.85 K,T3 = 189.34 K,T4 = 23.68 K,JT = 124.28 K,GGS = 308.76 K
+Tobeinputted 
+09/09/2022 16:09:49
+STM status 
+T1 = 265.671 K,T2 = 271.020 K,T3 = 317.375 K,T4 = 374.679 K,JT = 106.692 K,GGS = 46.460 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:50
+STM status 
+T1 = 341.46 K,T2 = 77.61 K,T3 = 346.65 K,T4 = 196.76 K,JT = 270.94 K,GGS = 83.97 K
+Tobeinputted 
+09/09/2022 16:09:50
+STM status 
+T1 = 287.762 K,T2 = 128.367 K,T3 = 47.000 K,T4 = 86.516 K,JT = 137.335 K,GGS = 364.694 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:51
+STM status 
+T1 = 324.29 K,T2 = 191.37 K,T3 = 268.68 K,T4 = 220.51 K,JT = 211.35 K,GGS = 179.79 K
+Tobeinputted 
+09/09/2022 16:09:51
+STM status 
+T1 = 353.200 K,T2 = 150.492 K,T3 = 208.058 K,T4 = 135.983 K,JT = 372.261 K,GGS = 48.867 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:52
+STM status 
+T1 = 134.71 K,T2 = 230.01 K,T3 = 106.43 K,T4 = 278.47 K,JT = 72.42 K,GGS = 98.52 K
+Tobeinputted 
+09/09/2022 16:09:52
+STM status 
+T1 = 298.345 K,T2 = 192.542 K,T3 = 108.897 K,T4 = 355.870 K,JT = 310.091 K,GGS = 26.399 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:53
+STM status 
+T1 = 102.46 K,T2 = 180.07 K,T3 = 186.74 K,T4 = 263.56 K,JT = 76.95 K,GGS = 292.13 K
+Tobeinputted 
+09/09/2022 16:09:53
+STM status 
+T1 = 110.763 K,T2 = 14.102 K,T3 = 149.490 K,T4 = 247.170 K,JT = 115.200 K,GGS = 258.621 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:54
+STM status 
+T1 = 361.61 K,T2 = 256.68 K,T3 = 209.61 K,T4 = 82.42 K,JT = 210.13 K,GGS = 90.33 K
+Tobeinputted 
+09/09/2022 16:09:54
+STM status 
+T1 = 219.409 K,T2 = 225.201 K,T3 = 272.024 K,T4 = 29.761 K,JT = 253.900 K,GGS = 85.527 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:55
+STM status 
+T1 = 161.70 K,T2 = 98.10 K,T3 = 351.08 K,T4 = 117.29 K,JT = 32.97 K,GGS = 360.19 K
+Tobeinputted 
+09/09/2022 16:09:55
+STM status 
+T1 = 81.074 K,T2 = 177.834 K,T3 = 98.896 K,T4 = 52.906 K,JT = 199.900 K,GGS = 55.501 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:56
+STM status 
+T1 = 134.91 K,T2 = 232.20 K,T3 = 333.12 K,T4 = 237.29 K,JT = 269.22 K,GGS = 340.34 K
+Tobeinputted 
+09/09/2022 16:09:56
+STM status 
+T1 = 64.570 K,T2 = 312.330 K,T3 = 316.825 K,T4 = 48.282 K,JT = 140.454 K,GGS = 262.453 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:57
+STM status 
+T1 = 115.30 K,T2 = 321.16 K,T3 = 188.18 K,T4 = 231.95 K,JT = 358.48 K,GGS = 187.83 K
+Tobeinputted 
+09/09/2022 16:09:57
+STM status 
+T1 = 215.123 K,T2 = 60.835 K,T3 = 202.138 K,T4 = 149.595 K,JT = 94.559 K,GGS = 76.250 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:58
+STM status 
+T1 = 72.21 K,T2 = 367.35 K,T3 = 53.32 K,T4 = 172.38 K,JT = 307.33 K,GGS = 253.56 K
+Tobeinputted 
+09/09/2022 16:09:58
+STM status 
+T1 = 299.076 K,T2 = 10.739 K,T3 = 91.679 K,T4 = 153.212 K,JT = 55.905 K,GGS = 24.871 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:09:59
+STM status 
+T1 = 311.39 K,T2 = 217.31 K,T3 = 162.62 K,T4 = 314.05 K,JT = 110.02 K,GGS = 229.39 K
+Tobeinputted 
+09/09/2022 16:09:59
+STM status 
+T1 = 274.908 K,T2 = 134.501 K,T3 = 351.509 K,T4 = 374.348 K,JT = 188.615 K,GGS = 340.688 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:00
+STM status 
+T1 = 137.96 K,T2 = 114.88 K,T3 = 243.45 K,T4 = 304.16 K,JT = 263.67 K,GGS = 209.73 K
+Tobeinputted 
+09/09/2022 16:10:00
+STM status 
+T1 = 134.548 K,T2 = 219.975 K,T3 = 223.598 K,T4 = 155.323 K,JT = 80.236 K,GGS = 284.413 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:01
+STM status 
+T1 = 239.31 K,T2 = 66.42 K,T3 = 207.61 K,T4 = 255.86 K,JT = 33.51 K,GGS = 120.68 K
+Tobeinputted 
+09/09/2022 16:10:01
+STM status 
+T1 = 175.848 K,T2 = 333.710 K,T3 = 291.242 K,T4 = 271.471 K,JT = 356.975 K,GGS = 222.583 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:02
+STM status 
+T1 = 359.44 K,T2 = 323.95 K,T3 = 80.97 K,T4 = 165.90 K,JT = 320.87 K,GGS = 136.16 K
+Tobeinputted 
+09/09/2022 16:10:02
+STM status 
+T1 = 226.508 K,T2 = 137.856 K,T3 = 156.838 K,T4 = 132.954 K,JT = 352.005 K,GGS = 318.026 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:03
+STM status 
+T1 = 251.43 K,T2 = 24.43 K,T3 = 215.04 K,T4 = 356.12 K,JT = 208.38 K,GGS = 148.21 K
+Tobeinputted 
+09/09/2022 16:10:03
+STM status 
+T1 = 87.795 K,T2 = 90.113 K,T3 = 98.857 K,T4 = 270.646 K,JT = 103.433 K,GGS = 288.171 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:04
+STM status 
+T1 = 22.50 K,T2 = 43.67 K,T3 = 228.51 K,T4 = 63.91 K,JT = 215.75 K,GGS = 63.20 K
+Tobeinputted 
+09/09/2022 16:10:04
+STM status 
+T1 = 186.262 K,T2 = 301.925 K,T3 = 203.809 K,T4 = 210.432 K,JT = 243.605 K,GGS = 62.538 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:05
+STM status 
+T1 = 329.75 K,T2 = 80.11 K,T3 = 290.38 K,T4 = 220.46 K,JT = 101.60 K,GGS = 14.48 K
+Tobeinputted 
+09/09/2022 16:10:05
+STM status 
+T1 = 341.657 K,T2 = 334.729 K,T3 = 49.339 K,T4 = 58.016 K,JT = 235.462 K,GGS = 116.009 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:06
+STM status 
+T1 = 343.86 K,T2 = 47.76 K,T3 = 226.40 K,T4 = 52.92 K,JT = 357.56 K,GGS = 277.63 K
+Tobeinputted 
+09/09/2022 16:10:06
+STM status 
+T1 = 239.619 K,T2 = 284.251 K,T3 = 185.269 K,T4 = 291.731 K,JT = 338.513 K,GGS = 162.324 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:07
+STM status 
+T1 = 54.92 K,T2 = 186.96 K,T3 = 27.49 K,T4 = 235.41 K,JT = 92.59 K,GGS = 234.95 K
+Tobeinputted 
+09/09/2022 16:10:07
+STM status 
+T1 = 170.073 K,T2 = 247.669 K,T3 = 33.242 K,T4 = 25.158 K,JT = 290.064 K,GGS = 103.962 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:08
+STM status 
+T1 = 41.51 K,T2 = 223.88 K,T3 = 148.62 K,T4 = 102.95 K,JT = 324.59 K,GGS = 374.93 K
+Tobeinputted 
+09/09/2022 16:10:08
+STM status 
+T1 = 344.590 K,T2 = 66.048 K,T3 = 248.144 K,T4 = 272.532 K,JT = 102.297 K,GGS = 307.237 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:09
+STM status 
+T1 = 154.76 K,T2 = 107.46 K,T3 = 33.02 K,T4 = 86.01 K,JT = 357.19 K,GGS = 127.90 K
+Tobeinputted 
+09/09/2022 16:10:09
+STM status 
+T1 = 80.214 K,T2 = 222.074 K,T3 = 272.167 K,T4 = 321.484 K,JT = 107.457 K,GGS = 272.550 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:10
+STM status 
+T1 = 325.36 K,T2 = 341.38 K,T3 = 317.03 K,T4 = 59.19 K,JT = 337.62 K,GGS = 183.29 K
+Tobeinputted 
+09/09/2022 16:10:10
+STM status 
+T1 = 286.185 K,T2 = 45.739 K,T3 = 315.918 K,T4 = 105.179 K,JT = 265.737 K,GGS = 251.877 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:11
+STM status 
+T1 = 365.73 K,T2 = 101.72 K,T3 = 114.72 K,T4 = 320.45 K,JT = 265.15 K,GGS = 332.60 K
+Tobeinputted 
+09/09/2022 16:10:11
+STM status 
+T1 = 161.455 K,T2 = 17.143 K,T3 = 217.532 K,T4 = 224.210 K,JT = 149.334 K,GGS = 321.267 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:12
+STM status 
+T1 = 74.38 K,T2 = 316.13 K,T3 = 220.27 K,T4 = 329.30 K,JT = 245.37 K,GGS = 111.10 K
+Tobeinputted 
+09/09/2022 16:10:12
+STM status 
+T1 = 253.020 K,T2 = 274.137 K,T3 = 51.749 K,T4 = 141.417 K,JT = 36.247 K,GGS = 120.076 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:13
+STM status 
+T1 = 121.77 K,T2 = 304.85 K,T3 = 114.70 K,T4 = 129.54 K,JT = 84.36 K,GGS = 324.52 K
+Tobeinputted 
+09/09/2022 16:10:13
+STM status 
+T1 = 113.864 K,T2 = 259.022 K,T3 = 227.417 K,T4 = 69.227 K,JT = 279.315 K,GGS = 341.111 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:14
+STM status 
+T1 = 192.56 K,T2 = 273.67 K,T3 = 37.06 K,T4 = 295.60 K,JT = 274.19 K,GGS = 140.57 K
+Tobeinputted 
+09/09/2022 16:10:14
+STM status 
+T1 = 331.646 K,T2 = 188.769 K,T3 = 286.569 K,T4 = 116.875 K,JT = 110.963 K,GGS = 156.552 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:15
+STM status 
+T1 = 246.46 K,T2 = 230.07 K,T3 = 55.60 K,T4 = 243.77 K,JT = 97.15 K,GGS = 219.68 K
+Tobeinputted 
+09/09/2022 16:10:15
+STM status 
+T1 = 40.285 K,T2 = 314.561 K,T3 = 303.141 K,T4 = 51.767 K,JT = 323.232 K,GGS = 172.833 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:16
+STM status 
+T1 = 314.82 K,T2 = 351.30 K,T3 = 130.03 K,T4 = 254.86 K,JT = 250.03 K,GGS = 194.21 K
+Tobeinputted 
+09/09/2022 16:10:16
+STM status 
+T1 = 321.914 K,T2 = 170.352 K,T3 = 195.457 K,T4 = 222.455 K,JT = 22.016 K,GGS = 193.924 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:17
+STM status 
+T1 = 273.13 K,T2 = 84.10 K,T3 = 179.81 K,T4 = 270.82 K,JT = 153.73 K,GGS = 247.50 K
+Tobeinputted 
+09/09/2022 16:10:17
+STM status 
+T1 = 191.058 K,T2 = 284.109 K,T3 = 215.136 K,T4 = 117.776 K,JT = 101.551 K,GGS = 351.373 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:18
+STM status 
+T1 = 19.50 K,T2 = 337.73 K,T3 = 278.37 K,T4 = 361.03 K,JT = 319.36 K,GGS = 298.31 K
+Tobeinputted 
+09/09/2022 16:10:18
+STM status 
+T1 = 173.336 K,T2 = 56.215 K,T3 = 174.706 K,T4 = 90.638 K,JT = 40.936 K,GGS = 315.265 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:19
+STM status 
+T1 = 287.61 K,T2 = 272.06 K,T3 = 204.43 K,T4 = 173.67 K,JT = 291.76 K,GGS = 21.03 K
+Tobeinputted 
+09/09/2022 16:10:19
+STM status 
+T1 = 209.187 K,T2 = 303.993 K,T3 = 66.278 K,T4 = 10.520 K,JT = 319.886 K,GGS = 314.285 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:20
+STM status 
+T1 = 25.14 K,T2 = 144.02 K,T3 = 194.35 K,T4 = 208.15 K,JT = 44.23 K,GGS = 96.45 K
+Tobeinputted 
+09/09/2022 16:10:20
+STM status 
+T1 = 333.471 K,T2 = 137.952 K,T3 = 297.880 K,T4 = 17.310 K,JT = 71.491 K,GGS = 318.008 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:21
+STM status 
+T1 = 150.39 K,T2 = 49.33 K,T3 = 216.35 K,T4 = 251.82 K,JT = 256.00 K,GGS = 349.10 K
+Tobeinputted 
+09/09/2022 16:10:21
+STM status 
+T1 = 333.877 K,T2 = 136.551 K,T3 = 131.387 K,T4 = 17.011 K,JT = 28.496 K,GGS = 288.747 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:22
+STM status 
+T1 = 366.29 K,T2 = 96.87 K,T3 = 192.58 K,T4 = 283.24 K,JT = 229.74 K,GGS = 56.12 K
+Tobeinputted 
+09/09/2022 16:10:22
+STM status 
+T1 = 301.812 K,T2 = 84.002 K,T3 = 102.249 K,T4 = 52.846 K,JT = 111.112 K,GGS = 290.338 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:23
+STM status 
+T1 = 135.06 K,T2 = 76.97 K,T3 = 366.19 K,T4 = 160.34 K,JT = 185.40 K,GGS = 136.48 K
+Tobeinputted 
+09/09/2022 16:10:23
+STM status 
+T1 = 122.511 K,T2 = 23.610 K,T3 = 81.834 K,T4 = 263.863 K,JT = 181.786 K,GGS = 327.573 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:24
+STM status 
+T1 = 190.30 K,T2 = 300.75 K,T3 = 185.03 K,T4 = 291.52 K,JT = 135.42 K,GGS = 119.63 K
+Tobeinputted 
+09/09/2022 16:10:24
+STM status 
+T1 = 87.079 K,T2 = 224.199 K,T3 = 19.641 K,T4 = 229.359 K,JT = 103.468 K,GGS = 299.205 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:25
+STM status 
+T1 = 281.89 K,T2 = 366.65 K,T3 = 335.48 K,T4 = 123.94 K,JT = 61.64 K,GGS = 153.04 K
+Tobeinputted 
+09/09/2022 16:10:25
+STM status 
+T1 = 241.633 K,T2 = 291.243 K,T3 = 46.422 K,T4 = 113.437 K,JT = 247.244 K,GGS = 68.560 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:26
+STM status 
+T1 = 127.91 K,T2 = 72.50 K,T3 = 61.02 K,T4 = 156.43 K,JT = 150.09 K,GGS = 115.37 K
+Tobeinputted 
+09/09/2022 16:10:26
+STM status 
+T1 = 345.383 K,T2 = 119.645 K,T3 = 374.562 K,T4 = 346.612 K,JT = 242.896 K,GGS = 42.566 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:27
+STM status 
+T1 = 38.03 K,T2 = 56.95 K,T3 = 257.40 K,T4 = 244.35 K,JT = 77.86 K,GGS = 99.06 K
+Tobeinputted 
+09/09/2022 16:10:27
+STM status 
+T1 = 198.881 K,T2 = 117.673 K,T3 = 270.566 K,T4 = 296.072 K,JT = 296.471 K,GGS = 366.865 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:28
+STM status 
+T1 = 191.82 K,T2 = 280.04 K,T3 = 143.83 K,T4 = 263.03 K,JT = 158.10 K,GGS = 93.80 K
+Tobeinputted 
+09/09/2022 16:10:28
+STM status 
+T1 = 45.488 K,T2 = 355.600 K,T3 = 28.883 K,T4 = 123.851 K,JT = 302.583 K,GGS = 148.422 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:29
+STM status 
+T1 = 28.80 K,T2 = 61.05 K,T3 = 182.34 K,T4 = 244.54 K,JT = 322.74 K,GGS = 201.72 K
+Tobeinputted 
+09/09/2022 16:10:29
+STM status 
+T1 = 293.764 K,T2 = 50.219 K,T3 = 202.585 K,T4 = 312.134 K,JT = 96.241 K,GGS = 337.283 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:30
+STM status 
+T1 = 237.08 K,T2 = 187.37 K,T3 = 362.27 K,T4 = 107.41 K,JT = 170.48 K,GGS = 70.94 K
+Tobeinputted 
+09/09/2022 16:10:30
+STM status 
+T1 = 277.072 K,T2 = 131.200 K,T3 = 339.269 K,T4 = 194.465 K,JT = 11.370 K,GGS = 36.446 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:31
+STM status 
+T1 = 48.92 K,T2 = 77.47 K,T3 = 46.51 K,T4 = 371.46 K,JT = 129.96 K,GGS = 357.52 K
+Tobeinputted 
+09/09/2022 16:10:31
+STM status 
+T1 = 367.679 K,T2 = 215.426 K,T3 = 251.412 K,T4 = 146.926 K,JT = 313.320 K,GGS = 236.632 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:32
+STM status 
+T1 = 363.08 K,T2 = 200.60 K,T3 = 327.12 K,T4 = 118.42 K,JT = 203.79 K,GGS = 367.31 K
+Tobeinputted 
+09/09/2022 16:10:32
+STM status 
+T1 = 331.538 K,T2 = 69.188 K,T3 = 109.811 K,T4 = 363.932 K,JT = 282.181 K,GGS = 297.834 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:33
+STM status 
+T1 = 315.25 K,T2 = 230.19 K,T3 = 359.58 K,T4 = 157.79 K,JT = 23.36 K,GGS = 150.70 K
+Tobeinputted 
+09/09/2022 16:10:33
+STM status 
+T1 = 152.851 K,T2 = 193.706 K,T3 = 67.786 K,T4 = 183.413 K,JT = 289.176 K,GGS = 307.201 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:34
+STM status 
+T1 = 361.64 K,T2 = 91.49 K,T3 = 196.86 K,T4 = 305.52 K,JT = 336.82 K,GGS = 242.43 K
+Tobeinputted 
+09/09/2022 16:10:34
+STM status 
+T1 = 298.065 K,T2 = 103.679 K,T3 = 339.486 K,T4 = 334.853 K,JT = 233.303 K,GGS = 109.179 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:35
+STM status 
+T1 = 100.25 K,T2 = 74.95 K,T3 = 228.20 K,T4 = 193.81 K,JT = 167.47 K,GGS = 49.85 K
+Tobeinputted 
+09/09/2022 16:10:35
+STM status 
+T1 = 185.460 K,T2 = 323.151 K,T3 = 24.626 K,T4 = 105.330 K,JT = 266.326 K,GGS = 204.996 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:36
+STM status 
+T1 = 34.63 K,T2 = 90.83 K,T3 = 67.30 K,T4 = 329.63 K,JT = 240.46 K,GGS = 311.31 K
+Tobeinputted 
+09/09/2022 16:10:36
+STM status 
+T1 = 299.045 K,T2 = 22.991 K,T3 = 112.094 K,T4 = 158.235 K,JT = 160.605 K,GGS = 114.139 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:37
+STM status 
+T1 = 238.41 K,T2 = 92.22 K,T3 = 287.79 K,T4 = 35.24 K,JT = 217.35 K,GGS = 24.18 K
+Tobeinputted 
+09/09/2022 16:10:37
+STM status 
+T1 = 327.774 K,T2 = 223.069 K,T3 = 369.169 K,T4 = 166.878 K,JT = 191.956 K,GGS = 122.322 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:38
+STM status 
+T1 = 204.69 K,T2 = 70.21 K,T3 = 71.68 K,T4 = 332.52 K,JT = 20.84 K,GGS = 156.66 K
+Tobeinputted 
+09/09/2022 16:10:38
+STM status 
+T1 = 242.019 K,T2 = 221.982 K,T3 = 124.020 K,T4 = 318.953 K,JT = 33.434 K,GGS = 92.324 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:39
+STM status 
+T1 = 91.76 K,T2 = 160.25 K,T3 = 19.82 K,T4 = 327.87 K,JT = 106.13 K,GGS = 24.07 K
+Tobeinputted 
+09/09/2022 16:10:39
+STM status 
+T1 = 50.385 K,T2 = 107.258 K,T3 = 99.548 K,T4 = 305.732 K,JT = 230.221 K,GGS = 148.126 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:40
+STM status 
+T1 = 206.92 K,T2 = 149.07 K,T3 = 317.43 K,T4 = 372.75 K,JT = 129.17 K,GGS = 218.80 K
+Tobeinputted 
+09/09/2022 16:10:40
+STM status 
+T1 = 73.783 K,T2 = 61.421 K,T3 = 298.513 K,T4 = 41.932 K,JT = 348.248 K,GGS = 222.953 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:41
+STM status 
+T1 = 198.20 K,T2 = 282.59 K,T3 = 304.85 K,T4 = 26.36 K,JT = 346.38 K,GGS = 119.54 K
+Tobeinputted 
+09/09/2022 16:10:41
+STM status 
+T1 = 171.760 K,T2 = 262.569 K,T3 = 103.906 K,T4 = 21.110 K,JT = 202.696 K,GGS = 134.442 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:42
+STM status 
+T1 = 282.09 K,T2 = 25.59 K,T3 = 151.62 K,T4 = 132.41 K,JT = 337.47 K,GGS = 51.47 K
+Tobeinputted 
+09/09/2022 16:10:42
+STM status 
+T1 = 264.776 K,T2 = 262.466 K,T3 = 187.230 K,T4 = 206.754 K,JT = 119.402 K,GGS = 206.554 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:43
+STM status 
+T1 = 169.26 K,T2 = 259.97 K,T3 = 251.78 K,T4 = 30.22 K,JT = 325.35 K,GGS = 312.23 K
+Tobeinputted 
+09/09/2022 16:10:43
+STM status 
+T1 = 33.870 K,T2 = 241.745 K,T3 = 80.338 K,T4 = 131.517 K,JT = 218.935 K,GGS = 365.337 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:44
+STM status 
+T1 = 106.76 K,T2 = 364.24 K,T3 = 121.82 K,T4 = 83.31 K,JT = 85.13 K,GGS = 36.65 K
+Tobeinputted 
+09/09/2022 16:10:44
+STM status 
+T1 = 89.742 K,T2 = 267.691 K,T3 = 144.342 K,T4 = 110.493 K,JT = 100.281 K,GGS = 280.324 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:45
+STM status 
+T1 = 230.58 K,T2 = 291.51 K,T3 = 45.64 K,T4 = 14.32 K,JT = 149.65 K,GGS = 287.39 K
+Tobeinputted 
+09/09/2022 16:10:45
+STM status 
+T1 = 94.077 K,T2 = 258.572 K,T3 = 61.303 K,T4 = 159.800 K,JT = 286.843 K,GGS = 118.922 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:46
+STM status 
+T1 = 184.89 K,T2 = 262.23 K,T3 = 12.57 K,T4 = 321.92 K,JT = 301.93 K,GGS = 77.15 K
+Tobeinputted 
+09/09/2022 16:10:46
+STM status 
+T1 = 104.263 K,T2 = 276.063 K,T3 = 69.371 K,T4 = 14.474 K,JT = 300.287 K,GGS = 69.783 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:47
+STM status 
+T1 = 139.40 K,T2 = 47.05 K,T3 = 192.58 K,T4 = 372.81 K,JT = 33.76 K,GGS = 73.30 K
+Tobeinputted 
+09/09/2022 16:10:47
+STM status 
+T1 = 109.692 K,T2 = 133.973 K,T3 = 294.329 K,T4 = 89.371 K,JT = 263.484 K,GGS = 37.578 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:48
+STM status 
+T1 = 113.83 K,T2 = 288.88 K,T3 = 197.74 K,T4 = 335.38 K,JT = 15.59 K,GGS = 284.94 K
+Tobeinputted 
+09/09/2022 16:10:48
+STM status 
+T1 = 332.905 K,T2 = 335.789 K,T3 = 116.889 K,T4 = 213.864 K,JT = 274.469 K,GGS = 280.359 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:49
+STM status 
+T1 = 338.46 K,T2 = 136.93 K,T3 = 149.07 K,T4 = 35.98 K,JT = 196.58 K,GGS = 155.38 K
+Tobeinputted 
+09/09/2022 16:10:49
+STM status 
+T1 = 107.076 K,T2 = 193.450 K,T3 = 246.934 K,T4 = 369.715 K,JT = 179.624 K,GGS = 232.596 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:50
+STM status 
+T1 = 306.79 K,T2 = 20.56 K,T3 = 259.25 K,T4 = 248.55 K,JT = 201.23 K,GGS = 356.59 K
+Tobeinputted 
+09/09/2022 16:10:50
+STM status 
+T1 = 259.770 K,T2 = 88.279 K,T3 = 23.696 K,T4 = 143.057 K,JT = 97.773 K,GGS = 185.439 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:51
+STM status 
+T1 = 354.74 K,T2 = 125.95 K,T3 = 193.86 K,T4 = 156.28 K,JT = 175.66 K,GGS = 277.72 K
+Tobeinputted 
+09/09/2022 16:10:51
+STM status 
+T1 = 362.144 K,T2 = 98.076 K,T3 = 104.139 K,T4 = 53.061 K,JT = 319.553 K,GGS = 250.938 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:52
+STM status 
+T1 = 270.90 K,T2 = 223.79 K,T3 = 208.78 K,T4 = 339.72 K,JT = 53.66 K,GGS = 15.03 K
+Tobeinputted 
+09/09/2022 16:10:52
+STM status 
+T1 = 237.142 K,T2 = 130.251 K,T3 = 302.492 K,T4 = 122.856 K,JT = 268.509 K,GGS = 357.740 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:53
+STM status 
+T1 = 145.33 K,T2 = 94.61 K,T3 = 162.36 K,T4 = 231.60 K,JT = 263.92 K,GGS = 144.04 K
+Tobeinputted 
+09/09/2022 16:10:53
+STM status 
+T1 = 184.588 K,T2 = 120.480 K,T3 = 320.973 K,T4 = 40.952 K,JT = 118.134 K,GGS = 372.065 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:54
+STM status 
+T1 = 18.27 K,T2 = 125.72 K,T3 = 107.80 K,T4 = 281.47 K,JT = 143.84 K,GGS = 349.28 K
+Tobeinputted 
+09/09/2022 16:10:54
+STM status 
+T1 = 90.222 K,T2 = 251.902 K,T3 = 307.302 K,T4 = 19.200 K,JT = 337.573 K,GGS = 68.635 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:55
+STM status 
+T1 = 321.40 K,T2 = 237.03 K,T3 = 353.14 K,T4 = 336.42 K,JT = 279.80 K,GGS = 102.50 K
+Tobeinputted 
+09/09/2022 16:10:55
+STM status 
+T1 = 252.454 K,T2 = 267.789 K,T3 = 287.097 K,T4 = 252.670 K,JT = 220.780 K,GGS = 289.442 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:56
+STM status 
+T1 = 274.91 K,T2 = 36.97 K,T3 = 53.60 K,T4 = 174.79 K,JT = 334.15 K,GGS = 118.66 K
+Tobeinputted 
+09/09/2022 16:10:56
+STM status 
+T1 = 246.207 K,T2 = 168.989 K,T3 = 336.378 K,T4 = 22.763 K,JT = 210.650 K,GGS = 273.638 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:57
+STM status 
+T1 = 224.61 K,T2 = 133.06 K,T3 = 310.70 K,T4 = 19.98 K,JT = 183.00 K,GGS = 274.32 K
+Tobeinputted 
+09/09/2022 16:10:57
+STM status 
+T1 = 200.460 K,T2 = 161.051 K,T3 = 228.883 K,T4 = 91.990 K,JT = 326.907 K,GGS = 336.120 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:58
+STM status 
+T1 = 336.91 K,T2 = 92.43 K,T3 = 70.78 K,T4 = 28.05 K,JT = 354.66 K,GGS = 251.80 K
+Tobeinputted 
+09/09/2022 16:10:58
+STM status 
+T1 = 236.470 K,T2 = 88.175 K,T3 = 254.661 K,T4 = 295.450 K,JT = 226.678 K,GGS = 210.429 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:10:59
+STM status 
+T1 = 117.67 K,T2 = 295.99 K,T3 = 262.98 K,T4 = 190.03 K,JT = 229.28 K,GGS = 338.18 K
+Tobeinputted 
+09/09/2022 16:10:59
+STM status 
+T1 = 374.880 K,T2 = 288.110 K,T3 = 241.732 K,T4 = 227.517 K,JT = 77.026 K,GGS = 293.208 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:00
+STM status 
+T1 = 263.34 K,T2 = 117.08 K,T3 = 108.04 K,T4 = 245.93 K,JT = 361.56 K,GGS = 18.03 K
+Tobeinputted 
+09/09/2022 16:11:00
+STM status 
+T1 = 226.102 K,T2 = 62.186 K,T3 = 146.229 K,T4 = 70.958 K,JT = 123.741 K,GGS = 289.550 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:01
+STM status 
+T1 = 372.09 K,T2 = 323.45 K,T3 = 189.57 K,T4 = 321.63 K,JT = 356.92 K,GGS = 34.79 K
+Tobeinputted 
+09/09/2022 16:11:01
+STM status 
+T1 = 289.178 K,T2 = 364.419 K,T3 = 114.200 K,T4 = 326.065 K,JT = 229.877 K,GGS = 125.705 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:02
+STM status 
+T1 = 86.11 K,T2 = 103.90 K,T3 = 349.56 K,T4 = 46.43 K,JT = 262.24 K,GGS = 339.95 K
+Tobeinputted 
+09/09/2022 16:11:02
+STM status 
+T1 = 92.581 K,T2 = 86.922 K,T3 = 344.705 K,T4 = 368.848 K,JT = 53.285 K,GGS = 263.586 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:03
+STM status 
+T1 = 173.24 K,T2 = 333.01 K,T3 = 257.20 K,T4 = 276.55 K,JT = 101.18 K,GGS = 150.33 K
+Tobeinputted 
+09/09/2022 16:11:03
+STM status 
+T1 = 246.864 K,T2 = 186.871 K,T3 = 126.187 K,T4 = 242.369 K,JT = 43.117 K,GGS = 274.653 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:04
+STM status 
+T1 = 325.58 K,T2 = 152.17 K,T3 = 198.57 K,T4 = 149.70 K,JT = 253.60 K,GGS = 151.95 K
+Tobeinputted 
+09/09/2022 16:11:04
+STM status 
+T1 = 136.576 K,T2 = 353.205 K,T3 = 55.627 K,T4 = 20.089 K,JT = 61.759 K,GGS = 320.601 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:05
+STM status 
+T1 = 128.70 K,T2 = 263.74 K,T3 = 319.32 K,T4 = 278.81 K,JT = 237.67 K,GGS = 192.69 K
+Tobeinputted 
+09/09/2022 16:11:05
+STM status 
+T1 = 35.459 K,T2 = 258.619 K,T3 = 37.941 K,T4 = 353.032 K,JT = 144.364 K,GGS = 165.861 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:06
+STM status 
+T1 = 228.44 K,T2 = 114.85 K,T3 = 198.85 K,T4 = 182.87 K,JT = 32.12 K,GGS = 111.08 K
+Tobeinputted 
+09/09/2022 16:11:06
+STM status 
+T1 = 150.481 K,T2 = 217.859 K,T3 = 369.549 K,T4 = 29.570 K,JT = 207.510 K,GGS = 324.023 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:07
+STM status 
+T1 = 319.06 K,T2 = 73.64 K,T3 = 178.14 K,T4 = 326.94 K,JT = 237.72 K,GGS = 70.73 K
+Tobeinputted 
+09/09/2022 16:11:07
+STM status 
+T1 = 144.021 K,T2 = 372.322 K,T3 = 102.279 K,T4 = 168.016 K,JT = 367.058 K,GGS = 324.858 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:08
+STM status 
+T1 = 349.14 K,T2 = 217.76 K,T3 = 254.33 K,T4 = 297.42 K,JT = 314.27 K,GGS = 317.36 K
+Tobeinputted 
+09/09/2022 16:11:08
+STM status 
+T1 = 15.812 K,T2 = 353.761 K,T3 = 221.610 K,T4 = 289.602 K,JT = 88.846 K,GGS = 34.382 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:09
+STM status 
+T1 = 76.39 K,T2 = 333.75 K,T3 = 10.58 K,T4 = 42.50 K,JT = 272.53 K,GGS = 189.48 K
+Tobeinputted 
+09/09/2022 16:11:09
+STM status 
+T1 = 132.586 K,T2 = 208.009 K,T3 = 313.808 K,T4 = 261.605 K,JT = 241.289 K,GGS = 114.697 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:10
+STM status 
+T1 = 52.82 K,T2 = 329.84 K,T3 = 147.94 K,T4 = 57.37 K,JT = 315.94 K,GGS = 62.45 K
+Tobeinputted 
+09/09/2022 16:11:10
+STM status 
+T1 = 289.384 K,T2 = 338.267 K,T3 = 334.418 K,T4 = 30.280 K,JT = 118.225 K,GGS = 73.140 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:11
+STM status 
+T1 = 20.71 K,T2 = 299.52 K,T3 = 69.12 K,T4 = 154.28 K,JT = 172.94 K,GGS = 139.95 K
+Tobeinputted 
+09/09/2022 16:11:11
+STM status 
+T1 = 277.878 K,T2 = 246.706 K,T3 = 312.536 K,T4 = 203.421 K,JT = 338.569 K,GGS = 53.685 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:12
+STM status 
+T1 = 183.72 K,T2 = 341.33 K,T3 = 27.01 K,T4 = 119.58 K,JT = 187.15 K,GGS = 138.10 K
+Tobeinputted 
+09/09/2022 16:11:12
+STM status 
+T1 = 158.425 K,T2 = 14.831 K,T3 = 258.927 K,T4 = 175.768 K,JT = 54.507 K,GGS = 301.501 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:13
+STM status 
+T1 = 292.09 K,T2 = 255.80 K,T3 = 287.28 K,T4 = 18.36 K,JT = 314.44 K,GGS = 229.98 K
+Tobeinputted 
+09/09/2022 16:11:13
+STM status 
+T1 = 38.430 K,T2 = 108.708 K,T3 = 64.437 K,T4 = 340.491 K,JT = 357.061 K,GGS = 250.009 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:14
+STM status 
+T1 = 201.53 K,T2 = 162.70 K,T3 = 179.65 K,T4 = 291.83 K,JT = 179.13 K,GGS = 231.05 K
+Tobeinputted 
+09/09/2022 16:11:14
+STM status 
+T1 = 335.954 K,T2 = 237.150 K,T3 = 90.395 K,T4 = 211.928 K,JT = 77.661 K,GGS = 75.390 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:15
+STM status 
+T1 = 117.48 K,T2 = 280.83 K,T3 = 218.81 K,T4 = 167.36 K,JT = 347.95 K,GGS = 324.91 K
+Tobeinputted 
+09/09/2022 16:11:15
+STM status 
+T1 = 81.281 K,T2 = 33.293 K,T3 = 245.777 K,T4 = 188.005 K,JT = 185.470 K,GGS = 176.040 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:16
+STM status 
+T1 = 60.82 K,T2 = 63.06 K,T3 = 331.19 K,T4 = 30.65 K,JT = 125.15 K,GGS = 77.95 K
+Tobeinputted 
+09/09/2022 16:11:16
+STM status 
+T1 = 36.061 K,T2 = 232.429 K,T3 = 152.413 K,T4 = 251.284 K,JT = 309.316 K,GGS = 166.676 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:17
+STM status 
+T1 = 87.30 K,T2 = 330.05 K,T3 = 189.99 K,T4 = 188.40 K,JT = 79.43 K,GGS = 113.76 K
+Tobeinputted 
+09/09/2022 16:11:17
+STM status 
+T1 = 27.421 K,T2 = 350.090 K,T3 = 80.761 K,T4 = 345.496 K,JT = 54.499 K,GGS = 193.625 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:18
+STM status 
+T1 = 35.65 K,T2 = 171.61 K,T3 = 127.91 K,T4 = 294.89 K,JT = 183.21 K,GGS = 372.84 K
+Tobeinputted 
+09/09/2022 16:11:18
+STM status 
+T1 = 163.453 K,T2 = 49.450 K,T3 = 311.681 K,T4 = 308.107 K,JT = 18.767 K,GGS = 227.438 K
+MBE status 
+Tobeinputted 
+09/09/2022 16:11:19
+STM status 
+T1 = 366.00 K,T2 = 224.22 K,T3 = 278.55 K,T4 = 340.41 K,JT = 88.06 K,GGS = 143.47 K
+Tobeinputted 
+09/09/2022 16:11:19
+STM status 
+T1 = 81.645 K,T2 = 25.647 K,T3 = 314.919 K,T4 = 61.404 K,JT = 27.993 K,GGS = 255.807 K
+MBE status 
+Tobeinputted 

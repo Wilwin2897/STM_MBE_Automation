@@ -1,0 +1,112 @@
+
+(module TO220-7 (layer F.Cu) (tedit 630D9F4D)
+  (descr "<b>Molded Package</b>")
+  (fp_text reference REF** (at -6.097125 4.191785 900) (layer F.SilkS)
+    (effects (font (size 1.00018110236 1.00018110236) (thickness 0.15)))
+  )
+  (fp_text value TO220-7 (at 6.097385 2.921665 900) (layer F.Fab)
+    (effects (font (size 1.00022834646 1.00022834646) (thickness 0.15)))
+  )
+  (pad 2 thru_hole oval (at -2.54 3.126) (size 1.6256 3.2512) (drill 1.1176) (layers *.Cu *.Mask))
+  (pad 4 thru_hole oval (at 0.0 3.126) (size 1.6256 3.2512) (drill 1.1176) (layers *.Cu *.Mask))
+  (pad 7 thru_hole oval (at 3.81 8.036) (size 1.6256 3.2512) (drill 1.1176) (layers *.Cu *.Mask))
+  (pad 3 thru_hole oval (at -1.27 8.036) (size 1.6256 3.2512) (drill 1.1176) (layers *.Cu *.Mask))
+  (pad 1 thru_hole oval (at -3.81 8.036) (size 1.6256 3.2512) (drill 1.1176) (layers *.Cu *.Mask))
+  (pad 5 thru_hole oval (at 1.27 8.036) (size 1.6256 3.2512) (drill 1.1176) (layers *.Cu *.Mask))
+  (pad 6 thru_hole oval (at 2.54 3.126) (size 1.6256 3.2512) (drill 1.1176) (layers *.Cu *.Mask))
+  (fp_line (start 5.08 0.0) (end 5.08 0.508) (layer F.SilkS) (width 0.1524))
+  (fp_line (start 5.08 0.508) (end 5.08 2.794) (layer F.SilkS) (width 0.1524))
+  (fp_line (start 5.08 2.794) (end -5.08 2.794) (layer F.Fab) (width 0.1524))
+  (fp_line (start 5.08 0.0) (end -5.08 0.0) (layer F.SilkS) (width 0.1524))
+  (fp_line (start -5.08 2.794) (end -5.08 0.508) (layer F.SilkS) (width 0.1524))
+  (fp_line (start -5.08 0.508) (end -5.08 0.0) (layer F.SilkS) (width 0.1524))
+  (fp_line (start -5.08 0.508) (end 5.08 0.508) (layer F.SilkS) (width 0.1524))
+  (fp_poly
+    (pts
+      (xy -4.19515 6.385)
+      (xy -3.429 6.385)
+      (xy -3.429 8.29821)
+      (xy -4.19515 8.29821)
+    ) (layer F.Fab) (width 0.01)
+  )
+  (fp_poly
+    (pts
+      (xy -1.65201 6.385)
+      (xy -0.889 6.385)
+      (xy -0.889 8.29505)
+      (xy -1.65201 8.29505)
+    ) (layer F.Fab) (width 0.01)
+  )
+  (fp_poly
+    (pts
+      (xy 0.890133 6.385)
+      (xy 1.651 6.385)
+      (xy 1.651 8.30057)
+      (xy 0.890133 8.30057)
+    ) (layer F.Fab) (width 0.01)
+  )
+  (fp_poly
+    (pts
+      (xy -4.32496 2.794)
+      (xy -3.302 2.794)
+      (xy -3.302 6.36023)
+      (xy -4.32496 6.36023)
+    ) (layer F.Fab) (width 0.01)
+  )
+  (fp_poly
+    (pts
+      (xy -1.78089 2.794)
+      (xy -0.762 2.794)
+      (xy -0.762 6.36031)
+      (xy -1.78089 6.36031)
+    ) (layer F.Fab) (width 0.01)
+  )
+  (fp_poly
+    (pts
+      (xy 0.762949 2.794)
+      (xy 1.778 2.794)
+      (xy 1.778 6.35791)
+      (xy 0.762949 6.35791)
+    ) (layer F.Fab) (width 0.01)
+  )
+  (fp_poly
+    (pts
+      (xy 3.42948 6.385)
+      (xy 4.191 6.385)
+      (xy 4.191 8.29117)
+      (xy 3.42948 8.29117)
+    ) (layer F.Fab) (width 0.01)
+  )
+  (fp_poly
+    (pts
+      (xy -3.05061 2.794)
+      (xy -2.032 2.794)
+      (xy -2.032 3.17772)
+      (xy -3.05061 3.17772)
+    ) (layer F.Fab) (width 0.01)
+  )
+  (fp_poly
+    (pts
+      (xy -0.50832 2.794)
+      (xy 0.508 2.794)
+      (xy 0.508 3.177)
+      (xy -0.50832 3.177)
+    ) (layer F.Fab) (width 0.01)
+  )
+  (fp_poly
+    (pts
+      (xy 2.03576 2.794)
+      (xy 3.048 2.794)
+      (xy 3.048 3.18087)
+      (xy 2.03576 3.18087)
+    ) (layer F.Fab) (width 0.01)
+  )
+  (fp_poly
+    (pts
+      (xy 3.30661 2.794)
+      (xy 4.318 2.794)
+      (xy 4.318 6.35887)
+      (xy 3.30661 6.35887)
+    ) (layer F.Fab) (width 0.01)
+  )
+)

@@ -1,0 +1,45 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#(c) SnapEDA 2016 (snapeda.com)
+#This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0
+#
+# OPA548TG3
+#
+DEF OPA548TG3 IC 0 40 Y N 1 L N
+F0 "IC" 100 125 50 H V L BNN
+F1 "OPA548TG3" 100 -301 50 H V L BNN
+F3 "" 0 0 50 H I L BNN
+F4 "69K2680" 0 0 50 H I L BNN "OC_NEWARK"
+F5 "TEXAS INSTRUMENTS" 0 0 50 H I L BNN "MF"
+F6 "OPA548TG3T" 0 0 50 H I L BNN "MPN"
+F7 "1564885" 0 0 50 H I L BNN "OC_FARNELL"
+$FPLIST
+ DD-7
+ TO220-7
+$ENDFPLIST
+DRAW
+P 2 0 0 6 -150 25 -150 -25 N
+P 2 0 0 6 -175 0 -125 0 N
+P 2 0 0 6 -175 -200 -125 -200 N
+P 2 0 0 16 -200 100 -200 -300 N
+P 2 0 0 6 -100 100 -100 53 N
+P 2 0 0 6 0 100 0 3 N
+P 2 0 0 6 106 -48 200 0 N
+P 2 0 0 16 -200 100 200 -100 N
+P 2 0 0 6 -100 -253 -100 -300 N
+P 2 0 0 16 -200 -300 200 -100 N
+T 900 -50 75 32 0 0 0 V+ Normal 0 L B
+T 900 -50 -325 32 0 0 0 V- Normal 0 L B
+T 900 50 25 32 0 0 0 E/S Normal 0 L B
+T 900 125 0 32 0 0 0 ILIM Normal 0 L B
+X ~ 3 300 0 100 L 40 40 0 0 I 
+X ~ 2 -300 -200 100 R 40 40 0 0 I 
+X ~ 1 -300 0 100 R 40 40 0 0 I 
+X ~ 7 0 200 100 D 40 40 0 0 B 
+X ~ 6 300 -100 100 L 40 40 0 0 O 
+X ~ 5 -100 200 100 D 40 40 0 0 W 
+X ~ 4 -100 -400 100 U 40 40 0 0 W 
+ENDDRAW
+ENDDEF
+#
+# End Library
