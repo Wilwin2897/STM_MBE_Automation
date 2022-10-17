@@ -6674,7 +6674,7 @@ color: rgb(255, 255, 255);</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>3508_fv_unit1_sch.png</pixmap>
+        <pixmap>../v0.5/3508_fv_unit1_sch.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -6702,7 +6702,7 @@ color: rgb(255, 255, 255);</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>3508_fv_unit1_sch.png</pixmap>
+        <pixmap>../v0.5/3508_fv_unit1_sch.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -6730,7 +6730,7 @@ color: rgb(255, 255, 255);</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>3508_fv_unit1_sch.png</pixmap>
+        <pixmap>../v0.5/3508_fv_unit1_sch.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -6758,7 +6758,7 @@ color: rgb(255, 255, 255);</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>3508_fv_unit1_sch.png</pixmap>
+        <pixmap>../v0.5/3508_fv_unit1_sch.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -6786,7 +6786,7 @@ color: rgb(255, 255, 255);</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>3508_fv_unit1_sch.png</pixmap>
+        <pixmap>../v0.5/3508_fv_unit1_sch.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -6814,7 +6814,7 @@ color: rgb(255, 255, 255);</string>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>3508_fv_unit1_sch.png</pixmap>
+        <pixmap>../v0.5/3508_fv_unit1_sch.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>

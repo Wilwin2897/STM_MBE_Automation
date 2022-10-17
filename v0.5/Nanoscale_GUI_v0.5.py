@@ -15,6 +15,7 @@ import numpy as np
 import datetime
 import time
 import minimalmodbus
+import os
 
 def Estimate_time(warm1,warm2,warm3,cool1,cool2,cool3,maxTempA,maxTempB,maxTempC,delay,anneal):
         time = 0
@@ -2658,6 +2659,10 @@ class Ui_MainWindow(object):
         self.cal_selectfile_1 = QtWidgets.QComboBox(self.groupBox_38)
         self.cal_selectfile_1.setGeometry(QtCore.QRect(630, 40, 161, 22))
         self.cal_selectfile_1.setObjectName("cal_selectfile_1")
+        self.cal_selectfile_1.textActivated['QString'].connect(self.opencalfile_dialog)
+        self.cal_selectfile_1.addItem("Select data")
+        
+        
         self.cal_graphicsView = QtWidgets.QGraphicsView(self.groupBox_38)
         self.cal_graphicsView.setGeometry(QtCore.QRect(10, 30, 531, 371))
         self.cal_graphicsView.setObjectName("cal_graphicsView")
@@ -3242,6 +3247,7 @@ class Ui_MainWindow(object):
             EF_T2,EF_T3,EF_T4,EF_T5,EF_T6,EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6,
             EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6,EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6,
             EB_V, EB_A, EB_FIL_V,EB_FIL_A) = get_toy_data()
+        
         self.mv_lcd_T1.display(T1)
         self.mv_lcd_T2.display(T2)
         self.mv_lcd_T3.display(T3)
@@ -3385,6 +3391,8 @@ class Ui_MainWindow(object):
         self.data_line2.setData(x[1],y[1]) 
         self.mv_pushButtonStart_clicked()
         
+
+    
     def read_data_log(self,args,timespan,mode):
         f = open("system_history.txt", "r")
         now = datetime.datetime.now()
@@ -3461,14 +3469,32 @@ class Ui_MainWindow(object):
         f.write('EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6 = %.2f, %.2f, %.2f, %.2f, %.2f, %.2f V\n' % (EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6))
         f.write('EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6 = %.2f, %.2f, %.2f, %.2f, %.2f, %.2f A\n' % (EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6))
         f.write('EB_V,EB_A,EB_FIL_V,EB_FIL_A = %.2f V, %.2f A, %.2f V, %.2f A \n \n' % (EB_V, EB_A, EB_FIL_V,EB_FIL_A))
-
         f.close()
         
-    def closeEvent(self, evt):
-        print("class event called")
-        self.timer1.cancel()
-        self.timer2.cancel()
-        self.timer3.cancel()
+    def closeEvent(self, event):
+        reply = QtGui.QMessageBox.question(self, u'退出',
+                                           u'确认退出?', QtGui.QMessageBox.Yes | 
+                                           QtGui.QMessageBox.No, QtGui.QMessageBox.No)
+
+        if reply == QtGui.QMessageBox.Yes: 
+            for widget in self.widgetDict.values():
+                widget.close()
+            self.saveWindowSettings('custom')
+            
+            self.mainEngine.exit()
+            event.accept()
+        else:
+            event.ignore()        
+        
+    def opencalfile_dialog(self):
+        file_filter = 'Data File (*.xlsx *.csv *dat)'
+        response =  QtWidgets.QFileDialog.getOpenFileName(
+            caption = 'Select a calibration data file',
+            directory = os.getcwd(),
+            filter=file_filter)  
+        file_path = response.fileSelected
+        
+
         
 if __name__ == "__main__":
     import sys
