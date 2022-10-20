@@ -8,39 +8,37 @@ Created on Sun Oct 16 11:49:38 2022
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from module_test import Ui_MainWindow
-from mod_widgets import DragGroup,button_group
+from mod_widgets import DragGroup
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self,*arg,**kwargs):
         super().__init__(*arg,**kwargs)
         self.setAcceptDrops(True)
-
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
-#        self.setAcceptDrops(True)
-        self.ui.buttons = button_group(self.ui.centralwidget)
-
-        #self.layout = QtWidgets.QVBoxLayout()
-        #self.layout.addWidget(self.ui.buttons)
-       # self.ui.setupUi.setCentralWidget(self.buttons)
-        #self.ui.centralwidget.
-        self.ui.buttons.pushButton.clicked.connect(DragGroup.add)
-
+        self._add_pos = 0
+        self.ui.buttons = DragGroup(self.ui.centralwidget)
+        self.ui.buttons.pushButton.clicked.connect(self.add_button)
         self.show()
-
         
+    def add_button(self):
+        self._add_pos += 20
+        #Add another button_group
+        self.ui.buttons2 = DragGroup(self.ui.centralwidget)
+        self.ui.buttons2.pushButton.clicked.connect(self.add_button)
+        self.ui.buttons2.move(self._add_pos,self._add_pos)
+        self.ui.buttons2.show()
+
     def dragEnterEvent(self, e):
         e.accept()
         
     def dropEvent(self, e):
         pos = e.pos()
-        self.ui.buttons.move(pos)
+        #How to make both buttons can move independently?
+        e.source().move(pos)
         print(pos)
         e.setDropAction(QtCore.Qt.MoveAction)
         e.accept()
-        
-
         
         
 if __name__ == '__main__':
