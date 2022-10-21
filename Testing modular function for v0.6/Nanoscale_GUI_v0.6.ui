@@ -7854,6 +7854,9 @@ QProgressBar::chunk {
          <height>22</height>
         </rect>
        </property>
+       <property name="currentIndex">
+        <number>1</number>
+       </property>
        <item>
         <property name="text">
          <string>None selected</string>
@@ -7879,12 +7882,17 @@ QProgressBar::chunk {
          <string>Shutter module</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>Time Delay controller</string>
+        </property>
+       </item>
       </widget>
       <widget class="QPushButton" name="mbe_savegrowthtimeline_2">
        <property name="geometry">
         <rect>
          <x>60</x>
-         <y>150</y>
+         <y>180</y>
          <width>51</width>
          <height>23</height>
         </rect>
@@ -7904,7 +7912,7 @@ QProgressBar::chunk {
        <property name="geometry">
         <rect>
          <x>110</x>
-         <y>150</y>
+         <y>180</y>
          <width>51</width>
          <height>23</height>
         </rect>
@@ -7929,6 +7937,9 @@ QProgressBar::chunk {
          <height>22</height>
         </rect>
        </property>
+       <property name="currentIndex">
+        <number>2</number>
+       </property>
        <item>
         <property name="text">
          <string>None selected</string>
@@ -7952,6 +7963,11 @@ QProgressBar::chunk {
        <item>
         <property name="text">
          <string>Shutter module</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Time Delay controller</string>
         </property>
        </item>
       </widget>
@@ -7964,40 +7980,8 @@ QProgressBar::chunk {
          <height>22</height>
         </rect>
        </property>
-       <item>
-        <property name="text">
-         <string>None selected</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Eurotherm controller</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>HV Power Supply (Voltage)</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>HV Power Supply (Current)</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Shutter module</string>
-        </property>
-       </item>
-      </widget>
-      <widget class="QComboBox" name="comboBox_17">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>90</y>
-         <width>191</width>
-         <height>22</height>
-        </rect>
+       <property name="currentIndex">
+        <number>4</number>
        </property>
        <item>
         <property name="text">
@@ -8022,6 +8006,97 @@ QProgressBar::chunk {
        <item>
         <property name="text">
          <string>Shutter module</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Time Delay controller</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="comboBox_17">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>90</y>
+         <width>191</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="currentIndex">
+        <number>3</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>None selected</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Eurotherm controller</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>HV Power Supply (Voltage)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>HV Power Supply (Current)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Shutter module</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Time Delay controller</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="comboBox_18">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>150</y>
+         <width>191</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="currentIndex">
+        <number>5</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>None selected</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Eurotherm controller</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>HV Power Supply (Voltage)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>HV Power Supply (Current)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Shutter module</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Time Delay controller</string>
         </property>
        </item>
       </widget>
@@ -8038,950 +8113,6 @@ QProgressBar::chunk {
       <property name="text">
        <string>Nanoscale GUI V0.6</string>
       </property>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_17">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>0</y>
-        <width>241</width>
-        <height>171</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Eurotherm module</string>
-      </property>
-      <widget class="QComboBox" name="comboBox_8">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>50</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <item>
-        <property name="text">
-         <string>Ramping up</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Cooling down</string>
-        </property>
-       </item>
-      </widget>
-      <widget class="QLabel" name="label_55">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>50</y>
-         <width>41</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Mode</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_56">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>80</y>
-         <width>151</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Target Temperature (K):</string>
-       </property>
-      </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>100</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <double>9999.989999999999782</double>
-       </property>
-       <property name="value">
-        <double>300.000000000000000</double>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_68">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>120</y>
-         <width>151</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Rate Setting (K/min)</string>
-       </property>
-      </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>140</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <double>100.000000000000000</double>
-       </property>
-       <property name="value">
-        <double>10.000000000000000</double>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="mbe_savegrowthtimeline_3">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>110</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Add</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="mbe_savegrowthtimeline_4">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>140</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Remove</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>70</y>
-         <width>42</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="value">
-        <number>1</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_93">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>50</y>
-         <width>21</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PID</string>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="comboBox_19">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>20</y>
-         <width>61</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <item>
-        <property name="text">
-         <string>Te</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Sn</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>BaF2</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Co</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Fe</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Dy</string>
-        </property>
-       </item>
-      </widget>
-      <widget class="QLabel" name="label_104">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>51</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Select:</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_20">
-      <property name="geometry">
-       <rect>
-        <x>540</x>
-        <y>10</y>
-        <width>271</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Shutter module</string>
-      </property>
-      <widget class="QLabel" name="label_101">
-       <property name="geometry">
-        <rect>
-         <x>70</x>
-         <y>20</y>
-         <width>101</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Angle (degree)</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="mbe_savegrowthtimeline_12">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>10</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Add</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="mbe_savegrowthtimeline_11">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>40</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Remove</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_102">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>20</y>
-         <width>21</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PID</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_7">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>40</y>
-         <width>42</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="value">
-        <number>1</number>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_8">
-       <property name="geometry">
-        <rect>
-         <x>90</x>
-         <y>40</y>
-         <width>51</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="minimum">
-        <number>-180</number>
-       </property>
-       <property name="maximum">
-        <number>180</number>
-       </property>
-       <property name="value">
-        <number>90</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_103">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>51</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Select:</string>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="comboBox_13">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>40</y>
-         <width>61</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <item>
-        <property name="text">
-         <string>Te</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Sn</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>BaF2</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Co</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Fe</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Dy</string>
-        </property>
-       </item>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_21">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>180</y>
-        <width>241</width>
-        <height>151</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>HV Power Supply (Voltage)</string>
-      </property>
-      <widget class="QComboBox" name="comboBox_15">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>20</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <item>
-        <property name="text">
-         <string>Ramping up</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Cooling down</string>
-        </property>
-       </item>
-      </widget>
-      <widget class="QLabel" name="label_87">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>41</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Mode</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_88">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>50</y>
-         <width>151</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Target Voltage (V):</string>
-       </property>
-      </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_9">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>70</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <double>1500.000000000000000</double>
-       </property>
-       <property name="value">
-        <double>300.000000000000000</double>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_89">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>100</y>
-         <width>151</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Rate Setting (V/min)</string>
-       </property>
-      </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_10">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>120</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <double>100.000000000000000</double>
-       </property>
-       <property name="value">
-        <double>10.000000000000000</double>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="mbe_savegrowthtimeline_6">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>80</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Add</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_97">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>20</y>
-         <width>21</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PID</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_2">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>40</y>
-         <width>42</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="value">
-        <number>1</number>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="mbe_savegrowthtimeline_5">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>110</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Remove</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_22">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>340</y>
-        <width>241</width>
-        <height>151</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>HV Power Supply (Current)</string>
-      </property>
-      <widget class="QComboBox" name="comboBox_18">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>20</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <item>
-        <property name="text">
-         <string>Ramping up</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Cooling down</string>
-        </property>
-       </item>
-      </widget>
-      <widget class="QLabel" name="label_90">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>41</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Mode</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_91">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>50</y>
-         <width>151</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Target Current (A):</string>
-       </property>
-      </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_11">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>70</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <double>5.000000000000000</double>
-       </property>
-       <property name="singleStep">
-        <double>0.010000000000000</double>
-       </property>
-       <property name="value">
-        <double>0.000000000000000</double>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_92">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>100</y>
-         <width>151</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Rate Setting (A/min)</string>
-       </property>
-      </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_12">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>120</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <double>0.500000000000000</double>
-       </property>
-       <property name="singleStep">
-        <double>0.010000000000000</double>
-       </property>
-       <property name="value">
-        <double>0.100000000000000</double>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="mbe_savegrowthtimeline_8">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>80</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Add</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_3">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>40</y>
-         <width>42</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="value">
-        <number>1</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_98">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>20</y>
-         <width>21</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>PID</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="mbe_savegrowthtimeline_7">
-       <property name="geometry">
-        <rect>
-         <x>190</x>
-         <y>110</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Remove</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_23">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>600</y>
-        <width>241</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Stabilization settings</string>
-      </property>
-      <widget class="QLabel" name="label_94">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>211</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Safe pressure threshold (E-9 mbar)</string>
-       </property>
-      </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_13">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>40</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <double>9999.989999999999782</double>
-       </property>
-       <property name="value">
-        <double>2.000000000000000</double>
-       </property>
-      </widget>
-      <widget class="QDoubleSpinBox" name="doubleSpinBox_15">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>90</y>
-         <width>131</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <double>10.000000000000000</double>
-       </property>
-       <property name="singleStep">
-        <double>0.100000000000000</double>
-       </property>
-       <property name="value">
-        <double>0.500000000000000</double>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_96">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>70</y>
-         <width>231</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Temperature stabilization threshold (K)</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_24">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>500</y>
-        <width>231</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>Time Delay</string>
-      </property>
-      <widget class="QLabel" name="label_95">
-       <property name="geometry">
-        <rect>
-         <x>80</x>
-         <y>20</y>
-         <width>21</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>(s)</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_4">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>20</y>
-         <width>51</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>9999</number>
-       </property>
-       <property name="value">
-        <number>100</number>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_5">
-       <property name="geometry">
-        <rect>
-         <x>100</x>
-         <y>20</y>
-         <width>51</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>9999</number>
-       </property>
-       <property name="value">
-        <number>100</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_99">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>20</y>
-         <width>51</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>(min)</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="mbe_savegrowthtimeline_10">
-       <property name="geometry">
-        <rect>
-         <x>120</x>
-         <y>50</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Add</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="mbe_savegrowthtimeline_9">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>50</y>
-         <width>51</width>
-         <height>23</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>7</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Remove</string>
-       </property>
-      </widget>
-      <widget class="QSpinBox" name="spinBox_6">
-       <property name="geometry">
-        <rect>
-         <x>70</x>
-         <y>50</y>
-         <width>42</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="value">
-        <number>1</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_100">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>50</y>
-         <width>51</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>from PID</string>
-       </property>
-      </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_25">
       <property name="geometry">
@@ -9007,6 +8138,21 @@ QProgressBar::chunk {
        <item>
         <property name="text">
          <string>Current routine</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Routine 1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Routine 2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Routine 3</string>
         </property>
        </item>
        <item>
@@ -9095,7 +8241,7 @@ QProgressBar::chunk {
         <rect>
          <x>40</x>
          <y>70</y>
-         <width>141</width>
+         <width>71</width>
          <height>23</height>
         </rect>
        </property>
@@ -9107,7 +8253,7 @@ QProgressBar::chunk {
         </font>
        </property>
        <property name="text">
-        <string>Save current routine</string>
+        <string>Save </string>
        </property>
       </widget>
       <widget class="QLabel" name="label_105">
@@ -9121,6 +8267,26 @@ QProgressBar::chunk {
        </property>
        <property name="text">
         <string>Select:</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="mbe_savegrowthtimeline_17">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>70</y>
+         <width>71</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>7</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Load</string>
        </property>
       </widget>
      </widget>
