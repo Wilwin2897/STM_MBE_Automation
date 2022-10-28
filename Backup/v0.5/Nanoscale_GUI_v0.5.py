@@ -212,7 +212,7 @@ class Eurotherm3508(minimalmodbus.Instrument):
 
     def get_sp_loop1(self):
         """Return the (working) setpoint (SP) for loop1."""
-        return self.read_register(5, 1)
+        return self.read_register(3, 1)
 
     def set_sp_loop1(self, value):
         """Set the SP1 for loop1.
@@ -3370,6 +3370,8 @@ class Ui_MainWindow(object):
             self._eurotherm_A_temperature = eurotherm3508a.get_pv_loop1()
             print(self._eurotherm_A_temperature)
             print(eurotherm3508a.set_sp_loop1(self._eurotherm_A_counter))
+            print(eurotherm3508a.get_sp_loop1())
+
         except IOError:
             print("Failed to read from instrument")
          # Registernumber, number of decimals

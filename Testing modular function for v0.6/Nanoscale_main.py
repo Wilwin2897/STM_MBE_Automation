@@ -8,7 +8,11 @@ Created on Thu Oct 20 13:31:55 2022
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Nanoscale_GUI import Ui_MainWindow
-from Nanoscale_widgets import EuroGroup,HVPower_Voltage,HVPower_Current,Time_delay,Stabilization_set,Shutter_set
+from Nanoscale_widgets import Functions,EuroGroup,HVPower_Voltage,HVPower_Current,Time_delay,Stabilization_set,Shutter_set
+from Nanoscale_default import default_parameters
+from Nanoscale_instruments import Eurotherm3508
+import datetime
+import time
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self,*arg,**kwargs):
@@ -17,6 +21,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.module_sets()
+        self.ui.mbe_savegrowthtimeline_13.clicked.connect(self.run_processes)
         self.show()
         
     def dragEnterEvent(self, e):
@@ -30,6 +35,146 @@ class MainWindow(QtWidgets.QMainWindow):
         e.setDropAction(QtCore.Qt.MoveAction)
         e.accept()
         
+    def closeEvent(self, event):
+        print("Stopping all timer, return to manual control")
+##################################################################
+########################Process Control###########################
+##################################################################  
+    def run_processes(self):    
+        #Run every process with the same IDs with some specified delay
+        #Will detect active modules and assign a process by each active module
+        self.process_Euro3508()
+        
+    def process_Euro3508(self):
+        self.Euro3508_init()
+        self.Euro3508_check()
+        if self.ui.Euro_mod !=[]:
+            for i in range(len(self.ui.Euro_mod)):
+                if self.ui.Euro_mod[i].mv_checkBox.checkState() == QtCore.Qt.Checked:
+                    print('PID control activated, using PID instead of fitted temperature data')
+                    P_value = self.ui.Euro_mod[i].doubleP.value()
+                    I_value = self.ui.Euro_mod[i].doubleI.value()
+                    D_value = self.ui.Euro_mod[i].doubleD.value()
+                    SP_value = self.ui.Euro_mod[i].doubleSpinBox .value()
+                    print('P = %.2f, I = %.2f, D = %.2f, SP = %.2f C' %(P_value,I_value,D_value,SP_value))
+                    self.Euro3508_send_PID(P_value,I_value,D_value,SP_value)
+                    self.timer1 = QtCore.QTimer()
+                    self.timer1.timeout.connect(self.Euro3508_check)
+                    self.timer1.start(5000)
+                    self.Treach_count = 0
+                    if abs(self._eurotemp_0-SP_value) < self.ui.Stabilizationset.doubleSpinBox_1.value():
+                        self.timer2 = QtCore.QTimer()
+                        self.timer2.timeout.connect(self.stabilization_T(SP_value))
+                        self.timer2.start(20000)
+                        
+                else:
+                    print('Using fitted temperature and output power data')
+                self.timer2.stop()
+        else:
+            print("No Eurotherm module detected, please add the widget before continuing")
+            
+    def stabilization_T(self,SP_value):
+        if abs(self._eurotemp_0-SP_value) < self.ui.Stabilizationset.doubleSpinBox_1.value():
+            self.Treach_count += 1
+            if self.Treach_count >= 6:
+                print("Temperature is stable at the Set Point ", SP_value)
+                self.timer2.stop()
+                self.timer1.stop()
+            else:
+                print("Temperature is not stable, please adjust the stabillization set or tune manually\n")
+        
+        
+
+            
+                
+        #self.Euro3508_send('Increase(%)')
+##################################################################
+#####Communication with the instruments modular function#####
+##################################################################    
+    def Euro3508_init(self):
+        port_dict = {'Te': 'COM1', 'Sn': 'COM2',\
+                     'BaF2': 'COM3', 'Co': 'COM4',\
+                     'Fe': 'COM5', 'Dy': 'COM6'}
+        try:
+            self.eurotherm3508_0 = Eurotherm3508('COM1', 1) # port name, slave address (in decimal)
+            self._eurocount_0 = self.eurotherm3508_0.get_op_loop1()
+            self._eurotemp_0 = self.eurotherm3508_0.get_pv_loop1()
+            print("Connected to Eurotherm with OP counter = ", self._eurocount_0," %")
+            print("Connected to Eurotherm with Temperature = ", self._eurotemp_0," C")
+        except IOError:
+            print("Initialization failed to read from instrument, please check the Port, slave, and connection")
+        except self.eurotherm3508_0.serial.SerialException:
+            print("Serial Exception: Please check the Port, slave, and connection")
+        finally:
+            try:
+                self.eurotherm3508_0.serial.close()
+            except:
+                pass
+            
+    def Euro3508_send_man(self,mode):
+        upperlim = 80
+        if mode == 'Increase(%)':
+            self._eurocount_0 += 0.1 # Percentage of Eurotherm
+            if self._eurocount_0 > upperlim:
+                self._eurocount_0 = upperlim
+        if mode == 'Decrease(%)':
+            self._eurocount_0 -= 0.1 # Percentage of Eurotherm
+            if self._eurocount_0 < 0:
+                self._eurocount_0 = 0             
+        try:
+            self.eurotherm3508_0 = Eurotherm3508('COM1', 1)
+            self.eurotherm3508_0.set_op_loop1(self._eurocount_0)
+        except IOError:
+            print("Sending failed to read from instrument, please check the Port, slave, and connection")
+            pass
+        except self.eurotherm3508_0.serial.SerialException:
+            print("Serial Exception: Please check the Port, slave, and connection")
+            pass
+        finally:
+            try:
+                self.eurotherm3508_0.serial.close()
+            except:
+                pass
+            
+    def Euro3508_send_PID(self,P,I,D,SP):
+        try:
+            self.eurotherm3508_0 = Eurotherm3508('COM1', 1)
+            self.eurotherm3508_0.set_PID_Proportional(P)
+            self.eurotherm3508_0.set_PID_Integral(I)
+            self.eurotherm3508_0.set_PID_Derivative(D)
+            self.eurotherm3508_0.set_sp_loop1(SP)
+        except IOError:
+            print("Sending failed to read from instrument, please check the Port, slave, and connection")
+            pass
+        except self.eurotherm3508_0.serial.SerialException:
+            print("Serial Exception: Please check the Port, slave, and connection")
+            pass
+        finally:
+            try:
+                self.eurotherm3508_0.serial.close()
+            except:
+                pass
+            
+    def Euro3508_check(self):
+        try:
+            self.eurotherm3508_0 = Eurotherm3508('COM1', 1)
+            self._eurotemp_0 = self.eurotherm3508_0.get_pv_loop1()
+            self._eurocount_0 = self.eurotherm3508_0.get_op_loop1()
+            print("OP counter = ", self._eurocount_0," %")
+            print("Temperature = ", self._eurotemp_0," C")
+        except IOError:
+            print("Checking failed to read from instrument, please check the Port, slave, and connection")
+            pass
+        except self.eurotherm3508_0.serial.SerialException:
+            print("Serial Exception: Please check the Port, slave, and connection")
+            pass
+        finally:
+            try:
+                self.eurotherm3508_0.serial.close()
+            except:
+                pass
+
+        
 ##################################################################
 #####Get the Widgets for modular function#####
 ##################################################################
@@ -39,7 +184,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self._posHVPA = -20;self.ui.HVPA_mod=[];self.ui.HVPAcount = 0
         self._posTime = -20;self.ui.Time_mod=[];self.ui.Timecount = 0
         self._posShut = -20;self.ui.Shut_mod=[];self.ui.Shutcount = 0
-        
+        self._eurotemp_0 = 30
         self.ui.mbe_savegrowthtimeline_2.clicked.connect(self.add_module)
         self.ui.mbe_savegrowthtimeline_15.clicked.connect(self.remove_module)
         self.ui.mbe_savegrowthtimeline_16.clicked.connect(self.save_module)
@@ -79,13 +224,18 @@ class MainWindow(QtWidgets.QMainWindow):
 #####Saving and loading widgets and position for modular function#####
 ######################################################################
     def save_module(self):
-        text = self.ui.comboBox_2.currentText()
+        text = self.ui.comboBox_20.currentText()
         self.settings = QtCore.QSettings( 'User', text )
         self.settings.setValue( "Eurocount", self.ui.Eurocount)
         self.settings.setValue( "HVPVcount", self.ui.HVPVcount)
         self.settings.setValue( "HVPAcount", self.ui.HVPAcount)
         self.settings.setValue( "Timecount", self.ui.Timecount)
         self.settings.setValue( "Shutcount", self.ui.Shutcount)
+        self.settings.setValue( "modBox_0", self.ui.comboBox_2.currentIndex())
+        self.settings.setValue( "modBox_1", self.ui.comboBox_5.currentIndex())
+        self.settings.setValue( "modBox_2", self.ui.comboBox_17.currentIndex())
+        self.settings.setValue( "modBox_3", self.ui.comboBox_16.currentIndex())
+        self.settings.setValue( "modBox_4", self.ui.comboBox_18.currentIndex())
         for i in range(self.ui.Eurocount):
             self.settings.setValue( "Euro_pos"+str(i), self.ui.Euro_mod[i].pos())
         for i in range(self.ui.HVPVcount):
@@ -98,8 +248,13 @@ class MainWindow(QtWidgets.QMainWindow):
             self.settings.setValue( "Shut_pos"+str(i), self.ui.Shut_mod[i].pos())
             
     def load_module(self):
-        text = self.ui.comboBox_2.currentText()
+        text = self.ui.comboBox_20.currentText()
         self.settings = QtCore.QSettings( 'User', text )
+        self.ui.comboBox_2.setCurrentIndex(self.settings.value("modBox_0"))
+        self.ui.comboBox_5.setCurrentIndex(self.settings.value("modBox_1"))
+        self.ui.comboBox_17.setCurrentIndex(self.settings.value("modBox_2"))
+        self.ui.comboBox_16.setCurrentIndex(self.settings.value("modBox_3"))
+        self.ui.comboBox_18.setCurrentIndex(self.settings.value("modBox_4"))
         for i in range(self.settings.value("Eurocount")):
             self.add_Euro()
             self.ui.Euro_mod[i].move(self.settings.value("Euro_pos"+str(i)))

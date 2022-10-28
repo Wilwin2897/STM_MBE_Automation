@@ -5,12 +5,13 @@ Created on Thu Oct 20 13:32:21 2022
 @author: wilwin
 """
 from PyQt5 import QtCore, QtGui, QtWidgets
+import numpy as np
 
 class EuroGroup(QtWidgets.QWidget):    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.groupBox = QtWidgets.QGroupBox(self)
-        self.groupBox.setGeometry(QtCore.QRect(0, 0, 241, 171))
+        self.groupBox.setGeometry(QtCore.QRect(0, 0, 261, 171))
         self.groupBox.setObjectName("groupBox")
         self.comboBox = QtWidgets.QComboBox(self.groupBox)
         self.comboBox.setGeometry(QtCore.QRect(50, 50, 131, 22))
@@ -57,10 +58,10 @@ class EuroGroup(QtWidgets.QWidget):
         self.spinBox.setProperty("value", 1)
         self.spinBox.setObjectName("spinBox")
         self.label_4 = QtWidgets.QLabel(self.groupBox)
-        self.label_4.setGeometry(QtCore.QRect(190, 50, 21, 16))
+        self.label_4.setGeometry(QtCore.QRect(170, 75, 21, 16))
         self.label_4.setObjectName("label_4")
         self.comboBox_2 = QtWidgets.QComboBox(self.groupBox)
-        self.comboBox_2.setGeometry(QtCore.QRect(50, 20, 61, 22))
+        self.comboBox_2.setGeometry(QtCore.QRect(50, 20, 51, 22))
         self.comboBox_2.setObjectName("comboBox_2")
         self.comboBox_2.addItem("")
         self.comboBox_2.addItem("")
@@ -71,6 +72,34 @@ class EuroGroup(QtWidgets.QWidget):
         self.label_104 = QtWidgets.QLabel(self.groupBox)
         self.label_104.setGeometry(QtCore.QRect(10, 20, 51, 16))
         self.label_104.setObjectName("label_104")
+        self.label_P = QtWidgets.QLabel(self.groupBox)
+        self.label_P.setGeometry(QtCore.QRect(130, 5, 41, 16))
+        self.label_P.setObjectName("P:")
+        self.label_I = QtWidgets.QLabel(self.groupBox)
+        self.label_I.setGeometry(QtCore.QRect(180, 5, 41, 16))
+        self.label_I.setObjectName("I:")
+        self.label_D = QtWidgets.QLabel(self.groupBox)
+        self.label_D.setGeometry(QtCore.QRect(230, 5, 41, 16))
+        self.label_D.setObjectName("D:")
+        self.doubleP = QtWidgets.QDoubleSpinBox(self.groupBox)
+        self.doubleP.setGeometry(QtCore.QRect(110, 20, 51, 22))
+        self.doubleP.setMaximum(9999.0)
+        self.doubleP.setProperty("value", 20.0)
+        self.doubleP.setObjectName("doubleSpinBox_2")
+        self.doubleI = QtWidgets.QDoubleSpinBox(self.groupBox)
+        self.doubleI.setGeometry(QtCore.QRect(160, 20, 51, 22))
+        self.doubleI.setMaximum(9999.0)
+        self.doubleI.setProperty("value", 360.0)
+        self.doubleI.setObjectName("doubleSpinBox_2")
+        self.doubleD = QtWidgets.QDoubleSpinBox(self.groupBox)
+        self.doubleD.setGeometry(QtCore.QRect(210, 20, 51, 22))
+        self.doubleD.setMaximum(9999.0)
+        self.doubleD.setProperty("value", 60.0)
+        self.doubleD.setObjectName("doubleSpinBox_2")
+        self.mv_checkBox = QtWidgets.QCheckBox(self.groupBox)
+        self.mv_checkBox.setGeometry(QtCore.QRect(190, 48, 81, 22))
+        self.mv_checkBox.setText("PID On")
+        self.mv_checkBox.setObjectName("mv_checkBox_Fe")
         self.retranslateUi()
         
     def retranslateUi(self):
@@ -83,7 +112,7 @@ class EuroGroup(QtWidgets.QWidget):
         self.label_3.setText(_translate("MainWindow", "Rate Setting (K/min)"))
         self.add_button.setText(_translate("MainWindow", "Add"))
         self.remove_button.setText(_translate("MainWindow", "Remove"))
-        self.label_4.setText(_translate("MainWindow", "PID"))
+        self.label_4.setText(_translate("MainWindow", "ID:"))
         self.comboBox_2.setItemText(0, _translate("MainWindow", "Te"))
         self.comboBox_2.setItemText(1, _translate("MainWindow", "Sn"))
         self.comboBox_2.setItemText(2, _translate("MainWindow", "BaF2"))
@@ -91,7 +120,9 @@ class EuroGroup(QtWidgets.QWidget):
         self.comboBox_2.setItemText(4, _translate("MainWindow", "Fe"))
         self.comboBox_2.setItemText(5, _translate("MainWindow", "Dy"))
         self.label_104.setText(_translate("MainWindow", "Select:"))
-        
+        self.label_P.setText(_translate("MainWindow", "P:"))
+        self.label_I.setText(_translate("MainWindow", "I:"))
+        self.label_D.setText(_translate("MainWindow", "D:"))
     def mouseMoveEvent(self, e):
         if e.buttons() == QtCore.Qt.LeftButton:
             drag = QtGui.QDrag(self)
@@ -167,7 +198,7 @@ class HVPower_Voltage(QtWidgets.QWidget):
         self.label_1.setText(_translate("MainWindow", "Target Voltage (V):"))
         self.label_2.setText(_translate("MainWindow", "Rate Setting (V/min)"))
         self.add_button.setText(_translate("MainWindow", "Add"))
-        self.label_97.setText(_translate("MainWindow", "PID"))
+        self.label_97.setText(_translate("MainWindow", "ID"))
         self.remove_button.setText(_translate("MainWindow", "Remove"))
         
     def mouseMoveEvent(self, e):
@@ -247,7 +278,7 @@ class HVPower_Current(QtWidgets.QWidget):
         self.label_1.setText(_translate("MainWindow", "Target Current (A):"))
         self.label_2.setText(_translate("MainWindow", "Rate Setting (A/min)"))
         self.add_button.setText(_translate("MainWindow", "Add"))
-        self.label_3.setText(_translate("MainWindow", "PID"))
+        self.label_3.setText(_translate("MainWindow", "ID"))
         self.remove_button.setText(_translate("MainWindow", "Remove"))
         
     def mouseMoveEvent(self, e):
@@ -429,7 +460,7 @@ class Shutter_set(QtWidgets.QWidget):
         self.label.setText(_translate("MainWindow", "Angle (degree)"))
         self.add_button.setText(_translate("MainWindow", "Add"))
         self.remove_button.setText(_translate("MainWindow", "Remove"))
-        self.label_1.setText(_translate("MainWindow", "PID"))
+        self.label_1.setText(_translate("MainWindow", "ID"))
         self.label_2.setText(_translate("MainWindow", "Select:"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Te"))
         self.comboBox.setItemText(1, _translate("MainWindow", "Sn"))
@@ -447,3 +478,176 @@ class Shutter_set(QtWidgets.QWidget):
             self.render(pixmap)
             drag.setPixmap(pixmap)
             drag.exec_(QtCore.Qt.MoveAction)
+
+class Functions(QtWidgets.QWidget):    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+    def Estimate_time(warm1,warm2,warm3,cool1,cool2,cool3,maxTempA,maxTempB,maxTempC,delay,anneal):
+        time = 0
+        time = 300/warm1 + 500/warm2 - 300/cool1-500/cool2
+        time += (maxTempA-800)/warm3 - (maxTempA-800)/cool3
+        time += (maxTempB-800)/warm3 - (maxTempB-800)/cool3
+        time += (maxTempC-800)/warm3 - (maxTempC-800)/cool3
+        time += delay + anneal
+        hours, minutes= divmod(time, 60)
+        string = str(int(hours))+' hours and '+ str(int(minutes))+' minutes'        
+        return string
+
+    def get_toy_data():
+        T1 = np.random.uniform(335.5, 375.5)	
+        T2 = np.random.uniform(335.5, 375.5)	
+        T3 = np.random.uniform(335.5, 375.5)	
+        T4 = np.random.uniform(335.5, 375.5)	
+        JT = np.random.uniform(335.5, 375.5)	
+        GGS = np.random.uniform(335.5, 375.5)	
+        PSTM = np.random.uniform(3.E-10, 3.E-9)
+        PSTM_L= np.random.uniform(3.E-10, 3.E-9)
+        PMBE = np.random.uniform(3.E-10, 3.E-9)
+        PMBE_L = np.random.uniform(3.E-10, 3.E-9)
+        PLOAD_L= np.random.uniform(3.E-10, 3.E-9)
+        IG1 = np.random.uniform(3.E-10, 3.E-9)
+        PIR = np.random.uniform(3.E-10, 3.E-9)
+        A = np.random.uniform(0.1, 1)
+        TC = np.random.uniform(20, 300)
+        EF_T1 = np.random.uniform(20, 300)
+        EF_T2 = np.random.uniform(20, 300)
+        EF_T3 = np.random.uniform(20, 300)
+        EF_T4 = np.random.uniform(20, 300)
+        EF_T5 = np.random.uniform(20, 300)
+        EF_T6 = np.random.uniform(20, 300)
+        EF_P1 = np.random.uniform(0, 100)
+        EF_P2 = np.random.uniform(0, 100)
+        EF_P3 = np.random.uniform(0, 100)
+        EF_P4 = np.random.uniform(0, 100)
+        EF_P5 = np.random.uniform(0, 100)
+        EF_P6 = np.random.uniform(0, 100)
+        EF_V1 = np.random.uniform(0, 4.5)
+        EF_V2 = np.random.uniform(0, 4.5)
+        EF_V3 = np.random.uniform(0, 4.5)
+        EF_V4 = np.random.uniform(0, 4.5)
+        EF_V5 = np.random.uniform(0, 4.5)
+        EF_V6 = np.random.uniform(0, 4.5)
+        EF_A1 = np.random.uniform(0, 4.5)
+        EF_A2 = np.random.uniform(0, 4.5)
+        EF_A3 = np.random.uniform(0, 4.5)
+        EF_A4 = np.random.uniform(0, 4.5)
+        EF_A5 = np.random.uniform(0, 4.5)
+        EF_A6 = np.random.uniform(0, 4.5)
+        EB_V = np.random.uniform(0, 1000)
+        EB_A = np.random.uniform(0, 1)
+        EB_FIL_V = np.random.uniform(0, 5)
+        EB_FIL_A = np.random.uniform(0, 8)
+        return (T1,T2,T3,T4,JT,GGS,PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L,IG1,PIR,A,TC,EF_T1,
+            EF_T2,EF_T3,EF_T4,EF_T5,EF_T6,EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6,
+            EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6,EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6,
+            EB_V, EB_A, EB_FIL_V,EB_FIL_A)
+    
+    def generate_init_timeline():
+        heating_rate = [12, 8, 6, 4, 3, 2]
+        cooling_rate = [12, 8, 6, 4, 3, 2]
+        activate = [1, 1, 1, 1]
+        substrate_rate = [100, 0.2]
+        substrate_set = [1004.2, 3.80]
+        standby_temp = [800, 800, 1100, 1100]
+        opening_temp = [1060.2, 1050, 1430, 1430]
+        opening_time = [30, 15, 30, 30]
+        delay_time = [0, 90, 0, 0] #Delay is counted after the first shutter is open
+        annealing_para = [1004.2, 3.80, 720]
+        temperature_fixed_points = [200, 300, 250, 250, 250, 250]
+        pressure_threshold = 2.e-9
+        target_temp = []
+        delayed=[]
+        for i in range(4):
+            if delay_time[i] == 0:
+               target_temp.append(opening_temp[i])
+            else:
+               target_temp.append(standby_temp[i])
+               delayed.append(i)
+        
+        print(target_temp)
+        string  = ""
+        string += "######################\n#PROGRAM STARTS HERE\n######################\n"
+        string += "#set [Time (second)] [Commands] [Arguments] \n"
+        c = "set "
+        string += c+"0 0000\n" 
+        string += c+"5 0001\n" 
+        string += c+"10 0002\n" 
+        time = 10
+        current_temp = 23.0 #Check from output
+        current_percent = 0
+        #For x Celcius increase = y percentage of % power.
+        T_to_percent_ratio = 1/0.6 #1K=0.6 percent step (0.06%) increase 
+                                #May change with temperature, need a dynamic feedback loop
+                                
+    #Substrate heating
+        steps_voltage = substrate_rate[0]/20
+        minutes_voltage = int(substrate_set[0]/substrate_rate[0])
+        for minute in range(minutes_voltage):
+            for i in range(int(steps_voltage)):
+                time += 60/steps_voltage
+                string += c+"%i 4002\n"%(time)
+        steps_current = substrate_rate[1]/0.05
+        minutes_current = int(substrate_set[1]/substrate_rate[1])
+        for minute in range(minutes_current):
+            for i in range(int(steps_current)):
+                time += 60/steps_current
+                string += c+"%i 4005\n"%(time)
+            
+    #Heating part
+        for point in range(len(temperature_fixed_points)):
+            percent_steps = heating_rate[point]/T_to_percent_ratio
+            minutes = int(temperature_fixed_points[point]/heating_rate[point])
+            #print("#Temperature fixed point ",current_temp)
+            for minute in range(minutes):
+                for i in range(int(percent_steps)):
+                    time += 60/percent_steps
+                    current_temp += T_to_percent_ratio
+                    current_percent += 0.1
+                    print("#Time = %8i s, Temp = %5.1f K, Percent = %5.1f " %(time,current_temp,current_percent))
+                    if (activate[0]==1 and current_temp <= target_temp[0]) :
+                        string += c+"%i 3001\n"%(time)
+                    if (activate[1]==1 and current_temp <= target_temp[1]):
+                        string += c+"%i 3003\n"%(time)
+                    if (activate[2]==1 and current_temp <= target_temp[2]):
+                        string += c+"%i 3005\n"%(time)
+                    if (activate[3]==1 and current_temp <= target_temp[3]):
+                        string += c+"%i 3007\n"%(time)       
+                    for j in delayed:
+                        if (current_temp <= opening_temp[j]) :
+                                string += c+"%i 300%i %f A\n"%(time+opening_time[j]*60+delay_time[j]*60,2*j+1,current_temp) 
+    
+    #Temperature stabilization and shutter opening part
+    
+    #Cooling part
+        for point in range(len(temperature_fixed_points)):
+            percent_steps = cooling_rate[-point]/T_to_percent_ratio
+            minutes = int(temperature_fixed_points[-point]/cooling_rate[-point])
+            #print("#Temperature fixed point ",current_temp)
+            for minute in range(minutes):
+                for i in range(int(percent_steps)):
+                    time += 60/percent_steps
+                    current_temp -= T_to_percent_ratio
+                    current_percent -= 0.1
+                    print("#Time = %8i s, Temp = %5.1f K, Percent = %5.1f " %(time,current_temp,current_percent))
+                    if (activate[0]==1 and delay_time[0]==0) :
+                        string += c+"%i 3002\n"%(time+delay_time[0]*60+opening_time[0]*60)
+                    if (activate[1]==1 and delay_time[1]==0):
+                        string += c+"%i 3004\n"%(time+delay_time[1]*60+opening_time[1]*60)
+                    if (activate[2]==1 and delay_time[2]==0):
+                        string += c+"%i 3006\n"%(time+delay_time[2]*60+opening_time[2]*60)
+                    if (activate[3]==1 and delay_time[3]==0):
+                        string += c+"%i 3008\n"%(time+delay_time[3]*60+opening_time[3]*60)            
+    #Annealing
+    
+    #Update information every 12 seconds
+        interval = 12
+        for i in range(int(time/interval)):
+            string += c+"%i 1002\n"%(i*interval+interval)
+            string += c+"%i 1007\n"%(i*interval+interval)
+    
+    #Sorting timeline
+    
+        timeline_file = open("timeline.txt", "wt")
+        timeline_file.write(string)
+        timeline_file.close()                  
+        return string
