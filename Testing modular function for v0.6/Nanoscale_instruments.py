@@ -73,6 +73,8 @@ class Eurotherm3508(minimalmodbus.Instrument):
     def set_PID_Derivative(self, value):
         self.write_register(9, value,1)
 
+class HPVP(minimalmodbus.Instrument):
 
-    
+    def __init__(self, portname, slaveaddress):
+        minimalmodbus.Instrument.__init__(self, portname, slaveaddress)
     
