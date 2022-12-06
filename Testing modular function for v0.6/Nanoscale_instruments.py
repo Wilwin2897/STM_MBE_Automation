@@ -5,6 +5,7 @@ Created on Sat Oct 22 11:39:00 2022
 @author: wilwin
 """
 import minimalmodbus
+import socket
 
 class Eurotherm3508(minimalmodbus.Instrument):
     """Instrument class for Eurotherm 3500 process controller.
@@ -73,8 +74,95 @@ class Eurotherm3508(minimalmodbus.Instrument):
     def set_PID_Derivative(self, value):
         self.write_register(9, value,1)
 
-class HPVP(minimalmodbus.Instrument):
 
-    def __init__(self, portname, slaveaddress):
-        minimalmodbus.Instrument.__init__(self, portname, slaveaddress)
-    
+
+class PrologixGPIBEthernet:
+    PORT = 1234
+
+    def __init__(self, host, timeout=1):
+        self.host = host
+        self.socket = socket.socket(socket.AF_INET,
+                                    socket.SOCK_STREAM,
+                                    socket.IPPROTO_TCP)
+        self.timeout = 0
+        self.set_timeout(timeout)
+
+    def connect(self):
+        self.socket.connect((self.host, self.PORT))
+
+        self._setup()
+
+    def close(self):
+        self.socket.close()
+
+    def select(self, addr):
+        self._send('++addr %i' % int(addr))
+
+    def write(self, cmd):
+        self._send(cmd)
+
+    def read(self, num_bytes=1024):
+        self._send('++read eoi')
+        return self._recv(num_bytes)
+
+    def query(self, cmd, buffer_size=1024*1024):
+        self.write(cmd)
+        return self.read(buffer_size)
+
+    def set_timeout(self, timeout):
+        # see user manual for details on accepted timeout values
+        # https://prologix.biz/downloads/PrologixGpibEthernetManual.pdf#page=13
+        if timeout < 1e-3 or timeout > 3:
+            raise ValueError('Timeout must be >= 1e-3 (1ms) and <= 3 (3s)')
+
+        self.timeout = timeout
+        self.socket.settimeout(self.timeout)
+
+    def _send(self, value):
+        encoded_value = ('%s\n' % value).encode('ascii')
+        self.socket.send(encoded_value)
+
+    def _recv(self, byte_num):
+        value = self.socket.recv(byte_num)
+        return value.decode('ascii')
+
+    def _setup(self):
+        # set device to CONTROLLER mode
+        self._send('++mode 1')
+
+        # disable read after write
+        self._send('++auto 0')
+
+        # set GPIB timeout
+        self._send('++read_tmo_ms %i' % int(self.timeout*1e3))
+
+        # do not require CR or LF appended to GPIB data
+        self._send('++eos 3')
+
+
+class PrologixGPIBEthernetDevice:
+    def __init__(self, address, *args, **kwargs):
+        self.address = address
+        self.gpib = PrologixGPIBEthernet(*args, **kwargs)
+
+    def connect(self):
+        self.gpib.connect()
+        self.gpib.select(self.address)
+
+    def close(self):
+        self.gpib.close()
+
+    def write(self, *args):
+        return self.gpib.write(*args)
+
+    def read(self, *args):
+        return self.gpib.read(*args)
+
+    def query(self, *args):
+        return self.gpib.query(*args)
+
+    def idn(self):
+        return self.query('*IDN?')
+
+    def reset(self):
+        self.write('*RST')

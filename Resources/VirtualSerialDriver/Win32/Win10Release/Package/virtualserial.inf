@@ -1,0 +1,80 @@
+;
+; VirtualSerial.inf
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+Provider=%MSFTUMDF%
+CatalogFile=WUDF.cat
+DriverVer = 02/15/2021,9.14.10.1
+DriverPackageDisplayName="COM Port (virtual) to TCP/IP adapter"
+
+[Manufacturer]
+%MSFTUMDF%=Microsoft,NTx86
+
+[Microsoft.NTx86]
+%VirtualSerialDeviceName%=VirtualSerial_Install,UMDF\VirtualSerial
+
+[SourceDisksFiles]
+Virtualserial.dll=1
+
+[SourceDisksNames]
+1 = %MediaDescription%
+
+; =================== UMDF VirtualSerial Device ==================================
+
+[VirtualSerial_Install.NT]
+CopyFiles=UMDriverCopy
+
+[VirtualSerial_Install.NT.hw]
+AddReg=VirtualSerial_Install_PortName_AddReg
+
+[VirtualSerial_Install_PortName_AddReg]
+HKR,,DeviceType,0x10001,0x0000001b
+
+[VirtualSerial_Install.NT.Services]
+AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall
+
+[VirtualSerial_Install.NT.CoInstallers]
+AddReg=CoInstallers_AddReg
+
+[VirtualSerial_Install.NT.Wdf]
+UmdfService=VirtualSerial,VirtualSerial_Install
+UmdfServiceOrder=VirtualSerial
+UmdfKernelModeClientPolicy = AllowKernelModeClients
+UmdfFileObjectPolicy = AllowNullAndUnknownFileObjects
+UmdfFsContextUsePolicy = CannotUseFsContexts
+UmdfHostProcessSharing=ProcessSharingDisabled
+
+[VirtualSerial_Install]
+UmdfLibraryVersion=1.11.0
+ServiceBinary=%12%\UMDF\Virtualserial.dll
+DriverCLSID={C8ECC087-6B79-4de5-8FB4-C03358A29617}
+
+[WUDFRD_ServiceInstall]
+DisplayName = %WudfRdDisplayName%
+ServiceType = 1
+StartType = 3
+ErrorControl = 1
+ServiceBinary = %12%\WUDFRd.sys
+LoadOrderGroup = Base
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,WudfCoinstaller.dll
+
+[DestinationDirs]
+UMDriverCopy=12,UMDF ; copy to drivers\UMDF
+CoInstallers_CopyFiles=11
+
+[UMDriverCopy]
+Virtualserial.dll
+
+; =================== Generic ==================================
+
+[Strings]
+MSFTUMDF="INFICON AG"
+MediaDescription="Microsoft Sample Driver Installation Media"
+WudfRdDisplayName="COM Port (virtual) to TCP/IP adapter"
+VirtualSerialDeviceName="COM Port (virtual) to TCP/IP adapter"

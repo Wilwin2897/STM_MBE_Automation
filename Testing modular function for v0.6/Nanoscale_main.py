@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Oct 20 13:31:55 2022
-
 @author: wilwin
+pip install lakeshore
+with static IP address 169.254.125.29 port 7777 for 336
+and 169.254.125.30 port 23 for TLC-500
+Remember to set your computer IP address to static ip 169.254.125.XXX
 """
 
 import sys
@@ -14,7 +17,13 @@ from Nanoscale_instruments import Eurotherm3508
 from Nanoscale_calibration import Calibration_OP_PV
 import datetime
 import time
+import pyqtgraph as pg
 import numpy as np
+import pyvisa as visa
+from lakeshore import Model336
+from math import nan, isnan
+from pyvisa import constants
+
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self,*arg,**kwargs):
@@ -24,14 +33,18 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         #Set up initial variables
         self.port_serial = {'Te': 'COM1', 'Sn': 'COM2','BaF2': 'COM3', 'Co': 'COM4','Fe': 'COM5', 'Dy': 'COM6'}
-        self.timer_1, self.timer_2, self.timer_3, self.wait, self._eurocount, self._eurotemp = ([None for i in range(6)] for j in range(6))
+        self.timer_1, self.timer_2, self.timer_3, self.wait, self.lp_timer , self._eurocount, self._eurotemp = ([None for i in range(6)] for j in range(7))
+        
         self.Euroshot_count = [0,0,0,0,0,0]
         self.current_status = [0,0,0,0,0,0]
         self.my_dict = {}
         #Initialization
         self.module_sets()
+        self.write_data_log()
         self.calibration = Calibration_OP_PV()
         self.ui.mbe_savegrowthtimeline_13.clicked.connect(self.run_processes)
+        self.livedata_start()
+        
         self.show()
         
         
@@ -48,8 +61,8 @@ class MainWindow(QtWidgets.QMainWindow):
         e.accept()
         
     def closeEvent(self, event):
-        Ntimers = 4
-        variables = {0: self.wait, 1: self.timer_1, 2: self.timer_2, 3: self.timer_3}
+        Ntimers = 5
+        variables = {0: self.wait, 1: self.timer_1, 2: self.timer_2, 3: self.timer_3, 4: self.lp_timer}
         print("Stopping all timer, returning to manual hand-control")
         for i in range(Ntimers):
             v = variables[i]
@@ -59,7 +72,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 except:
                     print('Timer %s (%i-th) was not started'%(i, j))
                     pass
-                
+
+
 ##################################################################
 ########################Process Control###########################
 ##################################################################  
@@ -494,6 +508,62 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.Shut_mod.pop().deleteLater()
         self.ui.Shutcount -=1
 
+
+        
+##################################################################
+########################Plotting control##########################
+################################################################## 
+    def livedata_start(self):
+        #EDIT- Live_plot_1#Today task finish plotting function
+        self.plot_mode = {'T1,T2,T3,T4,JT,GGS vs time':[['T1','T2','T3','T4','JT','GGS'],'Temperature (K)'],'MBE pressure (mbar) vs time': [['PMBE'],'Pressure (mbar)'],\
+                   'MBE+STM pressure (mbar) vs time': [['PMBE','PSTM'],'Pressure (mbar)'],'Beam Flux vs time':[['IG1'],'Beam Flux'] }
+        self.ui.data_line = [None,None,None,None,None,None]
+        self.update_plot()
+        self.ui.mv_comboBox.currentTextChanged.connect(self.update_plot)
+        self.ui.mv_unit_select.currentTextChanged.connect(self.update_plot)
+        
+        self.lp_timer[0] = QtCore.QTimer()
+        self.lp_timer[0].timeout.connect(self.lcd_update)
+        self.lp_timer[0].start(2000)
+        self.lp_timer[1] = QtCore.QTimer()
+        self.lp_timer[1].timeout.connect(self.write_data_log)
+        self.lp_timer[1].start(8000)
+        self.lp_timer[2] = QtCore.QTimer()
+        self.lp_timer[2].timeout.connect(lambda:self.update_plot_data())
+        self.lp_timer[2].start(2000)
+
+    
+    def update_plot(self):
+        styles = {"color": "#000000", "font-size": "20px"}
+        try:
+            self.graphWidget.clear()
+        except:
+            print('Initiating live plot')
+            self.graphWidget = pg.PlotWidget(self.ui.groupBox_10)
+            self.graphWidget.setGeometry(QtCore.QRect(35, 75, 505, 285))
+            self.graphWidget.showGrid(x=True, y=True)
+            self.graphWidget.setTitle("" , color="black", size="15pt")
+            self.graphWidget.setBackground('w')
+        axis = pg.DateAxisItem(orientation='bottom')
+        self.graphWidget.setAxisItems({'bottom':axis})
+        mode  = self.ui.mv_comboBox.currentText()
+        self.graphWidget.addLegend(offset=(1, 1),verSpacing=-5,brush='w')
+
+        self.graphWidget.setLabel("bottom", self.ui.mv_unit_select.currentText(), **styles)
+        self.graphWidget.setLabel("left", self.plot_mode[mode][1], **styles)
+        self.x,self.y = self.read_data_log(self.plot_mode[mode][0],0,self.ui.mv_unit_select.currentText())
+        colors = [(0, 0, 0),(255,0,0),(0,0,255),(0,255,0),(255,0,255),(100,0,100),(100,0,200)]
+        for i in range(len(self.x)):
+            self.ui.data_line[i] =  self.graphWidget.plot(x=[x.timestamp() for x in self.x[i]], y=self.y[i], pen=pg.mkPen(color=colors[i]),\
+                                                          symbol='o',symbolPen =colors[i],symbolBrush='w', symbolSize = 6,name=self.plot_mode[mode][0][i])
+    def update_plot_data(self):
+        mode  = self.ui.mv_comboBox.currentText()
+        self.x,self.y = self.read_data_log(self.plot_mode[mode][0],0,self.ui.mv_unit_select.currentText())
+        for i in range(len(self.x)):
+            self.ui.data_line[i].setData([x.timestamp() for x in self.x[i]],self.y[i])  # Update the data.
+
+    def button_clicked(self):
+        self.graphWidget.setTitle(self.ui.mv_title.text())
 ###############################################################
 ###############################################################
 #######NON-ESSENTIAL FUNCTIONS (Logging,plotting,etc)##########
@@ -501,49 +571,76 @@ class MainWindow(QtWidgets.QMainWindow):
 ###############################################################
 
     def get_data(self):
-        T1 = np.random.uniform(335.5, 375.5)	
-        T2 = np.random.uniform(335.5, 375.5)	
-        T3 = np.random.uniform(335.5, 375.5)	
-        T4 = np.random.uniform(335.5, 375.5)	
-        JT = np.random.uniform(335.5, 375.5)	
-        GGS = np.random.uniform(335.5, 375.5)	
-        PSTM = np.random.uniform(3.E-10, 3.E-9)
-        PSTM_L= np.random.uniform(3.E-10, 3.E-9)
-        PMBE = np.random.uniform(3.E-10, 3.E-9)
-        PMBE_L = np.random.uniform(3.E-10, 3.E-9)
-        PLOAD_L= np.random.uniform(3.E-10, 3.E-9)
-        IG1 = np.random.uniform(3.E-10, 3.E-9)
-        PIR = np.random.uniform(3.E-10, 3.E-9)
-        A = np.random.uniform(0.1, 1)
-        TC = np.random.uniform(20, 300)
-        EF_T1 = np.random.uniform(20, 300)
-        EF_T2 = np.random.uniform(20, 300)
-        EF_T3 = np.random.uniform(20, 300)
-        EF_T4 = np.random.uniform(20, 300)
-        EF_T5 = np.random.uniform(20, 300)
-        EF_T6 = np.random.uniform(20, 300)
-        EF_P1 = np.random.uniform(0, 100)
-        EF_P2 = np.random.uniform(0, 100)
-        EF_P3 = np.random.uniform(0, 100)
-        EF_P4 = np.random.uniform(0, 100)
-        EF_P5 = np.random.uniform(0, 100)
-        EF_P6 = np.random.uniform(0, 100)
-        EF_V1 = np.random.uniform(0, 4.5)
-        EF_V2 = np.random.uniform(0, 4.5)
-        EF_V3 = np.random.uniform(0, 4.5)
-        EF_V4 = np.random.uniform(0, 4.5)
-        EF_V5 = np.random.uniform(0, 4.5)
-        EF_V6 = np.random.uniform(0, 4.5)
-        EF_A1 = np.random.uniform(0, 4.5)
-        EF_A2 = np.random.uniform(0, 4.5)
-        EF_A3 = np.random.uniform(0, 4.5)
-        EF_A4 = np.random.uniform(0, 4.5)
-        EF_A5 = np.random.uniform(0, 4.5)
-        EF_A6 = np.random.uniform(0, 4.5)
-        EB_V = np.random.uniform(0, 1000)
-        EB_A = np.random.uniform(0, 1)
-        EB_FIL_V = np.random.uniform(0, 5)
-        EB_FIL_A = np.random.uniform(0, 8)
+        try:
+            my_model_336 = Model336(ip_address='169.254.125.29')
+            T_All = my_model_336.get_all_sensor_reading()
+            rm = visa.ResourceManager() 
+            tlc_ip = 'TCPIP0::169.254.125.30::23::SOCKET'
+            TLC500 = rm.open_resource(tlc_ip)
+            TLC500.read_termination = '\n'
+            TLC500.write_termination = '\n'  
+            TLC_out = [float(x) for x in TLC500.query('getOutput').split(', ')]
+            TLC_out = [0 if isnan(i) else i for i in TLC_out ]
+            TLC500.close()
+            T1 = TLC_out[0]	
+            T2 = TLC_out[1]
+            T3 = TLC_out[2]	
+            T4 = TLC_out[3]
+            JT = T_All[0]	
+            GGS = T_All[1]
+        except:
+            T1,T2,T3,T4,JT,GGS = 0,0,0,0,0,0	
+
+        try:
+            inficon = rm.open_resource('ASRL8::INSTR',read_termination='',write_termination='')
+            rm.visalib.set_buffer(inficon.session, constants.VI_IO_IN_BUF, 32)
+            rm.visalib.set_buffer(inficon.session, constants.VI_IO_OUT_BUF, 32)
+            inficon.query("PR1\r\n")
+            PLL = inficon.query("\05")
+            PLOAD_L = float(PLL[3:]) 
+            inficon.close()
+        except:
+            PLOAD_L = 0
+            
+            
+        PSTM = 0
+        PSTM_L= 0
+        PMBE = 0
+        PMBE_L = 0
+        
+        IG1 = 0
+        PIR = 0
+        A = 0
+        TC = 0
+        
+        EF_T1 = 0
+        EF_T2 = 0
+        EF_T3 = 0
+        EF_T4 = 0
+        EF_T5 = 0
+        EF_T6 = 0
+        EF_P1 = 0
+        EF_P2 = 0
+        EF_P3 = 0
+        EF_P4 = 0
+        EF_P5 = 0
+        EF_P6 = 0
+        EF_V1 = 0
+        EF_V2 = 0
+        EF_V3 = 0
+        EF_V4 = 0
+        EF_V5 = 0
+        EF_V6 = 0
+        EF_A1 = 0
+        EF_A2 = 0
+        EF_A3 = 0
+        EF_A4 = 0
+        EF_A5 = 0
+        EF_A6 = 0
+        EB_V = 0
+        EB_A = 0
+        EB_FIL_V = 0
+        EB_FIL_A = 0
         return (T1,T2,T3,T4,JT,GGS,PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L,IG1,PIR,A,TC,EF_T1,
             EF_T2,EF_T3,EF_T4,EF_T5,EF_T6,EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6,
             EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6,EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6,
@@ -553,61 +650,55 @@ class MainWindow(QtWidgets.QMainWindow):
         f = open("system_history.txt", "r")
         now = datetime.datetime.now()
         if timespan == 0:
-            if mode == 'second':
-                timespan = datetime.timedelta(hours= 3)
+            if mode == 'second (s)':
+                timespan = datetime.timedelta(minutes= 10)
                 interval = datetime.timedelta(seconds = 5)
-            elif mode == 'minute':
-                timespan = datetime.timedelta(days= 1)
+            elif mode == 'minute (m)':
+                timespan = datetime.timedelta(minutes= 60)
                 interval = datetime.timedelta(minutes = 1)
-            elif mode == 'hour':
-                timespan = datetime.timedelta(days= 7)
+            elif mode == 'hour (h)':
+                timespan = datetime.timedelta(days= 1)
                 interval = datetime.timedelta(hours = 1)
-            elif mode == 'day':
+            elif mode == 'day (d)':
                 timespan = datetime.timedelta(days= 30)
-                interval = datetime.timedelta(hours = 1)
+                interval = datetime.timedelta(hours = 12)
                 
         prev_time = now - timespan
         lines = f.readlines()
         x_data = [[] for i in range(len(args))]
         y_data = [[] for i in range(len(args))]
         time_prev = datetime.datetime.strptime(lines[0], "%d/%m/%Y %H:%M:%S\n") 
-        for i in range(0,len(lines)-7,9):
+        for i in range(0,len(lines)-7,10):
             if '/' in lines[i]:
                 date = datetime.datetime.strptime(lines[i], "%d/%m/%Y %H:%M:%S\n")
                 stripped = lines[i+1].replace('T1,T2,T3,T4,JT,GGS = ', '').replace(' K', '')
                 T1,T2,T3,T4,JT,GGS = tuple(map(float, stripped.split(', ')))
                 stripped = lines[i+2].replace('PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L = ', '').replace(' mbar', '')
                 PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L = tuple(map(float, stripped.split(', ')))
-                stripped = lines[i+3].replace('EF_T1,EF_T2,EF_T3,EF_T4,EF_T5,EF_T6 = ', '').replace(' K', '')
+                stripped = lines[i+3].replace('IG1,PIR,A,TC = ', '')
+                IG1,PIR,A,TC = tuple(map(float, stripped.split(', ')))
+                stripped = lines[i+4].replace('EF_T1,EF_T2,EF_T3,EF_T4,EF_T5,EF_T6 = ', '').replace(' K', '')
                 EF_T1,EF_T2,EF_T3,EF_T4,EF_T5,EF_T6 = tuple(map(float, stripped.split(', ')))
-                stripped = lines[i+4].replace('EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6 = ', '')
+                stripped = lines[i+5].replace('EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6 = ', '')
                 EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6 = tuple(map(float, stripped.split(', ')))
-                stripped = lines[i+5].replace('EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6 = ', '').replace(' V', '')
+                stripped = lines[i+6].replace('EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6 = ', '').replace(' V', '')
                 EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6 = tuple(map(float, stripped.split(', ')))                          
-                stripped = lines[i+6].replace('EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6 = ', '').replace(' A', '')
+                stripped = lines[i+7].replace('EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6 = ', '').replace(' A', '')
                 EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6 = tuple(map(float, stripped.split(', ')))                          
-                stripped = lines[i+7].replace('EB_V,EB_A,EB_FIL_V,EB_FIL_A = ', '').replace(' V', '').replace(' A', '')
+                stripped = lines[i+8].replace('EB_V,EB_A,EB_FIL_V,EB_FIL_A = ', '').replace(' V', '').replace(' A', '')
                 EB_V,EB_A,EB_FIL_V,EB_FIL_A = tuple(map(float, stripped.split(', ')))                          
             time_int = date-time_prev
             time_span = now - date
-    
             if time_int >= interval:
                 if time_span <= timespan:
                     for j in range(len(args)):
                         item = args[j]
                         y_data[j].append(locals()[f"{item}"])
+                        x_data[j].append(date)
                 time_prev = date
             else:
                 time_prev = time_prev
         f.close()
-        if mode == 'second':
-            x_int = 5
-        else:
-            x_int = 1
-            
-        for i in range(len(args)):#change to second
-            for j in range(len(y_data[i])):
-                x_data[i].append(-x_int*j)
         return x_data,y_data
         
     def write_data_log(self):
@@ -620,6 +711,7 @@ class MainWindow(QtWidgets.QMainWindow):
         f.write('%s\n' % (now.strftime("%d/%m/%Y %H:%M:%S")))
         f.write('T1,T2,T3,T4,JT,GGS = %.2f, %.2f, %.2f, %.2f, %.2f, %.2f K\n' % (T1,T2,T3,T4,JT,GGS))
         f.write('PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L = {:.2e}, {:.2e}, {:.2e}, {:.2e}, {:.2e} mbar\n'.format(PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L))
+        f.write('IG1,PIR,A,TC = {:.2e}, {:.2e}, {:.2e}, {:.2e}\n'.format(IG1,PIR,A,TC))
         f.write('EF_T1,EF_T2,EF_T3,EF_T4,EF_T5,EF_T6 = %.2f, %.2f, %.2f, %.2f, %.2f, %.2f K\n' % (EF_T1,EF_T2,EF_T3,EF_T4,EF_T5,EF_T6))
         f.write('EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6 = %.1f, %.1f, %.1f, %.1f, %.1f, %.1f \n' % (EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6))
         f.write('EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6 = %.2f, %.2f, %.2f, %.2f, %.2f, %.2f V\n' % (EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6))
@@ -632,115 +724,49 @@ class MainWindow(QtWidgets.QMainWindow):
             EF_T2,EF_T3,EF_T4,EF_T5,EF_T6,EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6,
             EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6,EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6,
             EB_V, EB_A, EB_FIL_V,EB_FIL_A) = self.get_data()
+        ####FIRST PAGE LCDs####
+        self.ui.mv_lcd_T1.display(T1); self.ui.mv_lcd_T2.display(T2); self.ui.mv_lcd_T3.display(T3)
+        self.ui.mv_lcd_T4.display(T4); self.ui.mv_lcd_JT.display(JT); self.ui.mv_lcd_GGS.display(GGS)
+        self.ui.mv_lcd_P_stm.display(PSTM); self.ui.mv_lcd_P_mbeline.display(PMBE_L); self.ui.mv_lcd_P_stmline.display(PSTM_L)
+        self.ui.mv_lcd_P_mbe.display(PMBE); self.ui.mv_lcd_P_loadlock.display(PLOAD_L); self.ui.mv_lcd_IG1.display(IG1)
+        self.ui.mv_lcd_pir.display(PIR); self.ui.mv_lcd_a.display(A); self.ui.mv_lcd_Tc.display(TC)
+        self.ui.mv_lcd_T_Te.display(EF_T1); self.ui.mv_lcd_T_Sn.display(EF_T2); self.ui.mv_lcd_T_BaF2.display(EF_T3)
+        self.ui.mv_lcd_T_Co.display(EF_T4); self.ui.mv_lcd_T_Fe.display(EF_T5); self.ui.mv_lcd_T_Dy.display(EF_T6)
+        self.ui.mv_lcd_p_Te.display(EF_P1); self.ui.mv_lcd_p_Sn.display(EF_P2); self.ui.mv_lcd_p_BaF2.display(EF_P3)
+        self.ui.mv_lcd_p_Co.display(EF_P4); self.ui.mv_lcd_p_Fe.display(EF_P5); self.ui.mv_lcd_p_Dy.display(EF_P6)
+        self.ui.mv_lcd_V_Te.display(EF_V1); self.ui.mv_lcd_V_Sn.display(EF_V2); self.ui.mv_lcd_V_BaF2.display(EF_V3)
+        self.ui.mv_lcd_V_Co.display(EF_V4); self.ui.mv_lcd_V_Fe.display(EF_V5); self.ui.mv_lcd_V_Dy.display(EF_V6)
+        self.ui.mv_lcd_A_Te.display(EF_A1); self.ui.mv_lcd_A_Sn.display(EF_A2); self.ui.mv_lcd_A_BaF2.display(EF_A3)  
+        self.ui.mv_lcd_A_Co.display(EF_A4); self.ui.mv_lcd_A_Fe.display(EF_A5); self.ui.mv_lcd_A_Dy.display(EF_A6)
+        self.ui.mv_lcd_V_bias.display(EB_V); self.ui.mv_lcd_A_bias.display(EB_A); self.ui.mv_lcd_V_fil.display(EB_FIL_V)  
+        self.ui.mv_lcd_A_fil.display(EB_FIL_A) 
+        self.ui.mv_lcd_shut_Te.display(1); self.ui.mv_lcd_shut_Sn.display(1); self.ui.mv_lcd_shut_BaF2.display(1)  
+        self.ui.mv_lcd_shut_Co.display(1); self.ui.mv_lcd_shut_Fe.display(1); self.ui.mv_lcd_shut_Dy.display(1)  
+        ####SECOND PAGE LCDs####
+        self.ui.mbe_lcd_T_Te.display(EF_T1); self.ui.mbe_lcd_T_Sn.display(EF_T2); self.ui.mbe_lcd_T_Baf2.display(EF_T3)
+        self.ui.mbe_lcd_T_Co.display(EF_T4); self.ui.mbe_lcd_T_Fe.display(EF_T5); self.ui.mbe_lcd_T_Dy.display(EF_T6)
+        self.ui.mbe_lcd_p_Te.display(EF_P1); self.ui.mbe_lcd_p_Sn.display(EF_P2); self.ui.mbe_lcd_p_Baf2.display(EF_P3)
+        self.ui.mbe_lcd_p_Co.display(EF_P4); self.ui.mbe_lcd_p_Fe.display(EF_P5); self.ui.mbe_lcd_p_Dy.display(EF_P6)
+        self.ui.mbe_lcd_V_Te.display(EF_V1); self.ui.mbe_lcd_V_Sn.display(EF_V2); self.ui.mbe_lcd_V_Baf2.display(EF_V3)
+        self.ui.mbe_lcd_V_Co.display(EF_V4); self.ui.mbe_lcd_V_Fe.display(EF_V5); self.ui.mbe_lcd_V_Dy.display(EF_V6) 
+        self.ui.mbe_lcd_A_Te.display(EF_A1); self.ui.mbe_lcd_A_Sn.display(EF_A2); self.ui.mbe_lcd_A_Baf2.display(EF_A3)
+        self.ui.mbe_lcd_A_Co.display(EF_A4); self.ui.mbe_lcd_A_Fe.display(EF_A5); self.ui.mbe_lcd_A_Dy.display(EF_A6) 
+        self.ui.mbe_lcd_V_bias.display(EB_V); self.ui.mbe_lcd_A_bias.display(EB_A); self.ui.mbe_lcd_V_fil.display(EB_FIL_V) 
+        self.ui.mbe_lcd_A_fil.display(EB_FIL_A) 
+        self.ui.mbe_lcd_shut_Te.display(2); self.ui.mbe_lcd_shut_Sn.display(2); self.ui.mbe_lcd_shut_Baf2.display(2)  
+        self.ui.mbe_lcd_shut_Co.display(2); self.ui.mbe_lcd_shut_Fe.display(2); self.ui.mbe_lcd_shut_Dy.display(2) 
+        self.ui.mbe_lcd_P_mbe.display(PMBE); self.ui.mbe_lcd_P_mbeline.display(PMBE_L); self.ui.mbe_lcd_P_loadlock.display(PLOAD_L)
+        self.ui.mbe_progressBar.setValue(int(0.2)) 
+        ####THIRD PAGE LCDs####  
+        self.ui.man_T_Te.display(self._eurotemp[0]);self.ui.man_T_Sn.display(self._eurotemp[1]);self.ui.man_T_Baf2.display(self._eurotemp[2])
+        self.ui.man_T_Co.display(self._eurotemp[3]);self.ui.man_T_Fe.display(self._eurotemp[4]);self.ui.man_T_Dy.display(self._eurotemp[5])
+        self.ui.man_p_Te.display(self._eurocount[0]);self.ui.man_p_Sn.display(self._eurocount[1]);self.ui.man_p_Baf2.display(self._eurocount[2])
+        self.ui.man_p_Co.display(self._eurocount[3]);self.ui.man_p_Fe.display(self._eurocount[4]);self.ui.man_p_Dy.display(self._eurocount[5])
+        #self.ui.man_progressBar_Te.setValue(self._eurocount[0]);self.ui.man_progressBar_Sn.setValue(self._eurocount[1]) 
+        #self.ui.man_progressBar_Baf2.setValue(self._eurocount[2]);self.ui.man_progressBar_Co.setValue(self._eurocount[3]) 
+        #self.ui.man_progressBar_Fe.setValue(self._eurocount[4]);self.ui.man_progressBar_Dy.setValue(self._eurocount[5]) 
         
-        self.mv_lcd_T1.display(T1)
-        self.mv_lcd_T2.display(T2)
-        self.mv_lcd_T3.display(T3)
-        self.mv_lcd_T4.display(T4)
-        self.mv_lcd_JT.display(JT)
-        self.mv_lcd_GGS.display(GGS)
-        self.mv_lcd_P_stm.display(PSTM)
-        self.mv_lcd_P_mbeline.display(PMBE_L)
-        self.mv_lcd_P_stmline.display(PSTM_L)
-        self.mv_lcd_P_mbe.display(PMBE)
-        self.mv_lcd_P_loadlock.display(PLOAD_L)
-        self.mv_lcd_IG1.display(IG1)
-        self.mv_lcd_pir.display(PIR)
-        self.mv_lcd_a.display(A)
-        self.mv_lcd_Tc.display(TC)
-        self.mv_lcd_T_Te.display(EF_T1)
-        self.mv_lcd_T_Sn.display(EF_T2)
-        self.mv_lcd_T_BaF2.display(EF_T3)
-        self.mv_lcd_T_Co.display(EF_T4)
-        self.mv_lcd_T_Fe.display(EF_T5)
-        self.mv_lcd_T_Dy.display(EF_T6)
-        self.mv_lcd_p_Te.display(EF_P1)
-        self.mv_lcd_p_Sn.display(EF_P2)
-        self.mv_lcd_p_BaF2.display(EF_P3)
-        self.mv_lcd_p_Co.display(EF_P4)
-        self.mv_lcd_p_Fe.display(EF_P5)  
-        self.mv_lcd_p_Dy.display(EF_P6)
-        self.mv_lcd_V_Te.display(EF_V1)
-        self.mv_lcd_V_Sn.display(EF_V2)
-        self.mv_lcd_V_BaF2.display(EF_V3)
-        self.mv_lcd_V_Co.display(EF_V4)
-        self.mv_lcd_V_Fe.display(EF_V5) 
-        self.mv_lcd_V_Dy.display(EF_V6)
-        self.mv_lcd_A_Te.display(EF_A1) 
-        self.mv_lcd_A_Sn.display(EF_A2) 
-        self.mv_lcd_A_BaF2.display(EF_A3)  
-        self.mv_lcd_A_Co.display(EF_A4)  
-        self.mv_lcd_A_Fe.display(EF_A5)
-        self.mv_lcd_A_Dy.display(EF_A6) 
-        self.mv_lcd_V_bias.display(EB_V)  
-        self.mv_lcd_A_bias.display(EB_A)  
-        self.mv_lcd_V_fil.display(EB_FIL_V)  
-        self.mv_lcd_A_fil.display(EB_FIL_A) 
-        self.mv_lcd_shut_Te.display(2)  
-        self.mv_lcd_shut_Sn.display(2)  
-        self.mv_lcd_shut_BaF2.display(2)  
-        self.mv_lcd_shut_Co.display(2)  
-        self.mv_lcd_shut_Fe.display(2)  
-        self.mv_lcd_shut_Dy.display(2)  
-####SECOND PAGE
-        self.mbe_lcd_T_Te.display(EF_T1)
-        self.mbe_lcd_T_Sn.display(EF_T2)
-        self.mbe_lcd_T_Baf2.display(EF_T3)
-        self.mbe_lcd_T_Co.display(EF_T4)
-        self.mbe_lcd_T_Fe.display(EF_T5)
-        self.mbe_lcd_T_Dy.display(EF_T6)
-        self.mbe_lcd_p_Te.display(EF_P1)
-        self.mbe_lcd_p_Sn.display(EF_P2)
-        self.mbe_lcd_p_Baf2.display(EF_P3)
-        self.mbe_lcd_p_Co.display(EF_P4)
-        self.mbe_lcd_p_Fe.display(EF_P5)  
-        self.mbe_lcd_p_Dy.display(EF_P6)
-        self.mbe_lcd_V_Te.display(EF_V1)
-        self.mbe_lcd_V_Sn.display(EF_V2)
-        self.mbe_lcd_V_Baf2.display(EF_V3)
-        self.mbe_lcd_V_Co.display(EF_V4)
-        self.mbe_lcd_V_Fe.display(EF_V5) 
-        self.mbe_lcd_V_Dy.display(EF_V6)
-        self.mbe_lcd_A_Te.display(EF_A1) 
-        self.mbe_lcd_A_Sn.display(EF_A2) 
-        self.mbe_lcd_A_Baf2.display(EF_A3)  
-        self.mbe_lcd_A_Co.display(EF_A4)  
-        self.mbe_lcd_A_Fe.display(EF_A5)
-        self.mbe_lcd_A_Dy.display(EF_A6) 
-        self.mbe_lcd_V_bias.display(EB_V)  
-        self.mbe_lcd_A_bias.display(EB_A)  
-        self.mbe_lcd_V_fil.display(EB_FIL_V)  
-        self.mbe_lcd_A_fil.display(EB_FIL_A) 
-        self.mbe_lcd_shut_Te.display(2)  
-        self.mbe_lcd_shut_Sn.display(2)  
-        self.mbe_lcd_shut_Baf2.display(2)  
-        self.mbe_lcd_shut_Co.display(2)  
-        self.mbe_lcd_shut_Fe.display(2)  
-        self.mbe_lcd_shut_Dy.display(2) 
-        self.mbe_lcd_P_mbe.display(PMBE)
-        self.mbe_lcd_P_mbeline.display(PMBE_L)
-        self.mbe_lcd_P_loadlock.display(PLOAD_L)
-        self.mbe_progressBar.setValue(int(0.2)) 
-####THIRD PAGE     
-        self.man_T_Te.display(self._eurotherm_A_temperature)
-        self.man_T_Sn.display(22.2)
-        self.man_T_Baf2.display(22.2)
-        self.man_T_Co.display(22.2)
-        self.man_T_Fe.display(22.2)
-        self.man_T_Dy.display(22.2)
-        self.man_p_Te.display(self._eurotherm_A_counter)
-        self.man_p_Sn.display(0.2)
-        self.man_p_Baf2.display(0.2)
-        self.man_p_Co.display(0.2)
-        self.man_p_Fe.display(0.2)
-        self.man_p_Dy.display(0.2)
-        self.man_progressBar_Te.setValue(int(self._eurotherm_A_counter))
-        self.man_progressBar_Sn.setValue(int(0.2)) 
-        self.man_progressBar_Baf2.setValue(int(0.2)) 
-        self.man_progressBar_Co.setValue(int(0.2)) 
-        self.man_progressBar_Fe.setValue(int(0.2)) 
-        self.man_progressBar_Dy.setValue(int(0.2)) 
-        
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     w = MainWindow()
