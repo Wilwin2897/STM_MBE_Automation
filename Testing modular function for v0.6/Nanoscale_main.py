@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from Nanoscale_GUI import Ui_MainWindow
 from Nanoscale_widgets import Functions,EuroGroup,HVPower_Voltage,HVPower_Current,Time_delay,Stabilization_set,Shutter_set
 from Nanoscale_default import default_parameters
-from Nanoscale_instruments import Eurotherm3508
+from Nanoscale_instruments import Eurotherm3508, FUG_MCP_Voltage
 from Nanoscale_calibration import Calibration_OP_PV
 import datetime
 import time
@@ -601,10 +601,31 @@ class MainWindow(QtWidgets.QMainWindow):
             inficon.close()
         except:
             PLOAD_L = 0
-            
-            
-        PSTM = 0
-        PSTM_L= 0
+        
+        try:
+            FUG_Voltage = FUG_MCP_Voltage(host='169.254.92.52', address=8)
+            # open connection
+            FUG_Voltage.connect()
+            # run predefined commands
+            EB_A = FUG_Voltage.get_voltage()
+            EB_V = FUG_Voltage.get_current()
+            FUG_Voltage.close()
+        except:
+            EB_A = 0
+            EB_V = 0
+        
+        try:
+            rm = visa.ResourceManager()
+            combivac = rm.open_resource('ASRL3::INSTR',baud_rate = 19200,read_termination='\r',write_termination='\r')
+            rm.visalib.set_buffer(combivac.session, constants.VI_IO_IN_BUF, 50)
+            rm.visalib.set_buffer(combivac.session, constants.VI_IO_OUT_BUF, 50)
+            PSTM = combivac.query("RPV2")
+            PSTM_L = combivac.query("RPV3")
+            combivac.close()
+        except:
+            PSTM = 0
+            PSTM_L = 0
+        
         PMBE = 0
         PMBE_L = 0
         
@@ -612,6 +633,8 @@ class MainWindow(QtWidgets.QMainWindow):
         PIR = 0
         A = 0
         TC = 0
+        
+
         
         EF_T1 = 0
         EF_T2 = 0
@@ -625,6 +648,13 @@ class MainWindow(QtWidgets.QMainWindow):
         EF_P4 = 0
         EF_P5 = 0
         EF_P6 = 0
+        
+        #This part kinda dangerous, according to Soumya, no need to automate
+        
+        EB_FIL_V = 0
+        EB_FIL_A = 0
+        
+        #This part can't be done, need to buy a new switch for serial
         EF_V1 = 0
         EF_V2 = 0
         EF_V3 = 0
@@ -637,10 +667,8 @@ class MainWindow(QtWidgets.QMainWindow):
         EF_A4 = 0
         EF_A5 = 0
         EF_A6 = 0
-        EB_V = 0
-        EB_A = 0
-        EB_FIL_V = 0
-        EB_FIL_A = 0
+        
+
         return (T1,T2,T3,T4,JT,GGS,PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L,IG1,PIR,A,TC,EF_T1,
             EF_T2,EF_T3,EF_T4,EF_T5,EF_T6,EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6,
             EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6,EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6,
