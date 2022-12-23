@@ -11,7 +11,7 @@ Live plotting and data logging is only for STM+MBE Combivac pressure gauge, Euro
 Effusion Cells power sources need to buy serial ethernet cable (We don't have)
 Filament current source and Beam flux monitor has not been integrated in the system
 
-For tutorial on adding a new module, please check the main.py file, all details is included there. 
+For tutorial on adding a new module, please check the main.py file, all details are included there. 
 
 
 ![image](https://user-images.githubusercontent.com/41424369/195020968-bc34524d-581b-4e4b-934f-52f3ffdbdf86.png)
