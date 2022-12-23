@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Oct 20 13:31:55 2022
-
-@author: wilwin
+@author: Wilwin
+Pre-requisites:
+pip install lakeshore
+pip install pyvisa-py
+with static IP address 169.254.125.29 port 7777 for 336
+and 169.254.125.30 port 23 for TLC-500
+Remember to set your computer IP address to static ip 169.254.125.XXX
 """
 
 import sys
@@ -10,9 +15,17 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from Nanoscale_GUI import Ui_MainWindow
 from Nanoscale_widgets import Functions,EuroGroup,HVPower_Voltage,HVPower_Current,Time_delay,Stabilization_set,Shutter_set
 from Nanoscale_default import default_parameters
-from Nanoscale_instruments import Eurotherm3508
+from Nanoscale_instruments import Eurotherm3508, FUG_MCP_Voltage, AutoShutter
+from Nanoscale_calibration import Calibration_OP_PV
 import datetime
 import time
+import pyqtgraph as pg
+import numpy as np
+import pyvisa as visa
+from lakeshore import Model336
+from math import nan, isnan
+from pyvisa import constants
+
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self,*arg,**kwargs):
@@ -20,161 +33,450 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setAcceptDrops(True)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.module_sets()
-        self.ui.mbe_savegrowthtimeline_13.clicked.connect(self.run_processes)
-        self.show()
         
+        """
+        #Initialize some important parameters and constants
+        #Virtual serial ports assigned by the ZRVirCom applications, please change the setting accordingly.
+        #Setting up timers for processing for modular function, for automatic a rigid time sequence is used. 
+        """
+        self.port_serial = {'Te': 'COM1', 'Sn': 'COM2','BaF2': 'COM3', 'Co': 'COM4','Fe': 'COM5', 'Dy': 'COM6'}
+        self.timer_1, self.timer_2, self.timer_3, self.wait, self.lp_timer , self._eurocount, self._eurotemp = ([None for i in range(6)] for j in range(7))
+        self.Euroshot_count = [0,0,0,0,0,0] #Initial percentage (OP) for Eurotherm
+        self.current_status = [0,0,0,0,0,0] #Check the status of process for Eurotherm
+        self.my_dict = {}
+        self.shutter_pos = {}
+        #Initialization
+        self.module_sets() #Initialization of the modules position and add/remove buttons, please edit if a module is added.
+        self.write_data_log() #Initialization of the data logging
+        self.ui.mbe_savegrowthtimeline_13.clicked.connect(self.run_processes) #Run process if run button is clicked
+        self.ui.mbe_savegrowthtimeline_14.clicked.connect(self.stopTimer) #Run process if run button is clicked
+
+        self.livedata_start() #Initialization of the live plotting
+        self.calibration = Calibration_OP_PV() #Read the calibration data set for eurotherm
+        self.show()
+
     def dragEnterEvent(self, e):
+        #Enabling drag for the widgets
         e.accept()
         
     def dropEvent(self, e):
+        #Enabling drop for the widgets
         pos = e.pos()
-        #How to make both buttons can move independently?
         e.source().move(pos+QtCore.QPoint(8, -40))
-        print(pos)
         e.setDropAction(QtCore.Qt.MoveAction)
         e.accept()
         
     def closeEvent(self, event):
-        print("Stopping all timer, return to manual control")
-##################################################################
-########################Process Control###########################
-##################################################################  
-    def run_processes(self):    
-        #Run every process with the same IDs with some specified delay
-        #Will detect active modules and assign a process by each active module
-        self.process_Euro3508()
+        """
+        Remember to stop all the timers, since the timer will continue on the next time
+        you started the program
+        """
+        self.stopTimer()
         
-    def process_Euro3508(self):
-        self.Euro3508_init()
-        self.Euro3508_check()
+    def stopTimer(self):
+        Ntimers = 5#Define 5 timer variables, each timer variables contains 6 timers
+        variables = {0: self.wait, 1: self.timer_1, 2: self.timer_2, 3: self.timer_3, 4: self.lp_timer}
+        print("Stopping all timer, returning to manual hand-control")
+        for i in range(Ntimers):
+            v = variables[i]
+            for j in range(6):
+                try:
+                    v[j].stop()
+                except:
+                    print('Timer %s (%i-th) was not started'%(i, j))
+                    pass
+        self.ui.mbe_savegrowthtimeline_13.setEnabled(True)
+    """
+    ##################################################################
+    ########################Process Control###########################
+    ##################################################################  
+    """
+    def run_processes(self):    
+        """
+        Run every process with the same IDs with some specified delay
+        Will detect active modules and assign a process by each active module
+        """
+        self.current_process_id = 0 #Start from process 0
+        self.ui.mbe_savegrowthtimeline_13.setEnabled(False) #If running the run button is disabled
+        executed = False 
+        Ndelay = 50 #Max number of delay 
+        if self.ui.Time_mod !=[]:
+            """
+            Time delay
+            """
+            time_delay = [0 for i in range(Ndelay)] 
+            for i in range(len(self.ui.Time_mod)): # Read and set the value for 
+                process_id = self.ui.Time_mod[i].spinBox_2.value()
+                minutes = self.ui.Time_mod[i].spinBox_1.value()
+                seconds = self.ui.Time_mod[i].spinBox.value()
+                time_delay[process_id] = (minutes*60+seconds)*1000 #delay in ms 
+        else:
+            print("No Time delay module detected, please add the widget before continuing")
+            
+        if self.ui.Shut_mod !=[]:
+            """
+            Shutter control
+            """
+            id_list = []
+            for i in range(len(self.ui.Shut_mod)):
+                selected = self.ui.Shut_mod[i].comboBox.currentText()
+                process_id = self.ui.Shut_mod[i].spinBox.value()
+                Angle = self.ui.Shut_mod[i].spinBox_2.value()
+                print('Selected shutter: ', selected) 
+                print('Process_ID:', process_id) 
+                id_list.append([process_id,selected,Angle])
+            id_list = sorted(id_list)
+            max_id = id_list[-1][0]
+            self.Angles = [[0,0,0,0] for i in range(max_id+1)]
+            #print(id_list)
+            for i in range(len(id_list)):
+                process_id = id_list[i][0]
+                selected = int(id_list[i][1])-1
+                Angle = id_list[i][2]
+                for j in range(max_id+1):
+                    if j >= process_id :
+                        self.Angles[j][selected] = Angle
+                if process_id == 0:
+                    self.set_Shutter(self.Angles[0][0], self.Angles[0][1], self.Angles[0][2], self.Angles[0][3])
+        else:
+            print("No shutter module detected, please add the widget before continuing")
+            
+        if self.ui.HVPV_mod !=[]:
+            """
+            High Voltage Power Supply
+            """    
+            self.Voltnrate = [[0,0] for i in range(Ndelay)]    
+            for i in range(len(self.ui.HVPV_mod)):
+                process_id = self.ui.HVPV_mod[i].spinBox_2.value()
+                Voltage = self.ui.HVPV_mod[i].doubleSpinBox.value()
+                Vrate = self.ui.HVPV_mod[i].doubleSpinBox_2.value()
+                for j in range(Ndelay-process_id):
+                    self.Voltnrate[process_id+j][0] = Voltage
+                    self.Voltnrate[process_id+j][1] = Vrate
+                if process_id == 0:
+                    try:
+                        self.set_HPVoltage(self.Voltnrate[process_id][0],self.Voltnrate[process_id][1])
+                    except:
+                        print('Set HPVoltage failed')
+        else:
+            print("No High Voltage Power Supply detected, please add the widget before continuing")
+
         if self.ui.Euro_mod !=[]:
-            for i in range(len(self.ui.Euro_mod)):
-                if self.ui.Euro_mod[i].mv_checkBox.checkState() == QtCore.Qt.Checked:
-                    print('PID control activated, using PID instead of fitted temperature data')
-                    P_value = self.ui.Euro_mod[i].doubleP.value()
-                    I_value = self.ui.Euro_mod[i].doubleI.value()
-                    D_value = self.ui.Euro_mod[i].doubleD.value()
-                    SP_value = self.ui.Euro_mod[i].doubleSpinBox .value()
-                    print('P = %.2f, I = %.2f, D = %.2f, SP = %.2f C' %(P_value,I_value,D_value,SP_value))
-                    self.Euro3508_send_PID(P_value,I_value,D_value,SP_value)
-                    self.timer1 = QtCore.QTimer()
-                    self.timer1.timeout.connect(self.Euro3508_check)
-                    self.timer1.start(5000)
-                    self.Treach_count = 0
-                    if abs(self._eurotemp_0-SP_value) < self.ui.Stabilizationset.doubleSpinBox_1.value():
-                        self.timer2 = QtCore.QTimer()
-                        self.timer2.timeout.connect(self.stabilization_T(SP_value))
-                        self.timer2.start(20000)
-                        
-                else:
-                    print('Using fitted temperature and output power data')
-                self.timer2.stop()
+            """
+            Eurotherm modules
+            """ 
+            for i in range(len(self.ui.Euro_mod)): 
+                selected = self.ui.Euro_mod[i].comboBox_2.currentText() #The selected cell
+                process_id = self.ui.Euro_mod[i].spinBox.value() 
+                print('Selected cells:', selected) 
+                print('Process_ID:', process_id) 
+                self.my_dict.setdefault(process_id, []) #Return a value [] for the key processid
+                self.my_dict[process_id].append([selected,i]) #Append the selected cell
+                
+                if process_id == 0:
+                    try:
+                        self.process_Euro3508(selected,i) #Starting the process for ID=0
+                    except:
+                        print('Set eurotherm process failed')
         else:
             print("No Eurotherm module detected, please add the widget before continuing")
-            
-    def stabilization_T(self,SP_value):
-        if abs(self._eurotemp_0-SP_value) < self.ui.Stabilizationset.doubleSpinBox_1.value():
-            self.Treach_count += 1
-            if self.Treach_count >= 6:
-                print("Temperature is stable at the Set Point ", SP_value)
-                self.timer2.stop()
-                self.timer1.stop()
-            else:
-                print("Temperature is not stable, please adjust the stabillization set or tune manually\n")
         
-        
+        if executed == False: #wait until previous id is finished
+            self.timer_2[i] = QtCore.QTimer()
+            self.timer_2[i].timeout.connect(lambda: self.process_status_check(time_delay))
+            self.timer_2[i].start(8000)#check every 8 s regarding the status of PID
+            executed = True    
 
-            
+    def process_status_check(self,time_delay):
+        """
+        Check the dict, see the PID 1, and multiply all current status if 1 then shoot next one
+        if all process are completed, then do the next PID
+        """
+        print('Active process ID and cells ', self.my_dict)
+        mapping = {'Te': 0, 'Sn': 1,'BaF2': 2, 'Co': 3,'Fe': 4, 'Dy': 5}
+        MaxNprocess = 30
+        try:
+            if self.ui.Euro_mod !=[]:
+                a = []
+                for selected,i in self.my_dict[self.current_process_id]:
+                    a.append(self.current_status[mapping[selected]])
+                status = 1
+                for k in range(0,len(a)):
+                    status = status * a[k] #Checking all active cells has been completed or not
+            else:
+                status = 1
                 
+            if status == 1:
+                print(status, ': All previous process has been finished, continuing to the next process')
+                try:
+                    for selected,i in self.my_dict[self.current_process_id]:
+                        QtCore.QTimer.singleShot(time_delay[self.current_process_id-1], lambda: self.process_Euro3508(selected,i)) #Wait for specified time delay then execute the next steps
+                except:
+                    print('No Eurotherm in the current process')
+                    pass
+
+                try:
+                    for Voltage,rate in self.Voltnrate[self.current_process_id]:
+                        QtCore.QTimer.singleShot(time_delay[self.current_process_id-1], lambda: self.set_HPVoltage(Voltage,rate)) #Wait for specified time delay then execute the next steps
+                except:
+                    print('No HPV in the current process')
+                    pass
+                
+                try:
+                    for angle1,angle2,angle3,angle4 in self.Angles[self.current_process_id]:
+                        QtCore.QTimer.singleShot(time_delay[self.current_process_id-1], lambda: self.set_Shutter(angle1, angle2, angle3, angle4)) #Wait for specified time delay then execute the next steps
+                except:
+                    print('No Shutter in the current process')
+                    pass
+                    
+                self.current_status[:] = 0
+                self.current_process_id += 1 #Go to next process ID
+        except:
+            self.current_process_id += 1
+            print('Process ID invalid, going to the next process ID')
+            
+        print('current status: ', self.current_process_id, self.current_status)
+        if self.current_process_id > MaxNprocess: #Limit the possible number of processID
+            self.ui.mbe_savegrowthtimeline_13.setEnabled(True)
+            self.timer_2.stop()
+            
+    def process_Euro3508(self,value,i):
+        print('Running process for:', value)
+        self.Euro3508_init(value,i)
+        self.Euro3508_check(value,i)
+        
+        if self.ui.Euro_mod[i].mv_checkBox.checkState() == QtCore.Qt.Checked:
+            """
+            Be careful when using the PID control since the rate may change drastically
+            """
+            print('PID control activated, using PID instead of fitted temperature data')
+            P_value = self.ui.Euro_mod[i].doubleP.value()
+            I_value = self.ui.Euro_mod[i].doubleI.value()
+            D_value = self.ui.Euro_mod[i].doubleD.value()
+            SP_value = self.ui.Euro_mod[i].doubleSpinBox .value()
+            print('P = %.2f, I = %.2f, D = %.2f, SP = %.2f C' %(P_value,I_value,D_value,SP_value))
+            self.Euro3508_send_PID(P_value,I_value,D_value,SP_value)
+            self.timer_1[i] = QtCore.QTimer()
+            self.timer_1[i].timeout.connect(self.Euro3508_check)
+            self.timer_1[i].start(5000)
+            self.Treach_count = 0
+            while abs(self._eurotemp_0-SP_value) < self.ui.Stabilizationset.doubleSpinBox_1.value():
+                QtCore.QTimer.singleShot(20000, self.stabilization_T(SP_value,i))
+                print(self.Treach_count)
+        else:
+            """
+            The fitted temperature and output power data should be updated periodically
+            Changes in filament profile may changes the temperature for a given output power
+            """
+            print('Using fitted temperature and output power data for ', value)
+            SP_value = self.ui.Euro_mod[i].doubleSpinBox.value()
+            rate = self.ui.Euro_mod[i].doubleSpinBox_2.value()
+            print(value,self._eurotemp,SP_value,rate)
+            timestep, nstep = self.calibration.time_rate(value,self._eurotemp[i],SP_value,rate)
+            mode = self.ui.Euro_mod[i].comboBox.currentText()
+            if mode == "Ramping up":
+                mode = 'Increase(%)'
+            else:
+                mode = 'Decrease(%)'
+            print(mode,value,nstep)
+            print(self.Eurotherm_shots(mode,value,nstep,i))
+            self.timer_1[i] = QtCore.QTimer()
+            self.timer_1[i].timeout.connect(lambda: self.Eurotherm_shots(mode,SP_value,value,nstep,i))
+            self.timer_1[i].start(int(timestep*1000))
+            
+
+    def stabilization_T(self,value,SP_value,i):
+        QtCore.QTimer.singleShot(500, lambda : self.Euro3508_check(value,i))
+        if abs(self._eurotemp[i]-SP_value) < self.ui.Stabilizationset.doubleSpinBox_1.value():
+            self.Treach_count += 1
+            self.Tnotreach_count = 0
+            if self.Treach_count >= 10:
+                print("Temperature is stable at the Set Point ", SP_value)
+                try:
+                    self.timer_1[i].stop()
+                except:
+                    pass
+                try:
+                    self.timer_3[i].stop()
+                except:
+                    pass
+                print('Fine tuning of Eurotherm finished, reached the SP_temperature')
+                self.current_status[i] = 1
+
+        else:
+            self.Treach_count = 0
+            self.Tnotreach_count += 1
+            if self.Tnotreach_count >= 20:
+                if self._eurotemp[i] < SP_value:
+                    print('Fine increase')
+                    self.timer_1[i] = QtCore.QTimer()
+                    self.timer_1[i].timeout.connect(lambda: self.Euro3508_send_man('Increase(%)',value,i))
+                    self.timer_1[i].start(int(20000)) 
+                else:
+                    print('Fine decrease')
+                    self.timer_1[i] = QtCore.QTimer()
+                    self.timer_1[i].timeout.connect(lambda: self.Euro3508_send_man('Decrease(%)',value,i))
+                    self.timer_1[i].start(int(20000)) 
+                #QtCore.QTimer.singleShot(500, lambda: self.Eurotherm_finetune(value,SP_value,i))
+                self.Tnotreach_count = 0
+                #self.timer3[i] = QtCore.QTimer()
+                #self.timer3[i].timeout.connect(lambda: self.stabilization_T(value,SP_value,i))
+                #self.timer3[i].start(int(800))
+        return self.Treach_count
+    
+    def Eurotherm_finetune(self,value,SP_value,i):
+        print('The temperature of %i is %.2f K, target is %.2f K'%(i, self._eurotemp[i], SP_value))
+        self.timer3[i] = QtCore.QTimer()
+        self.timer3[i].timeout.connect(lambda: self.stabilization_T(value,SP_value,i))
+        self.timer3[i].start(int(1000)) 
+         
+
+    def Eurotherm_shots(self,mode,SP_value,value,nstep,i):
+        self.Euro3508_send_man(mode,value,i)
+        self.Euroshot_count[i] += 1
+        print(value,self.Euroshot_count[i],nstep)
+        if self.Euroshot_count[i] > nstep:
+            print("Finished reaching the calibrated data point, now doing fine adjustment")
+            self.timer_1[i].stop()
+            self.Euroshot_count[i] = 0
+            QtCore.QTimer.singleShot(15000, lambda: self.Eurotherm_finetune(value,SP_value,i))
+
+        #self.Euro3508_check(value,i)
+        print(self._eurotemp[i])
+        
         #self.Euro3508_send('Increase(%)')
+        
 ##################################################################
 #####Communication with the instruments modular function#####
+##############Eurotherm communication module#################
 ##################################################################    
-    def Euro3508_init(self):
-        port_dict = {'Te': 'COM1', 'Sn': 'COM2',\
-                     'BaF2': 'COM3', 'Co': 'COM4',\
-                     'Fe': 'COM5', 'Dy': 'COM6'}
+    def Euro3508_init(self,value,i): #Only for checking the Connection, OP, and Temperature
+        serial = self.port_serial[value]
         try:
-            self.eurotherm3508_0 = Eurotherm3508('COM1', 1) # port name, slave address (in decimal)
-            self._eurocount_0 = self.eurotherm3508_0.get_op_loop1()
-            self._eurotemp_0 = self.eurotherm3508_0.get_pv_loop1()
-            print("Connected to Eurotherm with OP counter = ", self._eurocount_0," %")
-            print("Connected to Eurotherm with Temperature = ", self._eurotemp_0," C")
+            self.eurotherm3508 = Eurotherm3508(serial, 1)
+            self._eurotemp[i] = self.eurotherm3508.get_pv_loop1()
+            self._eurocount[i] = self.eurotherm3508.get_op_loop1()
+            self._eurocount[i]= round(self._eurocount[i],1) #Round to one decimal place
+            print("Connected to Eurotherm with OP counter = ", self._eurocount," %")
+            print("Connected to Eurotherm with Temperature = ", self._eurotemp," C")
         except IOError:
             print("Initialization failed to read from instrument, please check the Port, slave, and connection")
-        except self.eurotherm3508_0.serial.SerialException:
+        
+        except self.eurotherm3508.serial.SerialException:
             print("Serial Exception: Please check the Port, slave, and connection")
+            pass
         finally:
             try:
-                self.eurotherm3508_0.serial.close()
+                self.eurotherm3508.serial.close()
             except:
                 pass
             
-    def Euro3508_send_man(self,mode):
+    def Euro3508_send_man(self,mode,value,i):
+        serial = self.port_serial[value]
         upperlim = 80
         if mode == 'Increase(%)':
-            self._eurocount_0 += 0.1 # Percentage of Eurotherm
-            if self._eurocount_0 > upperlim:
-                self._eurocount_0 = upperlim
+            self._eurocount[i] += 0.1 # Percentage of Eurotherm
+            if self._eurocount[i] > upperlim:
+                self._eurocount[i] = upperlim
         if mode == 'Decrease(%)':
-            self._eurocount_0 -= 0.1 # Percentage of Eurotherm
-            if self._eurocount_0 < 0:
-                self._eurocount_0 = 0             
+            self._eurocount[i] -= 0.1 # Percentage of Eurotherm
+            if self._eurocount[i] < 0:
+                self._eurocount[i] = 0  
+        self._eurocount[i]=round(self._eurocount[i],1)
+        print(self._eurocount[i])
         try:
-            self.eurotherm3508_0 = Eurotherm3508('COM1', 1)
-            self.eurotherm3508_0.set_op_loop1(self._eurocount_0)
+            self.eurotherm3508 = Eurotherm3508(serial, 1)
+            self.eurotherm3508.set_op_loop1(self._eurocount[i])
         except IOError:
             print("Sending failed to read from instrument, please check the Port, slave, and connection")
             pass
-        except self.eurotherm3508_0.serial.SerialException:
+        except self.eurotherm3508.serial.SerialException:
             print("Serial Exception: Please check the Port, slave, and connection")
             pass
         finally:
             try:
-                self.eurotherm3508_0.serial.close()
+                self.eurotherm3508.serial.close()
             except:
                 pass
+        
+        QtCore.QTimer.singleShot(800, lambda : self.Euro3508_check(value,i))
             
-    def Euro3508_send_PID(self,P,I,D,SP):
+    def Euro3508_send_PID(self,P,I,D,SP,value):
+        """
+        Please don't change the PID if you don't know the value, may causes the temperature to raise very fast
+        """
+        serial = self.port_serial[value]
         try:
-            self.eurotherm3508_0 = Eurotherm3508('COM1', 1)
-            self.eurotherm3508_0.set_PID_Proportional(P)
-            self.eurotherm3508_0.set_PID_Integral(I)
-            self.eurotherm3508_0.set_PID_Derivative(D)
-            self.eurotherm3508_0.set_sp_loop1(SP)
+            self.eurotherm3508 = Eurotherm3508(serial, 1)
+            self.eurotherm3508.set_PID_Proportional(P)
+            self.eurotherm3508.set_PID_Integral(I)
+            self.eurotherm3508.set_PID_Derivative(D)
+            self.eurotherm3508.set_sp_loop1(SP)
         except IOError:
             print("Sending failed to read from instrument, please check the Port, slave, and connection")
             pass
-        except self.eurotherm3508_0.serial.SerialException:
+        except self.eurotherm3508.serial.SerialException:
             print("Serial Exception: Please check the Port, slave, and connection")
             pass
         finally:
             try:
-                self.eurotherm3508_0.serial.close()
+                self.eurotherm3508.serial.close()
             except:
                 pass
             
-    def Euro3508_check(self):
+    def Euro3508_check(self,value,i):
+        serial = self.port_serial[value]
         try:
-            self.eurotherm3508_0 = Eurotherm3508('COM1', 1)
-            self._eurotemp_0 = self.eurotherm3508_0.get_pv_loop1()
-            self._eurocount_0 = self.eurotherm3508_0.get_op_loop1()
-            print("OP counter = ", self._eurocount_0," %")
-            print("Temperature = ", self._eurotemp_0," C")
+            self.eurotherm3508 = Eurotherm3508(serial, 1)
+            self._eurotemp[i] = self.eurotherm3508.get_pv_loop1()
+            self._eurocount[i] = self.eurotherm3508.get_op_loop1()
+            self._eurocount[i]=round(self._eurocount[i],1)
+            print("OP counter = ", self._eurocount," %")
+            print("Temperature = ", self._eurotemp," C")
         except IOError:
             print("Checking failed to read from instrument, please check the Port, slave, and connection")
             pass
-        except self.eurotherm3508_0.serial.SerialException:
+        except self.eurotherm3508.serial.SerialException:
             print("Serial Exception: Please check the Port, slave, and connection")
             pass
         finally:
             try:
-                self.eurotherm3508_0.serial.close()
+                self.eurotherm3508.serial.close()
             except:
                 pass
+##################################################################          
+##############High Voltage Power Supply module####################
+##################################################################  
+    def set_HPVoltage(self,Voltage,rate): 
+        """
+        Make sure the remote LED indicator is on
+        """
+        my_device = FUG_MCP_Voltage(host='169.254.92.52', address=8)
+        print(my_device.idn())
+        print('Voltage = ',my_device.get_voltage())
+        print('Current = ',my_device.get_current())
+        my_device.check_V_ramp_status()
+        print('Set point = ',my_device.V_current_set_point())
+        my_device.output(1) #Turns on the output
+        my_device.V_set_point(Voltage)   
+        my_device.set_V_ramp_func(1)
+        my_device.set_V_ramp_rate(rate)
+        my_device.I_set_point(0.0001)#Keep the current below 0.1 ma for Cv MODE
 
-        
+##################################################################          
+###################Shutter control module#########################
+################################################################## 
+    def set_Shutter(self,angle1, angle2, angle3, angle4):
+        IP = '192.168.1.143'
+        try:
+            Shutter = AutoShutter(IP)
+            Shutter.send_command(angle1,angle2,angle3,angle4)
+        except:
+            print("Shutter error: Please check the IP, power, and connections")
+            pass
+
+
+       
 ##################################################################
 #####Get the Widgets for modular function#####
 ##################################################################
@@ -190,11 +492,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.mbe_savegrowthtimeline_16.clicked.connect(self.save_module)
         self.ui.mbe_savegrowthtimeline_17.clicked.connect(self.load_module)
 
-        #self.add_Euro()
-        #self.add_HPV()
-        #self.add_HPA()
-        #self.add_Time()
-        #self.add_Shut()
         self.ui.Stabilizationset = Stabilization_set(self.ui.tab_2)
         self.ui.Stabilizationset.move(270, 600)
 
@@ -347,6 +644,291 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
         
+##################################################################
+########################Plotting control##########################
+################################################################## 
+    def livedata_start(self):
+        #EDIT- Live_plot_1#Today task finish plotting function
+        self.plot_mode = {'T1,T2,T3,T4,JT,GGS vs time':[['T1','T2','T3','T4','JT','GGS'],'Temperature (K)'],'MBE pressure (mbar) vs time': [['PMBE'],'Pressure (mbar)'],\
+                   'MBE+STM pressure (mbar) vs time': [['PMBE','PSTM'],'Pressure (mbar)'],'Beam Flux vs time':[['IG1'],'Beam Flux'] }
+        self.ui.data_line = [None,None,None,None,None,None]
+        self.update_plot()
+        self.ui.mv_comboBox.currentTextChanged.connect(self.update_plot)
+        self.ui.mv_unit_select.currentTextChanged.connect(self.update_plot)
+        
+        self.lp_timer[0] = QtCore.QTimer()
+        self.lp_timer[0].timeout.connect(self.lcd_update)
+        self.lp_timer[0].start(2000)
+        self.lp_timer[1] = QtCore.QTimer()
+        self.lp_timer[1].timeout.connect(self.write_data_log)
+        self.lp_timer[1].start(8000)
+        self.lp_timer[2] = QtCore.QTimer()
+        self.lp_timer[2].timeout.connect(lambda:self.update_plot_data())
+        self.lp_timer[2].start(2000)
+
+    
+    def update_plot(self):
+        styles = {"color": "#000000", "font-size": "20px"}
+        try:
+            self.graphWidget.clear()
+        except:
+            print('Initiating live plot')
+            self.graphWidget = pg.PlotWidget(self.ui.groupBox_10)
+            self.graphWidget.setGeometry(QtCore.QRect(35, 75, 505, 285))
+            self.graphWidget.showGrid(x=True, y=True)
+            self.graphWidget.setTitle("" , color="black", size="15pt")
+            self.graphWidget.setBackground('w')
+        axis = pg.DateAxisItem(orientation='bottom')
+        self.graphWidget.setAxisItems({'bottom':axis})
+        mode  = self.ui.mv_comboBox.currentText()
+        self.graphWidget.addLegend(offset=(1, 1),verSpacing=-5,brush='w')
+
+        self.graphWidget.setLabel("bottom", self.ui.mv_unit_select.currentText(), **styles)
+        self.graphWidget.setLabel("left", self.plot_mode[mode][1], **styles)
+        self.x,self.y = self.read_data_log(self.plot_mode[mode][0],0,self.ui.mv_unit_select.currentText())
+        colors = [(0, 0, 0),(255,0,0),(0,0,255),(0,255,0),(255,0,255),(100,0,100),(100,0,200)]
+        for i in range(len(self.x)):
+            self.ui.data_line[i] =  self.graphWidget.plot(x=[x.timestamp() for x in self.x[i]], y=self.y[i], pen=pg.mkPen(color=colors[i]),\
+                                                          symbol='o',symbolPen =colors[i],symbolBrush='w', symbolSize = 6,name=self.plot_mode[mode][0][i])
+    def update_plot_data(self):
+        mode  = self.ui.mv_comboBox.currentText()
+        self.x,self.y = self.read_data_log(self.plot_mode[mode][0],0,self.ui.mv_unit_select.currentText())
+        for i in range(len(self.x)):
+            self.ui.data_line[i].setData([x.timestamp() for x in self.x[i]],self.y[i])  # Update the data.
+
+    def button_clicked(self):
+        self.graphWidget.setTitle(self.ui.mv_title.text())
+###############################################################
+###############################################################
+#######NON-ESSENTIAL FUNCTIONS (Logging,plotting,etc)##########
+###############################################################
+###############################################################
+
+    def get_data(self):
+        try:
+            my_model_336 = Model336(ip_address='169.254.125.29')
+            T_All = my_model_336.get_all_sensor_reading()
+            rm = visa.ResourceManager() 
+            tlc_ip = 'TCPIP0::169.254.125.30::23::SOCKET'
+            TLC500 = rm.open_resource(tlc_ip)
+            TLC500.read_termination = '\n'
+            TLC500.write_termination = '\n'  
+            TLC_out = [float(x) for x in TLC500.query('getOutput').split(', ')]
+            TLC_out = [0 if isnan(i) else i for i in TLC_out ]
+            TLC500.close()
+            T1 = TLC_out[0]	
+            T2 = TLC_out[1]
+            T3 = TLC_out[2]	
+            T4 = TLC_out[3]
+            JT = T_All[0]	
+            GGS = T_All[1]
+        except:
+            T1,T2,T3,T4,JT,GGS = 0,0,0,0,0,0	
+
+        try:
+            inficon = rm.open_resource('ASRL8::INSTR',read_termination='',write_termination='')
+            rm.visalib.set_buffer(inficon.session, constants.VI_IO_IN_BUF, 32)
+            rm.visalib.set_buffer(inficon.session, constants.VI_IO_OUT_BUF, 32)
+            inficon.query("PR1\r\n")
+            PLL = inficon.query("\05")
+            PLOAD_L = float(PLL[3:]) 
+            inficon.close()
+        except:
+            PLOAD_L = 0
+        
+        try:
+            FUG_Voltage = FUG_MCP_Voltage(host='169.254.92.52', address=8)
+            # open connection
+            FUG_Voltage.connect()
+            # run predefined commands
+            EB_A = FUG_Voltage.get_voltage()
+            EB_V = FUG_Voltage.get_current()
+            FUG_Voltage.close()
+        except:
+            EB_A = 0
+            EB_V = 0
+        
+        try:
+            rm = visa.ResourceManager()
+            combivac = rm.open_resource('ASRL3::INSTR',baud_rate = 19200,read_termination='\r',write_termination='\r')
+            rm.visalib.set_buffer(combivac.session, constants.VI_IO_IN_BUF, 50)
+            rm.visalib.set_buffer(combivac.session, constants.VI_IO_OUT_BUF, 50)
+            PSTM = combivac.query("RPV2")
+            PSTM_L = combivac.query("RPV3")
+            combivac.close()
+        except:
+            PSTM = 0
+            PSTM_L = 0
+        
+        PMBE = 0
+        PMBE_L = 0
+        
+        IG1 = 0
+        PIR = 0
+        A = 0
+        TC = 0
+        
+
+        
+        EF_T1 = 0
+        EF_T2 = 0
+        EF_T3 = 0
+        EF_T4 = 0
+        EF_T5 = 0
+        EF_T6 = 0
+        EF_P1 = 0
+        EF_P2 = 0
+        EF_P3 = 0
+        EF_P4 = 0
+        EF_P5 = 0
+        EF_P6 = 0
+        
+        #This part kinda dangerous, according to Soumya, no need to automate
+        
+        EB_FIL_V = 0
+        EB_FIL_A = 0
+        
+        #This part can't be done, need to buy a new switch for serial
+        EF_V1 = 0
+        EF_V2 = 0
+        EF_V3 = 0
+        EF_V4 = 0
+        EF_V5 = 0
+        EF_V6 = 0
+        EF_A1 = 0
+        EF_A2 = 0
+        EF_A3 = 0
+        EF_A4 = 0
+        EF_A5 = 0
+        EF_A6 = 0
+        
+
+        return (T1,T2,T3,T4,JT,GGS,PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L,IG1,PIR,A,TC,EF_T1,
+            EF_T2,EF_T3,EF_T4,EF_T5,EF_T6,EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6,
+            EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6,EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6,
+            EB_V, EB_A, EB_FIL_V,EB_FIL_A)
+    
+    def read_data_log(self,args,timespan,mode):
+        f = open("system_history.txt", "r")
+        now = datetime.datetime.now()
+        if timespan == 0:
+            if mode == 'second (s)':
+                timespan = datetime.timedelta(minutes= 10)
+                interval = datetime.timedelta(seconds = 5)
+            elif mode == 'minute (m)':
+                timespan = datetime.timedelta(minutes= 60)
+                interval = datetime.timedelta(minutes = 1)
+            elif mode == 'hour (h)':
+                timespan = datetime.timedelta(days= 1)
+                interval = datetime.timedelta(hours = 1)
+            elif mode == 'day (d)':
+                timespan = datetime.timedelta(days= 30)
+                interval = datetime.timedelta(hours = 12)
+                
+        prev_time = now - timespan
+        lines = f.readlines()
+        x_data = [[] for i in range(len(args))]
+        y_data = [[] for i in range(len(args))]
+        time_prev = datetime.datetime.strptime(lines[0], "%d/%m/%Y %H:%M:%S\n") 
+        for i in range(0,len(lines)-7,10):
+            if '/' in lines[i]:
+                date = datetime.datetime.strptime(lines[i], "%d/%m/%Y %H:%M:%S\n")
+                stripped = lines[i+1].replace('T1,T2,T3,T4,JT,GGS = ', '').replace(' K', '')
+                T1,T2,T3,T4,JT,GGS = tuple(map(float, stripped.split(', ')))
+                stripped = lines[i+2].replace('PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L = ', '').replace(' mbar', '')
+                PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L = tuple(map(float, stripped.split(', ')))
+                stripped = lines[i+3].replace('IG1,PIR,A,TC = ', '')
+                IG1,PIR,A,TC = tuple(map(float, stripped.split(', ')))
+                stripped = lines[i+4].replace('EF_T1,EF_T2,EF_T3,EF_T4,EF_T5,EF_T6 = ', '').replace(' K', '')
+                EF_T1,EF_T2,EF_T3,EF_T4,EF_T5,EF_T6 = tuple(map(float, stripped.split(', ')))
+                stripped = lines[i+5].replace('EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6 = ', '')
+                EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6 = tuple(map(float, stripped.split(', ')))
+                stripped = lines[i+6].replace('EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6 = ', '').replace(' V', '')
+                EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6 = tuple(map(float, stripped.split(', ')))                          
+                stripped = lines[i+7].replace('EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6 = ', '').replace(' A', '')
+                EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6 = tuple(map(float, stripped.split(', ')))                          
+                stripped = lines[i+8].replace('EB_V,EB_A,EB_FIL_V,EB_FIL_A = ', '').replace(' V', '').replace(' A', '')
+                EB_V,EB_A,EB_FIL_V,EB_FIL_A = tuple(map(float, stripped.split(', ')))                          
+            time_int = date-time_prev
+            time_span = now - date
+            if time_int >= interval:
+                if time_span <= timespan:
+                    for j in range(len(args)):
+                        item = args[j]
+                        y_data[j].append(locals()[f"{item}"])
+                        x_data[j].append(date)
+                time_prev = date
+            else:
+                time_prev = time_prev
+        f.close()
+        return x_data,y_data
+        
+    def write_data_log(self):
+        (T1,T2,T3,T4,JT,GGS,PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L,IG1,PIR,A,TC,EF_T1,
+            EF_T2,EF_T3,EF_T4,EF_T5,EF_T6,EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6,
+            EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6,EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6,
+            EB_V, EB_A, EB_FIL_V,EB_FIL_A) = self.get_data()
+        f = open("system_history.txt", "a")
+        now = datetime.datetime.now()
+        f.write('%s\n' % (now.strftime("%d/%m/%Y %H:%M:%S")))
+        f.write('T1,T2,T3,T4,JT,GGS = %.2f, %.2f, %.2f, %.2f, %.2f, %.2f K\n' % (T1,T2,T3,T4,JT,GGS))
+        f.write('PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L = {:.2e}, {:.2e}, {:.2e}, {:.2e}, {:.2e} mbar\n'.format(PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L))
+        f.write('IG1,PIR,A,TC = {:.2e}, {:.2e}, {:.2e}, {:.2e}\n'.format(IG1,PIR,A,TC))
+        f.write('EF_T1,EF_T2,EF_T3,EF_T4,EF_T5,EF_T6 = %.2f, %.2f, %.2f, %.2f, %.2f, %.2f K\n' % (EF_T1,EF_T2,EF_T3,EF_T4,EF_T5,EF_T6))
+        f.write('EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6 = %.1f, %.1f, %.1f, %.1f, %.1f, %.1f \n' % (EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6))
+        f.write('EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6 = %.2f, %.2f, %.2f, %.2f, %.2f, %.2f V\n' % (EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6))
+        f.write('EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6 = %.2f, %.2f, %.2f, %.2f, %.2f, %.2f A\n' % (EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6))
+        f.write('EB_V,EB_A,EB_FIL_V,EB_FIL_A = %.2f V, %.2f A, %.2f V, %.2f A \n \n' % (EB_V, EB_A, EB_FIL_V,EB_FIL_A))
+        f.close()
+        
+    def lcd_update(self):
+        (T1,T2,T3,T4,JT,GGS,PSTM,PSTM_L,PMBE,PMBE_L,PLOAD_L,IG1,PIR,A,TC,EF_T1,
+            EF_T2,EF_T3,EF_T4,EF_T5,EF_T6,EF_P1,EF_P2,EF_P3,EF_P4,EF_P5,EF_P6,
+            EF_V1,EF_V2,EF_V3,EF_V4,EF_V5,EF_V6,EF_A1,EF_A2,EF_A3,EF_A4,EF_A5,EF_A6,
+            EB_V, EB_A, EB_FIL_V,EB_FIL_A) = self.get_data()
+        ####FIRST PAGE LCDs####
+        self.ui.mv_lcd_T1.display(T1); self.ui.mv_lcd_T2.display(T2); self.ui.mv_lcd_T3.display(T3)
+        self.ui.mv_lcd_T4.display(T4); self.ui.mv_lcd_JT.display(JT); self.ui.mv_lcd_GGS.display(GGS)
+        self.ui.mv_lcd_P_stm.display(PSTM); self.ui.mv_lcd_P_mbeline.display(PMBE_L); self.ui.mv_lcd_P_stmline.display(PSTM_L)
+        self.ui.mv_lcd_P_mbe.display(PMBE); self.ui.mv_lcd_P_loadlock.display(PLOAD_L); self.ui.mv_lcd_IG1.display(IG1)
+        self.ui.mv_lcd_pir.display(PIR); self.ui.mv_lcd_a.display(A); self.ui.mv_lcd_Tc.display(TC)
+        self.ui.mv_lcd_T_Te.display(EF_T1); self.ui.mv_lcd_T_Sn.display(EF_T2); self.ui.mv_lcd_T_BaF2.display(EF_T3)
+        self.ui.mv_lcd_T_Co.display(EF_T4); self.ui.mv_lcd_T_Fe.display(EF_T5); self.ui.mv_lcd_T_Dy.display(EF_T6)
+        self.ui.mv_lcd_p_Te.display(EF_P1); self.ui.mv_lcd_p_Sn.display(EF_P2); self.ui.mv_lcd_p_BaF2.display(EF_P3)
+        self.ui.mv_lcd_p_Co.display(EF_P4); self.ui.mv_lcd_p_Fe.display(EF_P5); self.ui.mv_lcd_p_Dy.display(EF_P6)
+        self.ui.mv_lcd_V_Te.display(EF_V1); self.ui.mv_lcd_V_Sn.display(EF_V2); self.ui.mv_lcd_V_BaF2.display(EF_V3)
+        self.ui.mv_lcd_V_Co.display(EF_V4); self.ui.mv_lcd_V_Fe.display(EF_V5); self.ui.mv_lcd_V_Dy.display(EF_V6)
+        self.ui.mv_lcd_A_Te.display(EF_A1); self.ui.mv_lcd_A_Sn.display(EF_A2); self.ui.mv_lcd_A_BaF2.display(EF_A3)  
+        self.ui.mv_lcd_A_Co.display(EF_A4); self.ui.mv_lcd_A_Fe.display(EF_A5); self.ui.mv_lcd_A_Dy.display(EF_A6)
+        self.ui.mv_lcd_V_bias.display(EB_V); self.ui.mv_lcd_A_bias.display(EB_A); self.ui.mv_lcd_V_fil.display(EB_FIL_V)  
+        self.ui.mv_lcd_A_fil.display(EB_FIL_A) 
+        self.ui.mv_lcd_shut_Te.display(1); self.ui.mv_lcd_shut_Sn.display(1); self.ui.mv_lcd_shut_BaF2.display(1)  
+        self.ui.mv_lcd_shut_Co.display(1); self.ui.mv_lcd_shut_Fe.display(1); self.ui.mv_lcd_shut_Dy.display(1)  
+        ####SECOND PAGE LCDs####
+        self.ui.mbe_lcd_T_Te.display(EF_T1); self.ui.mbe_lcd_T_Sn.display(EF_T2); self.ui.mbe_lcd_T_Baf2.display(EF_T3)
+        self.ui.mbe_lcd_T_Co.display(EF_T4); self.ui.mbe_lcd_T_Fe.display(EF_T5); self.ui.mbe_lcd_T_Dy.display(EF_T6)
+        self.ui.mbe_lcd_p_Te.display(EF_P1); self.ui.mbe_lcd_p_Sn.display(EF_P2); self.ui.mbe_lcd_p_Baf2.display(EF_P3)
+        self.ui.mbe_lcd_p_Co.display(EF_P4); self.ui.mbe_lcd_p_Fe.display(EF_P5); self.ui.mbe_lcd_p_Dy.display(EF_P6)
+        self.ui.mbe_lcd_V_Te.display(EF_V1); self.ui.mbe_lcd_V_Sn.display(EF_V2); self.ui.mbe_lcd_V_Baf2.display(EF_V3)
+        self.ui.mbe_lcd_V_Co.display(EF_V4); self.ui.mbe_lcd_V_Fe.display(EF_V5); self.ui.mbe_lcd_V_Dy.display(EF_V6) 
+        self.ui.mbe_lcd_A_Te.display(EF_A1); self.ui.mbe_lcd_A_Sn.display(EF_A2); self.ui.mbe_lcd_A_Baf2.display(EF_A3)
+        self.ui.mbe_lcd_A_Co.display(EF_A4); self.ui.mbe_lcd_A_Fe.display(EF_A5); self.ui.mbe_lcd_A_Dy.display(EF_A6) 
+        self.ui.mbe_lcd_V_bias.display(EB_V); self.ui.mbe_lcd_A_bias.display(EB_A); self.ui.mbe_lcd_V_fil.display(EB_FIL_V) 
+        self.ui.mbe_lcd_A_fil.display(EB_FIL_A) 
+        self.ui.mbe_lcd_shut_Te.display(2); self.ui.mbe_lcd_shut_Sn.display(2); self.ui.mbe_lcd_shut_Baf2.display(2)  
+        self.ui.mbe_lcd_shut_Co.display(2); self.ui.mbe_lcd_shut_Fe.display(2); self.ui.mbe_lcd_shut_Dy.display(2) 
+        self.ui.mbe_lcd_P_mbe.display(PMBE); self.ui.mbe_lcd_P_mbeline.display(PMBE_L); self.ui.mbe_lcd_P_loadlock.display(PLOAD_L)
+        self.ui.mbe_progressBar.setValue(int(0.2)) 
+        ####THIRD PAGE LCDs####  
+        self.ui.man_T_Te.display(self._eurotemp[0]);self.ui.man_T_Sn.display(self._eurotemp[1]);self.ui.man_T_Baf2.display(self._eurotemp[2])
+        self.ui.man_T_Co.display(self._eurotemp[3]);self.ui.man_T_Fe.display(self._eurotemp[4]);self.ui.man_T_Dy.display(self._eurotemp[5])
+        self.ui.man_p_Te.display(self._eurocount[0]);self.ui.man_p_Sn.display(self._eurocount[1]);self.ui.man_p_Baf2.display(self._eurocount[2])
+        self.ui.man_p_Co.display(self._eurocount[3]);self.ui.man_p_Fe.display(self._eurocount[4]);self.ui.man_p_Dy.display(self._eurocount[5])
+        #self.ui.man_progressBar_Te.setValue(self._eurocount[0]);self.ui.man_progressBar_Sn.setValue(self._eurocount[1]) 
+        #self.ui.man_progressBar_Baf2.setValue(self._eurocount[2]);self.ui.man_progressBar_Co.setValue(self._eurocount[3]) 
+        #self.ui.man_progressBar_Fe.setValue(self._eurocount[4]);self.ui.man_progressBar_Dy.setValue(self._eurocount[5]) 
+        
+
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     w = MainWindow()

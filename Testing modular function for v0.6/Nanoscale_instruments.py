@@ -7,6 +7,7 @@ Created on Sat Oct 22 11:39:00 2022
 import minimalmodbus
 import socket
 from time import sleep
+import urllib3
 
 class Eurotherm3508(minimalmodbus.Instrument):
     """Instrument class for Eurotherm 3500 process controller.
@@ -211,3 +212,26 @@ class FUG_MCP_Voltage(PrologixGPIBEthernetDevice):
     
     def output(self,value):#1 on 0 off, not that easy, please check the manual before using
         return print(self.query('F'+str(value)))
+    
+class AutoShutter:
+    def __init__(self, IP, *args, **kwargs):
+        self.IP = IP
+        self.Angle1 = 0
+        self.Angle2 = 0
+        self.Angle3 = 0
+        self.Angle4 = 0
+        
+    def send_command(self,Angle1,Angle2,Angle3,Angle4):
+        """Long-running task."""
+        self.Angle1 = Angle1
+        self.Angle2 = Angle2
+        self.Angle3 = Angle3
+        self.Angle4 = Angle4
+        http = urllib3.PoolManager()
+        string = str(self.Angle1)+','+ str(self.Angle2)+','+str(self.Angle3)+','+str(self.Angle4)+','
+        print( "http://"+self.IP+"/command_"+string)
+        try:
+            http.request("GET", "http://"+self.IP+"/command_"+string, timeout=1,retries=False)
+        except Exception as error:
+            print(error)
+            pass

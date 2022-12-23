@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Oct 20 13:31:55 2022
-@author: wilwin
+@author: Wilwin
+Pre-requisites:
 pip install lakeshore
+pip install pyvisa-py
 with static IP address 169.254.125.29 port 7777 for 336
 and 169.254.125.30 port 23 for TLC-500
 Remember to set your computer IP address to static ip 169.254.125.XXX
@@ -13,7 +15,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from Nanoscale_GUI import Ui_MainWindow
 from Nanoscale_widgets import Functions,EuroGroup,HVPower_Voltage,HVPower_Current,Time_delay,Stabilization_set,Shutter_set
 from Nanoscale_default import default_parameters
-from Nanoscale_instruments import Eurotherm3508, FUG_MCP_Voltage
+from Nanoscale_instruments import Eurotherm3508, FUG_MCP_Voltage, AutoShutter
 from Nanoscale_calibration import Calibration_OP_PV
 import datetime
 import time
@@ -31,37 +33,48 @@ class MainWindow(QtWidgets.QMainWindow):
         self.setAcceptDrops(True)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        #Set up initial variables
+        
+        """
+        #Initialize some important parameters and constants
+        #Virtual serial ports assigned by the ZRVirCom applications, please change the setting accordingly.
+        #Setting up timers for processing for modular function, for automatic a rigid time sequence is used. 
+        """
         self.port_serial = {'Te': 'COM1', 'Sn': 'COM2','BaF2': 'COM3', 'Co': 'COM4','Fe': 'COM5', 'Dy': 'COM6'}
         self.timer_1, self.timer_2, self.timer_3, self.wait, self.lp_timer , self._eurocount, self._eurotemp = ([None for i in range(6)] for j in range(7))
-        
-        self.Euroshot_count = [0,0,0,0,0,0]
-        self.current_status = [0,0,0,0,0,0]
+        self.Euroshot_count = [0,0,0,0,0,0] #Initial percentage (OP) for Eurotherm
+        self.current_status = [0,0,0,0,0,0] #Check the status of process for Eurotherm
         self.my_dict = {}
+        self.shutter_pos = {}
         #Initialization
-        self.module_sets()
-        self.write_data_log()
-        self.calibration = Calibration_OP_PV()
-        self.ui.mbe_savegrowthtimeline_13.clicked.connect(self.run_processes)
-        self.livedata_start()
-        
+        self.module_sets() #Initialization of the modules position and add/remove buttons, please edit if a module is added.
+        self.write_data_log() #Initialization of the data logging
+        self.ui.mbe_savegrowthtimeline_13.clicked.connect(self.run_processes) #Run process if run button is clicked
+        self.ui.mbe_savegrowthtimeline_14.clicked.connect(self.stopTimer) #Run process if run button is clicked
+
+        self.livedata_start() #Initialization of the live plotting
+        self.calibration = Calibration_OP_PV() #Read the calibration data set for eurotherm
         self.show()
-        
-        
-        
+
     def dragEnterEvent(self, e):
+        #Enabling drag for the widgets
         e.accept()
         
     def dropEvent(self, e):
+        #Enabling drop for the widgets
         pos = e.pos()
-        #How to make both buttons can move independently?
         e.source().move(pos+QtCore.QPoint(8, -40))
-        print(pos)
         e.setDropAction(QtCore.Qt.MoveAction)
         e.accept()
         
     def closeEvent(self, event):
-        Ntimers = 5
+        """
+        Remember to stop all the timers, since the timer will continue on the next time
+        you started the program
+        """
+        self.stopTimer()
+        
+    def stopTimer(self):
+        Ntimers = 5#Define 5 timer variables, each timer variables contains 6 timers
         variables = {0: self.wait, 1: self.timer_1, 2: self.timer_2, 3: self.timer_3, 4: self.lp_timer}
         print("Stopping all timer, returning to manual hand-control")
         for i in range(Ntimers):
@@ -72,69 +85,158 @@ class MainWindow(QtWidgets.QMainWindow):
                 except:
                     print('Timer %s (%i-th) was not started'%(i, j))
                     pass
-
-
-##################################################################
-########################Process Control###########################
-##################################################################  
+        self.ui.mbe_savegrowthtimeline_13.setEnabled(True)
+    """
+    ##################################################################
+    ########################Process Control###########################
+    ##################################################################  
+    """
     def run_processes(self):    
-        #Run every process with the same IDs with some specified delay
-        #Will detect active modules and assign a process by each active module
-        self.current_process_id = 0
-        self.ui.mbe_savegrowthtimeline_13.setEnabled(False)
-        executed = False
-        if self.ui.Euro_mod !=[]:
-            time_delay = [0 for i in range(10)]
-            for i in range(len(self.ui.Time_mod)):
+        """
+        Run every process with the same IDs with some specified delay
+        Will detect active modules and assign a process by each active module
+        """
+        self.current_process_id = 0 #Start from process 0
+        self.ui.mbe_savegrowthtimeline_13.setEnabled(False) #If running the run button is disabled
+        executed = False 
+        Ndelay = 50 #Max number of delay 
+        if self.ui.Time_mod !=[]:
+            """
+            Time delay
+            """
+            time_delay = [0 for i in range(Ndelay)] 
+            for i in range(len(self.ui.Time_mod)): # Read and set the value for 
                 process_id = self.ui.Time_mod[i].spinBox_2.value()
                 minutes = self.ui.Time_mod[i].spinBox_1.value()
                 seconds = self.ui.Time_mod[i].spinBox.value()
-                time_delay[process_id] = (minutes*60+seconds)*1000
-                
-            for i in range(len(self.ui.Euro_mod)):
-                selected = self.ui.Euro_mod[i].comboBox_2.currentText()
-                process_id = self.ui.Euro_mod[i].spinBox.value()
-                print('Selected cells:', selected)
-                print('Process_ID:', process_id)
-                self.my_dict.setdefault(process_id, [])
-                self.my_dict[process_id].append([selected,i])
-                #Think how to solve this map selected cell and proc id to one dic
+                time_delay[process_id] = (minutes*60+seconds)*1000 #delay in ms 
+        else:
+            print("No Time delay module detected, please add the widget before continuing")
+            
+        if self.ui.Shut_mod !=[]:
+            """
+            Shutter control
+            """
+            id_list = []
+            for i in range(len(self.ui.Shut_mod)):
+                selected = self.ui.Shut_mod[i].comboBox.currentText()
+                process_id = self.ui.Shut_mod[i].spinBox.value()
+                Angle = self.ui.Shut_mod[i].spinBox_2.value()
+                print('Selected shutter: ', selected) 
+                print('Process_ID:', process_id) 
+                id_list.append([process_id,selected,Angle])
+            id_list = sorted(id_list)
+            max_id = id_list[-1][0]
+            self.Angles = [[0,0,0,0] for i in range(max_id+1)]
+            #print(id_list)
+            for i in range(len(id_list)):
+                process_id = id_list[i][0]
+                selected = int(id_list[i][1])-1
+                Angle = id_list[i][2]
+                for j in range(max_id+1):
+                    if j >= process_id :
+                        self.Angles[j][selected] = Angle
+                if process_id == 0:
+                    self.set_Shutter(self.Angles[0][0], self.Angles[0][1], self.Angles[0][2], self.Angles[0][3])
+        else:
+            print("No shutter module detected, please add the widget before continuing")
+            
+        if self.ui.HVPV_mod !=[]:
+            """
+            High Voltage Power Supply
+            """    
+            self.Voltnrate = [[0,0] for i in range(Ndelay)]    
+            for i in range(len(self.ui.HVPV_mod)):
+                process_id = self.ui.HVPV_mod[i].spinBox_2.value()
+                Voltage = self.ui.HVPV_mod[i].doubleSpinBox.value()
+                Vrate = self.ui.HVPV_mod[i].doubleSpinBox_2.value()
+                for j in range(Ndelay-process_id):
+                    self.Voltnrate[process_id+j][0] = Voltage
+                    self.Voltnrate[process_id+j][1] = Vrate
+                if process_id == 0:
+                    try:
+                        self.set_HPVoltage(self.Voltnrate[process_id][0],self.Voltnrate[process_id][1])
+                    except:
+                        print('Set HPVoltage failed')
+        else:
+            print("No High Voltage Power Supply detected, please add the widget before continuing")
+
+        if self.ui.Euro_mod !=[]:
+            """
+            Eurotherm modules
+            """ 
+            for i in range(len(self.ui.Euro_mod)): 
+                selected = self.ui.Euro_mod[i].comboBox_2.currentText() #The selected cell
+                process_id = self.ui.Euro_mod[i].spinBox.value() 
+                print('Selected cells:', selected) 
+                print('Process_ID:', process_id) 
+                self.my_dict.setdefault(process_id, []) #Return a value [] for the key processid
+                self.my_dict[process_id].append([selected,i]) #Append the selected cell
                 
                 if process_id == 0:
-                    self.process_Euro3508(selected,i)
-                else:
-                    #wait until previous id is finished
-                    if executed == False:
-                        self.timer_2[i] = QtCore.QTimer()
-                        self.timer_2[i].timeout.connect(lambda: self.process_status_check(time_delay))
-                        self.timer_2[i].start(10000)#check every 10 s regarding the status of PID1
-                        executed = True
+                    try:
+                        self.process_Euro3508(selected,i) #Starting the process for ID=0
+                    except:
+                        print('Set eurotherm process failed')
         else:
             print("No Eurotherm module detected, please add the widget before continuing")
+        
+        if executed == False: #wait until previous id is finished
+            self.timer_2[i] = QtCore.QTimer()
+            self.timer_2[i].timeout.connect(lambda: self.process_status_check(time_delay))
+            self.timer_2[i].start(8000)#check every 8 s regarding the status of PID
+            executed = True    
 
     def process_status_check(self,time_delay):
-        #Check the dict, see the PID 1, and multiply all current status if 1 then shoot next one
-        #if #All process are completed, then do the next PID
+        """
+        Check the dict, see the PID 1, and multiply all current status if 1 then shoot next one
+        if all process are completed, then do the next PID
+        """
         print('Active process ID and cells ', self.my_dict)
         mapping = {'Te': 0, 'Sn': 1,'BaF2': 2, 'Co': 3,'Fe': 4, 'Dy': 5}
+        MaxNprocess = 30
         try:
-            a = []
-            for selected,i in self.my_dict[self.current_process_id]:
-                a.append(self.current_status[mapping[selected]])
-            status = 1
-            for k in range(0,len(a)):
-                status = status * a[k]
-            if status == 1:
-                print(status, ': All cell process has been finished, continuing to the next process')
+            if self.ui.Euro_mod !=[]:
+                a = []
                 for selected,i in self.my_dict[self.current_process_id]:
-                    QtCore.QTimer.singleShot(time_delay[self.current_process_id-1], lambda: self.process_Euro3508(selected,i))
+                    a.append(self.current_status[mapping[selected]])
+                status = 1
+                for k in range(0,len(a)):
+                    status = status * a[k] #Checking all active cells has been completed or not
+            else:
+                status = 1
+                
+            if status == 1:
+                print(status, ': All previous process has been finished, continuing to the next process')
+                try:
+                    for selected,i in self.my_dict[self.current_process_id]:
+                        QtCore.QTimer.singleShot(time_delay[self.current_process_id-1], lambda: self.process_Euro3508(selected,i)) #Wait for specified time delay then execute the next steps
+                except:
+                    print('No Eurotherm in the current process')
+                    pass
+
+                try:
+                    for Voltage,rate in self.Voltnrate[self.current_process_id]:
+                        QtCore.QTimer.singleShot(time_delay[self.current_process_id-1], lambda: self.set_HPVoltage(Voltage,rate)) #Wait for specified time delay then execute the next steps
+                except:
+                    print('No HPV in the current process')
+                    pass
+                
+                try:
+                    for angle1,angle2,angle3,angle4 in self.Angles[self.current_process_id]:
+                        QtCore.QTimer.singleShot(time_delay[self.current_process_id-1], lambda: self.set_Shutter(angle1, angle2, angle3, angle4)) #Wait for specified time delay then execute the next steps
+                except:
+                    print('No Shutter in the current process')
+                    pass
+                    
                 self.current_status[:] = 0
-                self.current_process_id += 1
+                self.current_process_id += 1 #Go to next process ID
         except:
             self.current_process_id += 1
-        
+            print('Process ID invalid, going to the next process ID')
+            
         print('current status: ', self.current_process_id, self.current_status)
-        if self.current_process_id > 30:
+        if self.current_process_id > MaxNprocess: #Limit the possible number of processID
             self.ui.mbe_savegrowthtimeline_13.setEnabled(True)
             self.timer_2.stop()
             
@@ -144,6 +246,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.Euro3508_check(value,i)
         
         if self.ui.Euro_mod[i].mv_checkBox.checkState() == QtCore.Qt.Checked:
+            """
+            Be careful when using the PID control since the rate may change drastically
+            """
             print('PID control activated, using PID instead of fitted temperature data')
             P_value = self.ui.Euro_mod[i].doubleP.value()
             I_value = self.ui.Euro_mod[i].doubleI.value()
@@ -155,12 +260,14 @@ class MainWindow(QtWidgets.QMainWindow):
             self.timer_1[i].timeout.connect(self.Euro3508_check)
             self.timer_1[i].start(5000)
             self.Treach_count = 0
-            #self.Tnotreach_count
-            #Later check the stabilization procedure
             while abs(self._eurotemp_0-SP_value) < self.ui.Stabilizationset.doubleSpinBox_1.value():
                 QtCore.QTimer.singleShot(20000, self.stabilization_T(SP_value,i))
                 print(self.Treach_count)
         else:
+            """
+            The fitted temperature and output power data should be updated periodically
+            Changes in filament profile may changes the temperature for a given output power
+            """
             print('Using fitted temperature and output power data for ', value)
             SP_value = self.ui.Euro_mod[i].doubleSpinBox.value()
             rate = self.ui.Euro_mod[i].doubleSpinBox_2.value()
@@ -182,7 +289,7 @@ class MainWindow(QtWidgets.QMainWindow):
         QtCore.QTimer.singleShot(500, lambda : self.Euro3508_check(value,i))
         if abs(self._eurotemp[i]-SP_value) < self.ui.Stabilizationset.doubleSpinBox_1.value():
             self.Treach_count += 1
-            self.Tnotreach_count =0
+            self.Tnotreach_count = 0
             if self.Treach_count >= 10:
                 print("Temperature is stable at the Set Point ", SP_value)
                 try:
@@ -243,13 +350,13 @@ class MainWindow(QtWidgets.QMainWindow):
 #####Communication with the instruments modular function#####
 ##############Eurotherm communication module#################
 ##################################################################    
-    def Euro3508_init(self,value,i):
+    def Euro3508_init(self,value,i): #Only for checking the Connection, OP, and Temperature
         serial = self.port_serial[value]
         try:
             self.eurotherm3508 = Eurotherm3508(serial, 1)
             self._eurotemp[i] = self.eurotherm3508.get_pv_loop1()
             self._eurocount[i] = self.eurotherm3508.get_op_loop1()
-            self._eurocount[i]=round(self._eurocount[i],1)
+            self._eurocount[i]= round(self._eurocount[i],1) #Round to one decimal place
             print("Connected to Eurotherm with OP counter = ", self._eurocount," %")
             print("Connected to Eurotherm with Temperature = ", self._eurotemp," C")
         except IOError:
@@ -295,6 +402,9 @@ class MainWindow(QtWidgets.QMainWindow):
         QtCore.QTimer.singleShot(800, lambda : self.Euro3508_check(value,i))
             
     def Euro3508_send_PID(self,P,I,D,SP,value):
+        """
+        Please don't change the PID if you don't know the value, may causes the temperature to raise very fast
+        """
         serial = self.port_serial[value]
         try:
             self.eurotherm3508 = Eurotherm3508(serial, 1)
@@ -335,11 +445,35 @@ class MainWindow(QtWidgets.QMainWindow):
             except:
                 pass
 ##################################################################          
-##############High Voltage Power Supply module#################
-##################################################################   
+##############High Voltage Power Supply module####################
+##################################################################  
+    def set_HPVoltage(self,Voltage,rate): 
+        """
+        Make sure the remote LED indicator is on
+        """
+        my_device = FUG_MCP_Voltage(host='169.254.92.52', address=8)
+        print(my_device.idn())
+        print('Voltage = ',my_device.get_voltage())
+        print('Current = ',my_device.get_current())
+        my_device.check_V_ramp_status()
+        print('Set point = ',my_device.V_current_set_point())
+        my_device.output(1) #Turns on the output
+        my_device.V_set_point(Voltage)   
+        my_device.set_V_ramp_func(1)
+        my_device.set_V_ramp_rate(rate)
+        my_device.I_set_point(0.0001)#Keep the current below 0.1 ma for Cv MODE
 
-
-
+##################################################################          
+###################Shutter control module#########################
+################################################################## 
+    def set_Shutter(self,angle1, angle2, angle3, angle4):
+        IP = '192.168.1.143'
+        try:
+            Shutter = AutoShutter(IP)
+            Shutter.send_command(angle1,angle2,angle3,angle4)
+        except:
+            print("Shutter error: Please check the IP, power, and connections")
+            pass
 
 
        

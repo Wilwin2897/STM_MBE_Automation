@@ -450,8 +450,6 @@ class Shutter_set(QtWidgets.QWidget):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
         self.retranslateUi()
         
     def retranslateUi(self):
@@ -462,12 +460,11 @@ class Shutter_set(QtWidgets.QWidget):
         self.remove_button.setText(_translate("MainWindow", "Remove"))
         self.label_1.setText(_translate("MainWindow", "ID"))
         self.label_2.setText(_translate("MainWindow", "Select:"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "Te"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "Sn"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "BaF2"))
-        self.comboBox.setItemText(3, _translate("MainWindow", "Co"))
-        self.comboBox.setItemText(4, _translate("MainWindow", "Fe"))
-        self.comboBox.setItemText(5, _translate("MainWindow", "Dy"))
+        self.comboBox.setItemText(0, _translate("MainWindow", "1"))
+        self.comboBox.setItemText(1, _translate("MainWindow", "2"))
+        self.comboBox.setItemText(2, _translate("MainWindow", "3"))
+        self.comboBox.setItemText(3, _translate("MainWindow", "4"))
+
         
     def mouseMoveEvent(self, e):
         if e.buttons() == QtCore.Qt.LeftButton:
