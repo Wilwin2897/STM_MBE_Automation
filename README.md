@@ -6,14 +6,9 @@ MBE chamber, together with an automated mechanism for opening and closing
 the cell's shutters. In this way, human errors could be minimized and the user is 
 able to obtain all parameters in real-time which are essential for quality control.
 
-Note from user (Soumya)
-make it so he can control the rate from as many temperature as possible
-A method to make the temperature stable at certain T
-A manual to automatic button
-Auto update of the process after the parameter has been changed
+Modular control is finished EXCEPT for: Beam Flux Monitor and Filament current source
 
-Note from Prof.
-Modular control, put it so people can select the instrument and change the process easily
+
 
 ![image](https://user-images.githubusercontent.com/41424369/195020968-bc34524d-581b-4e4b-934f-52f3ffdbdf86.png)
 ![image](https://user-images.githubusercontent.com/41424369/195021007-916cc9fe-9fb6-4157-b823-ae55ed1b3e72.png)
