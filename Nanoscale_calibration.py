@@ -16,24 +16,31 @@ class Calibration_OP_PV():
         stabillization process is lower
         [[OP0 (%), Temp0 (Degree Celcius)],[OP1,Temp1],....]
         """
-        self.Te = [[0.0,10], 
+        self.Te = [[0.0,10],
+                   [5.7,100],
                    [50.0, 1000],
                    [80,1500]]
         self.Fe = [[0.0,10], 
+                   [10.1,250],
                    [14.5, 388],
                    [59.1,1241],
                    [80,1500]]
         self.Co = [[0.0,10], 
+                   [5.0,50],
                    [50.0, 1000],
                    [80,1500]]
         self.BaF2 = [[0.0,10],
+                     [5,50],
                    [50.0, 1000],
                    [80,1500]]
         self.Sn = [[0.0,10], 
+                   [3.4,73],
+                   [5.7,100],
                    [12.8, 320.5],
                    [50.2,955],
                    [80,1500]]
         self.Dy = [[0.0,10], 
+                   [5,50],
                    [50.0, 1000],
                    [80,1500]]
         
@@ -49,7 +56,7 @@ class Calibration_OP_PV():
         total_time = abs(SP-Temp)/rate*60 #time in seconds
         OP_final = self.interpolation(value,SP)
         OP_now = self.interpolation(value,Temp)
-        numstep = ((OP_final-OP_now)*10)
+        numstep = abs((OP_final-OP_now)*10)
         step_time = total_time/numstep
         return round(step_time, 2), int(numstep) #in seconds
         

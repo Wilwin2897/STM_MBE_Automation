@@ -1,0 +1,3 @@
+Zlvircom installation instructions:
+
+If you don't need virtual serial port function, just need device management and configuration, please run zlvicom.exe directly. If you need the virtual serial port function, install virtual serial port-control3.5.msi to the default directory first, and then run zlvircom.exe .

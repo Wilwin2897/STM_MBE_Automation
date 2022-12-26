@@ -39,10 +39,12 @@ class MainWindow(QtWidgets.QMainWindow):
         #Virtual serial ports assigned by the ZRVirCom applications, please change the setting accordingly.
         #Setting up timers for processing for modular function, for automatic a rigid time sequence is used. 
         """
-        self.port_serial = {'Te': 'COM1', 'Sn': 'COM2','BaF2': 'COM3', 'Co': 'COM4','Fe': 'COM5', 'Dy': 'COM6'}
+        self.port_serial = {'Te': 'COM10', 'Fe': 'COM11','Co': 'COM12', 'BaF2': 'COM13','Sn': 'COM14', 'Dy': 'COM15'}
         self.timer_1, self.timer_2, self.timer_3, self.wait, self.lp_timer , self._eurocount, self._eurotemp = ([None for i in range(6)] for j in range(7))
         self.Euroshot_count = [0,0,0,0,0,0] #Initial percentage (OP) for Eurotherm
         self.current_status = [0,0,0,0,0,0] #Check the status of process for Eurotherm
+        self.Tnotreach_count = [0,0,0,0,0,0]
+        self.Treach_count = [0,0,0,0,0,0]
         self.my_dict = {}
         self.shutter_pos = {}
         #Initialization
@@ -100,11 +102,12 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.mbe_savegrowthtimeline_13.setEnabled(False) #If running the run button is disabled
         executed = False 
         Ndelay = 50 #Max number of delay 
+        time_delay = [0 for i in range(Ndelay)] 
+
         if self.ui.Time_mod !=[]:
             """
             Time delay
             """
-            time_delay = [0 for i in range(Ndelay)] 
             for i in range(len(self.ui.Time_mod)): # Read and set the value for 
                 process_id = self.ui.Time_mod[i].spinBox_2.value()
                 minutes = self.ui.Time_mod[i].spinBox_1.value()
@@ -138,6 +141,7 @@ class MainWindow(QtWidgets.QMainWindow):
                         self.Angles[j][selected] = Angle
                 if process_id == 0:
                     self.set_Shutter(self.Angles[0][0], self.Angles[0][1], self.Angles[0][2], self.Angles[0][3])
+                    time.sleep(1)
         else:
             print("No shutter module detected, please add the widget before continuing")
             
@@ -174,17 +178,15 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.my_dict[process_id].append([selected,i]) #Append the selected cell
                 
                 if process_id == 0:
-                    try:
-                        self.process_Euro3508(selected,i) #Starting the process for ID=0
-                    except:
-                        print('Set eurotherm process failed')
+                    self.process_Euro3508(selected,i) #Starting the process for ID=0
+                    
         else:
             print("No Eurotherm module detected, please add the widget before continuing")
         
         if executed == False: #wait until previous id is finished
             self.timer_2[i] = QtCore.QTimer()
             self.timer_2[i].timeout.connect(lambda: self.process_status_check(time_delay))
-            self.timer_2[i].start(8000)#check every 8 s regarding the status of PID
+            self.timer_2[i].start(8500)#check every 8 s regarding the status of PID
             executed = True    
 
     def process_status_check(self,time_delay):
@@ -193,7 +195,7 @@ class MainWindow(QtWidgets.QMainWindow):
         if all process are completed, then do the next PID
         """
         print('Active process ID and cells ', self.my_dict)
-        mapping = {'Te': 0, 'Sn': 1,'BaF2': 2, 'Co': 3,'Fe': 4, 'Dy': 5}
+        mapping = {'Te': 0, 'Fe': 1,'Co': 2, 'BaF2': 3,'Sn': 4, 'Dy': 5}
         MaxNprocess = 30
         try:
             if self.ui.Euro_mod !=[]:
@@ -205,35 +207,38 @@ class MainWindow(QtWidgets.QMainWindow):
                     status = status * a[k] #Checking all active cells has been completed or not
             else:
                 status = 1
-                
+            
             if status == 1:
                 print(status, ': All previous process has been finished, continuing to the next process')
                 try:
-                    for selected,i in self.my_dict[self.current_process_id]:
-                        QtCore.QTimer.singleShot(time_delay[self.current_process_id-1], lambda: self.process_Euro3508(selected,i)) #Wait for specified time delay then execute the next steps
+                    for selected,i in self.my_dict[self.current_process_id+1]:
+                        QtCore.QTimer.singleShot(time_delay[self.current_process_id], lambda: self.process_Euro3508(selected,i)) #Wait for specified time delay then execute the next steps
                 except:
                     print('No Eurotherm in the current process')
                     pass
 
                 try:
-                    for Voltage,rate in self.Voltnrate[self.current_process_id]:
-                        QtCore.QTimer.singleShot(time_delay[self.current_process_id-1], lambda: self.set_HPVoltage(Voltage,rate)) #Wait for specified time delay then execute the next steps
+                    for Voltage,rate in self.Voltnrate[self.current_process_id+1]:
+                        QtCore.QTimer.singleShot(time_delay[self.current_process_id], lambda: self.set_HPVoltage(Voltage,rate)) #Wait for specified time delay then execute the next steps
                 except:
                     print('No HPV in the current process')
                     pass
                 
                 try:
-                    for angle1,angle2,angle3,angle4 in self.Angles[self.current_process_id]:
-                        QtCore.QTimer.singleShot(time_delay[self.current_process_id-1], lambda: self.set_Shutter(angle1, angle2, angle3, angle4)) #Wait for specified time delay then execute the next steps
+                    #print(self.Angles,self.current_process_id+1,time_delay)
+                    angle1 = self.Angles[self.current_process_id+1][0]
+                    angle2 = self.Angles[self.current_process_id+1][1]
+                    angle3 = self.Angles[self.current_process_id+1][2]
+                    angle4 = self.Angles[self.current_process_id+1][3]
+                    QtCore.QTimer.singleShot(time_delay[self.current_process_id], lambda: self.set_Shutter(angle1, angle2, angle3, angle4)) #Wait for specified time delay then execute the next steps
                 except:
                     print('No Shutter in the current process')
                     pass
-                    
                 self.current_status[:] = 0
                 self.current_process_id += 1 #Go to next process ID
         except:
             self.current_process_id += 1
-            print('Process ID invalid, going to the next process ID')
+            print('Process ID invalid, going to the next process ID :',self.current_process_id)
             
         print('current status: ', self.current_process_id, self.current_status)
         if self.current_process_id > MaxNprocess: #Limit the possible number of processID
@@ -241,7 +246,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.timer_2.stop()
             
     def process_Euro3508(self,value,i):
-        print('Running process for:', value)
+        print('Running process for:', value,i)
         self.Euro3508_init(value,i)
         self.Euro3508_check(value,i)
         
@@ -259,10 +264,10 @@ class MainWindow(QtWidgets.QMainWindow):
             self.timer_1[i] = QtCore.QTimer()
             self.timer_1[i].timeout.connect(self.Euro3508_check)
             self.timer_1[i].start(5000)
-            self.Treach_count = 0
+            self.Treach_count[i] = 0
             while abs(self._eurotemp_0-SP_value) < self.ui.Stabilizationset.doubleSpinBox_1.value():
                 QtCore.QTimer.singleShot(20000, self.stabilization_T(SP_value,i))
-                print(self.Treach_count)
+                print(self.Treach_count[i])
         else:
             """
             The fitted temperature and output power data should be updated periodically
@@ -279,7 +284,7 @@ class MainWindow(QtWidgets.QMainWindow):
             else:
                 mode = 'Decrease(%)'
             print(mode,value,nstep)
-            print(self.Eurotherm_shots(mode,value,nstep,i))
+            print(self.Eurotherm_shots(mode,SP_value,value,nstep,i))
             self.timer_1[i] = QtCore.QTimer()
             self.timer_1[i].timeout.connect(lambda: self.Eurotherm_shots(mode,SP_value,value,nstep,i))
             self.timer_1[i].start(int(timestep*1000))
@@ -288,9 +293,10 @@ class MainWindow(QtWidgets.QMainWindow):
     def stabilization_T(self,value,SP_value,i):
         QtCore.QTimer.singleShot(500, lambda : self.Euro3508_check(value,i))
         if abs(self._eurotemp[i]-SP_value) < self.ui.Stabilizationset.doubleSpinBox_1.value():
-            self.Treach_count += 1
-            self.Tnotreach_count = 0
-            if self.Treach_count >= 10:
+            self.Treach_count[i] += 1
+            self.Tnotreach_count[i] = 0
+            print('Temperature reached',self.Tnotreach_count[i],' out of 10')
+            if self.Treach_count[i] >= 10:
                 print("Temperature is stable at the Set Point ", SP_value)
                 try:
                     self.timer_1[i].stop()
@@ -304,31 +310,34 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.current_status[i] = 1
 
         else:
-            self.Treach_count = 0
-            self.Tnotreach_count += 1
-            if self.Tnotreach_count >= 20:
+            self.Treach_count[i] = 0
+            self.Tnotreach_count[i] += 1
+            print(self.Tnotreach_count[i],' of 20 before sending')
+            if self.Tnotreach_count[i] >= 20:
                 if self._eurotemp[i] < SP_value:
-                    print('Fine increase')
-                    self.timer_1[i] = QtCore.QTimer()
-                    self.timer_1[i].timeout.connect(lambda: self.Euro3508_send_man('Increase(%)',value,i))
-                    self.timer_1[i].start(int(20000)) 
-                else:
-                    print('Fine decrease')
-                    self.timer_1[i] = QtCore.QTimer()
-                    self.timer_1[i].timeout.connect(lambda: self.Euro3508_send_man('Decrease(%)',value,i))
-                    self.timer_1[i].start(int(20000)) 
+                    print('Fine increase for ', value)
+                    #self.timer_1[i] = QtCore.QTimer()
+                    QtCore.QTimer.singleShot(20000,lambda: self.Euro3508_send_man('Increase(%)',value,i))
+                    #self.timer_1[i].timeout.connect(lambda: self.Euro3508_send_man('Increase(%)',value,i))
+                    #self.timer_1[i].start(int(30000)) 
+                else: 
+                    print('Fine decrease for ', value)
+                    QtCore.QTimer.singleShot(18500,lambda: self.Euro3508_send_man('Decrease(%)',value,i))
+                    #self.timer_1[i] = QtCore.QTimer()
+                    #self.timer_1[i].timeout.connect(lambda: self.Euro3508_send_man('Decrease(%)',value,i))
+                    #self.timer_1[i].start(int(30000)) 
                 #QtCore.QTimer.singleShot(500, lambda: self.Eurotherm_finetune(value,SP_value,i))
-                self.Tnotreach_count = 0
+                self.Tnotreach_count[i] = 0
                 #self.timer3[i] = QtCore.QTimer()
                 #self.timer3[i].timeout.connect(lambda: self.stabilization_T(value,SP_value,i))
                 #self.timer3[i].start(int(800))
-        return self.Treach_count
+        return self.Treach_count[i]
     
     def Eurotherm_finetune(self,value,SP_value,i):
         print('The temperature of %i is %.2f K, target is %.2f K'%(i, self._eurotemp[i], SP_value))
-        self.timer3[i] = QtCore.QTimer()
-        self.timer3[i].timeout.connect(lambda: self.stabilization_T(value,SP_value,i))
-        self.timer3[i].start(int(1000)) 
+        self.timer_3[i] = QtCore.QTimer()
+        self.timer_3[i].timeout.connect(lambda: self.stabilization_T(value,SP_value,i))
+        self.timer_3[i].start(int(5000)) 
          
 
     def Eurotherm_shots(self,mode,SP_value,value,nstep,i):
@@ -339,7 +348,7 @@ class MainWindow(QtWidgets.QMainWindow):
             print("Finished reaching the calibrated data point, now doing fine adjustment")
             self.timer_1[i].stop()
             self.Euroshot_count[i] = 0
-            QtCore.QTimer.singleShot(15000, lambda: self.Eurotherm_finetune(value,SP_value,i))
+            QtCore.QTimer.singleShot(30000, lambda: self.Eurotherm_finetune(value,SP_value,i))
 
         #self.Euro3508_check(value,i)
         print(self._eurotemp[i])
@@ -471,6 +480,7 @@ class MainWindow(QtWidgets.QMainWindow):
         try:
             Shutter = AutoShutter(IP)
             Shutter.send_command(angle1,angle2,angle3,angle4)
+            time.sleep(1)
         except:
             print("Shutter error: Please check the IP, power, and connections")
             pass
@@ -658,13 +668,13 @@ class MainWindow(QtWidgets.QMainWindow):
         
         self.lp_timer[0] = QtCore.QTimer()
         self.lp_timer[0].timeout.connect(self.lcd_update)
-        self.lp_timer[0].start(2000)
+        self.lp_timer[0].start(8000)
         self.lp_timer[1] = QtCore.QTimer()
         self.lp_timer[1].timeout.connect(self.write_data_log)
-        self.lp_timer[1].start(8000)
+        self.lp_timer[1].start(10000)
         self.lp_timer[2] = QtCore.QTimer()
         self.lp_timer[2].timeout.connect(lambda:self.update_plot_data())
-        self.lp_timer[2].start(2000)
+        self.lp_timer[2].start(5000)
 
     
     def update_plot(self):
@@ -724,64 +734,145 @@ class MainWindow(QtWidgets.QMainWindow):
             GGS = T_All[1]
         except:
             T1,T2,T3,T4,JT,GGS = 0,0,0,0,0,0	
+            print('Cannot read STM temperatures')
+
 
         try:
-            inficon = rm.open_resource('ASRL8::INSTR',read_termination='',write_termination='')
-            rm.visalib.set_buffer(inficon.session, constants.VI_IO_IN_BUF, 32)
-            rm.visalib.set_buffer(inficon.session, constants.VI_IO_OUT_BUF, 32)
+            inficon = rm.open_resource('ASRL4::INSTR',read_termination='',write_termination='')
+            #rm.visalib.set_buffer(inficon.session, constants.VI_IO_IN_BUF, 32)
+            #rm.visalib.set_buffer(inficon.session, constants.VI_IO_OUT_BUF, 32)
             inficon.query("PR1\r\n")
             PLL = inficon.query("\05")
             PLOAD_L = float(PLL[3:]) 
             inficon.close()
         except:
             PLOAD_L = 0
-        
+            print('Cannot Load Lock pressure')
+        PLOAD_L = 0
         try:
             FUG_Voltage = FUG_MCP_Voltage(host='169.254.92.52', address=8)
             # open connection
             FUG_Voltage.connect()
             # run predefined commands
-            EB_A = FUG_Voltage.get_voltage()
-            EB_V = FUG_Voltage.get_current()
+            EB_A = float(FUG_Voltage.get_voltage()[4:])
+            EB_V = float(FUG_Voltage.get_current()[4:])
             FUG_Voltage.close()
         except:
             EB_A = 0
             EB_V = 0
+            print('Cannot read Voltage')
+
         
         try:
             rm = visa.ResourceManager()
             combivac = rm.open_resource('ASRL3::INSTR',baud_rate = 19200,read_termination='\r',write_termination='\r')
             rm.visalib.set_buffer(combivac.session, constants.VI_IO_IN_BUF, 50)
             rm.visalib.set_buffer(combivac.session, constants.VI_IO_OUT_BUF, 50)
-            PSTM = combivac.query("RPV2")
-            PSTM_L = combivac.query("RPV3")
+            PMBE = float(combivac.query("RPV2").split(',\t')[1])
+            PMBE_L = float(combivac.query("RPV3").split(',\t')[1])
             combivac.close()
         except:
-            PSTM = 0
-            PSTM_L = 0
+            PMBE = 0
+            PMBE_L = 0
+            print('Cannot read pressure from MBE')
         
-        PMBE = 0
-        PMBE_L = 0
+        
         
         IG1 = 0
         PIR = 0
         A = 0
         TC = 0
         
-
+        #Need to buy one more cable, the one I bought is broken
+        PSTM = 0
+        PSTM_L = 0
         
-        EF_T1 = 0
-        EF_T2 = 0
-        EF_T3 = 0
-        EF_T4 = 0
-        EF_T5 = 0
-        EF_T6 = 0
-        EF_P1 = 0
-        EF_P2 = 0
-        EF_P3 = 0
-        EF_P4 = 0
-        EF_P5 = 0
-        EF_P6 = 0
+        
+        try:
+            serial = self.port_serial['Te']
+            eurotherm3508 = Eurotherm3508(serial, 1)
+            EF_T1 = eurotherm3508.get_pv_loop1()
+            EF_P1  = eurotherm3508.get_op_loop1()
+            eurotherm3508.serial.close()
+        except:
+            EF_T1 = 0
+            EF_P1 = 0
+        finally:
+            try:
+                eurotherm3508.serial.close()
+            except:
+                pass
+        try:
+            serial = self.port_serial['Fe']
+            eurotherm3508 = Eurotherm3508(serial, 1)
+            EF_T2 = eurotherm3508.get_pv_loop1()
+            EF_P2  = eurotherm3508.get_op_loop1()
+            eurotherm3508.serial.close()
+        except:
+            EF_T2 = 0
+            EF_P2 = 0
+        finally:
+            try:
+                eurotherm3508.serial.close()
+            except:
+                pass
+        try:
+            serial = self.port_serial['Co']
+            eurotherm3508 = Eurotherm3508(serial, 1)
+            EF_T3 = eurotherm3508.get_pv_loop1()
+            EF_P3  = eurotherm3508.get_op_loop1()
+            eurotherm3508.serial.close()
+        except:
+            EF_T3 = 0
+            EF_P3 = 0
+        finally:
+            try:
+                eurotherm3508.serial.close()
+            except:
+                pass    
+        try:
+            serial = self.port_serial['BaF2']
+            eurotherm3508 = Eurotherm3508(serial, 1)
+            EF_T4 = eurotherm3508.get_pv_loop1()
+            EF_P4  = eurotherm3508.get_op_loop1()
+            eurotherm3508.serial.close()
+        except:
+            EF_T4 = 0
+            EF_P4 = 0
+        finally:
+            try:
+                eurotherm3508.serial.close()
+            except:
+                pass
+        try:
+            serial = self.port_serial['Sn']
+            eurotherm3508 = Eurotherm3508(serial, 1)
+            EF_T5 = eurotherm3508.get_pv_loop1()
+            EF_P5  = eurotherm3508.get_op_loop1()
+            eurotherm3508.serial.close()
+        except:
+            EF_T5 = 0
+            EF_P5 = 0
+        finally:
+            try:
+                eurotherm3508.serial.close()
+            except:
+                pass    
+        try:
+            serial = self.port_serial['Dy']
+            eurotherm3508 = Eurotherm3508(serial, 1)
+            EF_T6 = eurotherm3508.get_pv_loop1()
+            EF_P6  = eurotherm3508.get_op_loop1()
+            eurotherm3508.serial.close()
+        except:
+            EF_T6 = 0
+            EF_P6 = 0
+        finally:
+            try:
+                eurotherm3508.serial.close()
+            except:
+                pass    
+
         
         #This part kinda dangerous, according to Soumya, no need to automate
         

@@ -750,25 +750,26 @@ class MainWindow(QtWidgets.QMainWindow):
         
         try:
             rm = visa.ResourceManager()
-            combivac = rm.open_resource('ASRL3::INSTR',baud_rate = 19200,read_termination='\r',write_termination='\r')
+            combivac = rm.open_resource('ASRL4::INSTR',baud_rate = 19200,read_termination='\r',write_termination='\r')
             rm.visalib.set_buffer(combivac.session, constants.VI_IO_IN_BUF, 50)
             rm.visalib.set_buffer(combivac.session, constants.VI_IO_OUT_BUF, 50)
-            PSTM = combivac.query("RPV2")
-            PSTM_L = combivac.query("RPV3")
+            PMBE = combivac.query("RPV2")
+            PMBE_L = combivac.query("RPV3")
             combivac.close()
         except:
-            PSTM = 0
-            PSTM_L = 0
+            PMBE = 0
+            PMBE_L = 0
         
-        PMBE = 0
-        PMBE_L = 0
+        
         
         IG1 = 0
         PIR = 0
         A = 0
         TC = 0
         
-
+        #Need to buy one more cable, the one I bought is broken
+        PSTM = 0
+        PSTM_L = 0
         
         EF_T1 = 0
         EF_T2 = 0

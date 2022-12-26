@@ -9,7 +9,8 @@ import pyvisa
 from pyvisa import constants
 rm = pyvisa.ResourceManager()
 res = rm.list_resources()
-combivac = rm.open_resource('ASRL3::INSTR',baud_rate = 19200,read_termination='\r',write_termination='\r')
+print(res)
+combivac = rm.open_resource('ASRL4::INSTR',baud_rate = 19200,read_termination='\r',write_termination='\r')
 rm.visalib.set_buffer(combivac.session, constants.VI_IO_IN_BUF, 50)
 rm.visalib.set_buffer(combivac.session, constants.VI_IO_OUT_BUF, 50)
 P1 = combivac.query("RPV2")
